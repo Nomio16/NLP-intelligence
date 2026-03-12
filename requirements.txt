@@ -1,0 +1,16 @@
+# NLP Intelligence API — Requirements
+
+# FastAPI adapter
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+
+# NLP Core
+transformers>=4.35.0
+torch>=2.0.0
+sentence-transformers>=2.2.0
+bertopic>=0.16.0
+networkx>=3.0
+
+# Utilities
+pandas>=2.0.0
