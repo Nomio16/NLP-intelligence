@@ -26,6 +26,8 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
+#venv activate 
+source /home/nomio/Documents/БСА/NLP-intelligence/venv/bin/activate 
 # Start the API
 cd adapters/api
 PYTHONPATH=../../ uvicorn main:app --reload --host 0.0.0.0 --port 8000

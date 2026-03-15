@@ -26,6 +26,8 @@ class EntityResponse(BaseModel):
     word: str
     entity_group: str
     score: float = 0.0
+    start: Optional[int] = None
+    end: Optional[int] = None
 
 
 class SentimentResponse(BaseModel):
@@ -42,12 +44,19 @@ class TopicResponse(BaseModel):
 
 class DocumentResponse(BaseModel):
     id: str
+    doc_id: Optional[int] = None  # DB row id for annotation editing
     text: str
     clean_text: str = ""
     source: str = ""
     entities: List[EntityResponse] = []
     topic: Optional[TopicResponse] = None
     sentiment: Optional[SentimentResponse] = None
+
+
+class DocumentUpdateRequest(BaseModel):
+    entities: List[EntityResponse] = []
+    sentiment_label: str = ""
+    sentiment_score: float = 0.0
 
 
 class NetworkNodeResponse(BaseModel):
