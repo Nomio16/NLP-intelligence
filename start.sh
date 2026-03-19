@@ -19,7 +19,24 @@ npm run start -- --port 3000 &
 NEXTJS_PID=$!
 echo "Next.js started (PID $NEXTJS_PID)"
 
-sleep 5
+echo "Waiting for FastAPI to be ready..."
+for i in $(seq 1 120); do
+    if curl -sf http://localhost:8000/ > /dev/null 2>&1; then
+        echo "FastAPI is ready (${i}s)"
+        break
+    fi
+    sleep 1
+done
+
+echo "Waiting for Next.js to be ready..."
+for i in $(seq 1 60); do
+    if curl -sf http://localhost:3000/ > /dev/null 2>&1; then
+        echo "Next.js is ready (${i}s)"
+        break
+    fi
+    sleep 1
+done
+
 nginx -g "daemon off;" &
 
 NGINX_PID=$!
