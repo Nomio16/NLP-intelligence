@@ -1,23 +1,22 @@
-# NLP Intelligence API — Requirements
-
-# FastAPI adapter
+# FastAPI
 fastapi>=0.104.0
 uvicorn[standard]>=0.24.0
 python-multipart>=0.0.6
 
-# NLP Core
-transformers>=4.35.0
-torch==2.2.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+# NLP Core — CPU-only torch (swap index URL after GPU grant)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.0+cpu
+
+transformers==4.40.0
 sentence-transformers>=2.2.0
 bertopic>=0.16.0
-hdbscan
+hdbscan>=0.8.33
+scikit-learn>=1.3.0
+
+# Network analysis
 networkx>=3.0
 
 # Utilities
 pandas>=2.0.0
-tiktoken>=0.5.0
 sentencepiece>=0.1.99
 protobuf>=3.20.0
-scikit-learn
-
-
