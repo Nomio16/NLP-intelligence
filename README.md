@@ -1,3 +1,14 @@
+
+---
+title: NLP Intelligence
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # NLP Intelligence — Social Monitoring Web Application
 
 Hexagonal (Ports & Adapters) architecture for Mongolian social media content analysis.
