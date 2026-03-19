@@ -2,7 +2,8 @@
 
 import { useState, useCallback, useRef } from "react";
 
-const API_BASE = "http://localhost:8000";
+//const API_BASE = "http://localhost:8000";
+const API_BASE = "";
 
 export interface Entity {
   word: string;
@@ -28,16 +29,16 @@ interface Props {
 const ENTITY_TYPES = ["PER", "ORG", "LOC", "MISC"];
 
 const ENTITY_COLORS: Record<string, string> = {
-  PER:  "#ff6b6b",
-  ORG:  "#4ecdc4",
-  LOC:  "#ffd93d",
+  PER: "#ff6b6b",
+  ORG: "#4ecdc4",
+  LOC: "#ffd93d",
   MISC: "#a78bfa",
 };
 
 const SENTIMENT_LABELS = ["positive", "neutral", "negative"] as const;
 const SENTIMENT_MN: Record<string, string> = {
   positive: "Эерэг",
-  neutral:  "Саармаг",
+  neutral: "Саармаг",
   negative: "Сөрөг",
 };
 
@@ -245,8 +246,10 @@ export default function AnnotationEditor({ doc, onClose, onSaved }: Props) {
         {/* Entity legend */}
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
           {ENTITY_TYPES.map((t) => (
-            <span key={t} style={{ fontSize: "0.72rem", padding: "0.15rem 0.5rem", borderRadius: 4,
-              background: `${color(t)}20`, border: `1px solid ${color(t)}`, color: color(t) }}>
+            <span key={t} style={{
+              fontSize: "0.72rem", padding: "0.15rem 0.5rem", borderRadius: 4,
+              background: `${color(t)}20`, border: `1px solid ${color(t)}`, color: color(t)
+            }}>
               {t}
             </span>
           ))}
@@ -353,9 +356,11 @@ export default function AnnotationEditor({ doc, onClose, onSaved }: Props) {
             <select
               value={newEntityGroup}
               onChange={(e) => setNewEntityGroup(e.target.value)}
-              style={{ fontSize: "0.8rem", padding: "0.2rem 0.4rem",
+              style={{
+                fontSize: "0.8rem", padding: "0.2rem 0.4rem",
                 background: "var(--bg-card)", border: "1px solid var(--border)",
-                color: "var(--text-primary)", borderRadius: 4 }}
+                color: "var(--text-primary)", borderRadius: 4
+              }}
             >
               {ENTITY_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
             </select>

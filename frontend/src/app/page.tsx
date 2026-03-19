@@ -3,7 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import AnnotationEditor, { DocForEditor } from "./components/AnnotationEditor";
 
-const API_BASE = "http://localhost:8000";
+//const API_BASE = "http://localhost:8000";
+const API_BASE = "";
 
 interface Entity {
   word: string;
@@ -260,10 +261,10 @@ export default function Dashboard() {
       documents: data.documents.map((d) =>
         d.doc_id === updated.doc_id
           ? {
-              ...d,
-              entities: updated.entities,
-              sentiment: updated.sentiment,
-            }
+            ...d,
+            entities: updated.entities,
+            sentiment: updated.sentiment,
+          }
           : d
       ),
     });
