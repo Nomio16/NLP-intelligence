@@ -58,6 +58,46 @@ class NEREngine:
             ))
         return results
 
-    def recognize_batch(self, texts: List[str]) -> List[List[EntityResult]]:
-        """Run NER on a batch of texts."""
-        return [self.recognize(t) for t in texts]
+    def recognize_batch(self, texts: List[str], batch_size: int = 16) -> List[List[EntityResult]]:
+        """Run NER on a batch of texts utilizing Hugging Face pipeline batching."""
+        if not texts:
+            return []
+        
+        # Filter empty texts to avoid pipeline errors
+        valid_texts = []
+        valid_indices = []
+        for i, text in enumerate(texts):
+            if text and text.strip():
+                valid_texts.append(text)
+                valid_indices.append(i)
+                
+        # Preallocate empty results for all texts
+        out: List[List[EntityResult]] = [[] for _ in texts]
+        
+        if not valid_texts:
+            return out
+            
+        pipe = self._load_pipeline()
+        try:
+            # Send batch directly to pipeline
+            raw_results = pipe(valid_texts, batch_size=batch_size)
+            
+            for idx, raw in zip(valid_indices, raw_results):
+                cleaned = self._clean_entities(raw)
+                entity_results = []
+                for ent in cleaned:
+                    entity_results.append(EntityResult(
+                        word=ent.get("word", ""),
+                        entity_group=ent.get("entity_group", "MISC"),
+                        score=float(ent.get("score", 0.0)),
+                        start=int(ent.get("start", 0)),
+                        end=int(ent.get("end", 0)),
+                    ))
+                out[idx] = entity_results
+        except Exception as e:
+            print(f"[NEREngine] Batch processing error: {e}")
+            # Fallback to single text processing if pipeline batch fails
+            for idx, text in zip(valid_indices, valid_texts):
+                out[idx] = self.recognize(text)
+                
+        return out
