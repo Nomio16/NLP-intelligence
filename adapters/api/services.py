@@ -24,7 +24,12 @@ from nlp_core.network_analyzer import NetworkAnalyzer
 # DB path — resolves to webapp/knowledge.db regardless of cwd
 # ---------------------------------------------------------------------------
 _HERE = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.normpath(os.path.join(_HERE, "..", "..", "knowledge.db"))
+# Check if an external DB_PATH is provided via environment variables (e.g., Colab Google Drive).
+# Otherwise, default to the local knowledge.db inside the project folder.
+DB_PATH = os.environ.get(
+    "DB_PATH", 
+    os.path.normpath(os.path.join(_HERE, "..", "..", "knowledge.db"))
+)
 
 # ---------------------------------------------------------------------------
 # Singleton instances
