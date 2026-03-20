@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 
-//const API_BASE = "http://localhost:8000";
+//const API_BASE = "";
 const API_BASE = "";
 
 export interface Entity {
@@ -178,7 +178,7 @@ export default function AnnotationEditor({ doc, onClose, onSaved }: Props) {
     try {
       const res = await fetch(`${API_BASE}/api/documents/${doc.doc_id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { "ngrok-skip-browser-warning": "true",  "Content-Type": "application/json" },
         body: JSON.stringify({
           entities,
           sentiment_label: sentimentLabel,

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 
-//const API_BASE = "http://localhost:8000";
+//const API_BASE = "";
 const API_BASE = "";
 
 interface KnowledgeEntry {
@@ -31,21 +31,21 @@ export default function AdminPage() {
 
   const fetchEntries = useCallback(async () => {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/knowledge`);
+      const res = await fetch(`${API_BASE}/api/admin/knowledge`, { headers: { "ngrok-skip-browser-warning": "true" } });
       if (res.ok) setEntries(await res.json());
     } catch { /* server might not be running */ }
   }, []);
 
   const fetchStopwords = useCallback(async () => {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/stopwords`);
+      const res = await fetch(`${API_BASE}/api/admin/stopwords`, { headers: { "ngrok-skip-browser-warning": "true" } });
       if (res.ok) setStopwords(await res.json());
     } catch { /* server might not be running */ }
   }, []);
 
   const fetchLabels = useCallback(async () => {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/labels`);
+      const res = await fetch(`${API_BASE}/api/admin/labels`, { headers: { "ngrok-skip-browser-warning": "true" } });
       if (res.ok) setLabels(await res.json());
     } catch { /* server might not be running */ }
   }, []);
@@ -62,7 +62,7 @@ export default function AdminPage() {
     try {
       await fetch(`${API_BASE}/api/admin/knowledge`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "ngrok-skip-browser-warning": "true",  "Content-Type": "application/json" },
         body: JSON.stringify({
           word: newWord,
           category: newCategory,
@@ -80,7 +80,7 @@ export default function AdminPage() {
   };
 
   const deleteEntry = async (id: number) => {
-    await fetch(`${API_BASE}/api/admin/knowledge/${id}`, { method: "DELETE" });
+    await fetch(`${API_BASE}/api/admin/knowledge/${id}`, { headers: { "ngrok-skip-browser-warning": "true" }, method: "DELETE" });
     fetchEntries();
   };
 
@@ -88,7 +88,7 @@ export default function AdminPage() {
     if (!newStopword.trim()) return;
     await fetch(`${API_BASE}/api/admin/stopwords`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "ngrok-skip-browser-warning": "true",  "Content-Type": "application/json" },
       body: JSON.stringify({ word: newStopword }),
     });
     setNewStopword("");
@@ -96,7 +96,7 @@ export default function AdminPage() {
   };
 
   const deleteStopword = async (word: string) => {
-    await fetch(`${API_BASE}/api/admin/stopwords/${word}`, { method: "DELETE" });
+    await fetch(`${API_BASE}/api/admin/stopwords/${word}`, { headers: { "ngrok-skip-browser-warning": "true" }, method: "DELETE" });
     fetchStopwords();
   };
 
@@ -104,7 +104,7 @@ export default function AdminPage() {
     if (!newOriginalLabel.trim() || !newCustomLabel.trim()) return;
     await fetch(`${API_BASE}/api/admin/labels`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "ngrok-skip-browser-warning": "true",  "Content-Type": "application/json" },
       body: JSON.stringify({
         original_label: newOriginalLabel,
         custom_label: newCustomLabel,

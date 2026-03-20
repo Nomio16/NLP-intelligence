@@ -3,8 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import AnnotationEditor, { DocForEditor } from "./components/AnnotationEditor";
 
-//const API_BASE = "http://localhost:8000";
 const API_BASE = "";
+//const API_BASE = "";
 
 interface Entity {
   word: string;
@@ -120,7 +120,7 @@ export default function Dashboard() {
   const loadHistory = useCallback(async () => {
     setHistoryLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/api/history?limit=50`);
+      const res = await fetch(`${API_BASE}/api/history?limit=50`, { headers: { "ngrok-skip-browser-warning": "true" } });
       if (res.ok) setHistory(await res.json());
     } finally {
       setHistoryLoading(false);
@@ -134,7 +134,7 @@ export default function Dashboard() {
   const deleteSession = async (id: number) => {
     setDeletingId(id);
     try {
-      await fetch(`${API_BASE}/api/history/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE}/api/history/${id}`, { headers: { "ngrok-skip-browser-warning": "true" }, method: "DELETE" });
       setHistory((prev) => prev.filter((s) => s.id !== id));
     } finally {
       setDeletingId(null);
@@ -145,7 +145,7 @@ export default function Dashboard() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`${API_BASE}/api/history/${id}`);
+      const res = await fetch(`${API_BASE}/api/history/${id}`, { headers: { "ngrok-skip-browser-warning": "true" } });
       if (!res.ok) throw new Error("Could not load session");
       const session = await res.json();
       // Convert DB format → AnalysisResult format
@@ -178,7 +178,7 @@ export default function Dashboard() {
     setGlobalLoading(true);
     setGlobalError("");
     try {
-      const res = await fetch(`${API_BASE}/api/global-analysis`);
+      const res = await fetch(`${API_BASE}/api/global-analysis`, { headers: { "ngrok-skip-browser-warning": "true" } });
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.detail || "Global analysis failed");
@@ -207,7 +207,7 @@ export default function Dashboard() {
       }
       const result: AnalysisResult = await res.json();
       setData(result);
-      const insightsRes = await fetch(`${API_BASE}/api/insights`, { method: "POST" });
+      const insightsRes = await fetch(`${API_BASE}/api/insights`, { headers: { "ngrok-skip-browser-warning": "true" }, method: "POST" });
       if (insightsRes.ok) setInsights(await insightsRes.json());
     } catch (e: any) {
       setError(e.message || "Error uploading file");
@@ -223,7 +223,7 @@ export default function Dashboard() {
     try {
       const res = await fetch(`${API_BASE}/api/analyze`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "ngrok-skip-browser-warning": "true",  "Content-Type": "application/json" },
         body: JSON.stringify({ text: textInput }),
       });
       if (!res.ok) throw new Error("Analysis failed");
