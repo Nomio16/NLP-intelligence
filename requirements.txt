@@ -3,9 +3,9 @@ fastapi>=0.104.0
 uvicorn[standard]>=0.24.0
 python-multipart>=0.0.6
 
-# NLP Core — CPU-only torch (swap index URL after GPU grant)
---extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.2.0+cpu
+# NLP Core — torch without version/platform constraint so Colab GPU works
+# HF Space Dockerfile installs CPU torch explicitly before this file
+torch>=2.0.0
 
 transformers==4.40.0
 sentence-transformers>=2.2.0

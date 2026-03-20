@@ -15,8 +15,11 @@ Changes from previous version:
 import csv
 import io
 import json
+import logging
 import uuid
-from typing import List, Optional
+from typing import List
+
+logger = logging.getLogger(__name__)
 
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from adapters.api.schemas import (
@@ -65,12 +68,14 @@ async def upload_csv(
             detail=f"No text column found. Got columns: {list(rows[0].keys())}",
         )
 
-    result = _run_analysis(rows, text_col, run_ner, run_sentiment, run_topics)
+    try:
+        result = _run_analysis(rows, text_col, run_ner, run_sentiment, run_topics)
+    except Exception as exc:
+        logger.exception(f"Analysis pipeline failed for file '{file.filename}'")
+        raise HTTPException(status_code=500, detail=f"Analysis failed: {exc}")
+
     services.set_last_analysis(result)
-
-    # Persist to DB and attach doc_ids to each document in the response
     result = _save_and_attach_doc_ids(result, source_filename=file.filename)
-
     return result
 
 
@@ -82,7 +87,11 @@ async def upload_csv(
 async def analyze_text(request: TextAnalysisRequest):
     """Analyze a single text string."""
     rows = [{"ID": str(uuid.uuid4())[:8], "Text": request.text, "Source": "direct"}]
-    result = _run_analysis(rows, "Text", run_ner=True, run_sentiment=True, run_topics=False)
+    try:
+        result = _run_analysis(rows, "Text", run_ner=True, run_sentiment=True, run_topics=False)
+    except Exception as exc:
+        logger.exception("Analysis pipeline failed for single text")
+        raise HTTPException(status_code=500, detail=f"Analysis failed: {exc}")
     services.set_last_analysis(result)
     result = _save_and_attach_doc_ids(result, source_filename="single-text")
     return result
