@@ -94,6 +94,9 @@ function NetworkGraph({ network }: { network: { nodes: any[]; edges: any[] } }) 
   );
 }
 
+// Standard headers needed for all API calls when going through Ngrok
+const NGROK_HEADERS = { "ngrok-skip-browser-warning": "true" };
+
 export default function Dashboard() {
   const [data, setData] = useState<AnalysisResult | null>(null);
   const [insights, setInsights] = useState<InsightItem[]>([]);
@@ -117,14 +120,36 @@ export default function Dashboard() {
   // Annotation editor
   const [editingDoc, setEditingDoc] = useState<DocForEditor | null>(null);
 
+  // Backend health check
+  const [backendOk, setBackendOk] = useState<boolean | null>(null); // null = checking
+
+  // Health check on mount — tells you immediately if backend is reachable
+  useEffect(() => {
+    const check = async () => {
+      console.group("[NLP] Backend health check");
+      try {
+        const res = await fetch(`${API_BASE}/api/health`, { headers: NGROK_HEADERS });
+        const ok = res.ok;
+        setBackendOk(ok);
+        console.log(ok ? "✅ Backend reachable" : `❌ Backend returned ${res.status}`);
+      } catch (e) {
+        setBackendOk(false);
+        console.error("❌ Backend unreachable:", e);
+      }
+      console.groupEnd();
+    };
+    check();
+  }, []);
+
   const loadHistory = useCallback(async () => {
     setHistoryLoading(true);
+    console.group("[NLP] Load history");
     try {
-      const res = await fetch(`${API_BASE}/api/history?limit=50`, { headers: { "ngrok-skip-browser-warning": "true" } });
+      const res = await fetch(`${API_BASE}/api/history?limit=50`, { headers: NGROK_HEADERS });
+      console.log(`→ GET /api/history  status=${res.status}`);
       if (res.ok) setHistory(await res.json());
-    } finally {
-      setHistoryLoading(false);
-    }
+    } catch (e) { console.error(e); }
+    finally { setHistoryLoading(false); console.groupEnd(); }
   }, []);
 
   useEffect(() => {
@@ -194,25 +219,38 @@ export default function Dashboard() {
   const uploadCSV = useCallback(async (file: File) => {
     setLoading(true);
     setError("");
+    console.group(`[NLP] CSV Upload — ${file.name} (${(file.size/1024).toFixed(1)} KB)`);
     try {
       const formData = new FormData();
       formData.append("file", file);
+      // ⚠️ IMPORTANT: ngrok-skip-browser-warning header MUST be included here.
+      // Without it, Ngrok returns an HTML warning page instead of forwarding
+      // the request to FastAPI → FastAPI tries to parse HTML as CSV → 500 error.
       const res = await fetch(`${API_BASE}/api/upload?run_ner=true&run_sentiment=true&run_topics=true`, {
         method: "POST",
+        headers: NGROK_HEADERS,   // ← THE FIX
         body: formData,
       });
+      console.log(`→ POST /api/upload  status=${res.status}`);
       if (!res.ok) {
-        const err = await res.json();
+        const err = await res.json().catch(() => ({ detail: `HTTP ${res.status}` }));
         throw new Error(err.detail || "Upload failed");
       }
       const result: AnalysisResult = await res.json();
+      console.log(`← ${result.total_documents} documents, topics=${result.topic_summary?.length}`);
       setData(result);
-      const insightsRes = await fetch(`${API_BASE}/api/insights`, { headers: { "ngrok-skip-browser-warning": "true" }, method: "POST" });
+      setActiveTab("overview");  // Auto-switch to results
+
+      // Immediately fetch insights after upload
+      const insightsRes = await fetch(`${API_BASE}/api/insights`, { headers: NGROK_HEADERS, method: "POST" });
+      console.log(`→ POST /api/insights  status=${insightsRes.status}`);
       if (insightsRes.ok) setInsights(await insightsRes.json());
     } catch (e: any) {
+      console.error("Upload error:", e);
       setError(e.message || "Error uploading file");
     } finally {
       setLoading(false);
+      console.groupEnd();
     }
   }, []);
 
@@ -220,19 +258,25 @@ export default function Dashboard() {
     if (!textInput.trim()) return;
     setLoading(true);
     setError("");
+    console.group(`[NLP] Analyze text (${textInput.length} chars)`);
     try {
       const res = await fetch(`${API_BASE}/api/analyze`, {
         method: "POST",
-        headers: { "ngrok-skip-browser-warning": "true",  "Content-Type": "application/json" },
+        headers: { ...NGROK_HEADERS, "Content-Type": "application/json" },
         body: JSON.stringify({ text: textInput }),
       });
+      console.log(`→ POST /api/analyze  status=${res.status}`);
       if (!res.ok) throw new Error("Analysis failed");
       const result: AnalysisResult = await res.json();
+      console.log(`← entities:`, result.documents[0]?.entities?.length ?? 0,
+        `sentiment:`, result.documents[0]?.sentiment?.label);
       setData(result);
     } catch (e: any) {
+      console.error(e);
       setError(e.message);
     } finally {
       setLoading(false);
+      console.groupEnd();
     }
   }, [textInput]);
 
@@ -276,6 +320,30 @@ export default function Dashboard() {
 
   return (
     <div>
+      {/* Backend status banner */}
+      {backendOk === false && (
+        <div style={{
+          background: "rgba(255,80,80,0.15)", border: "1px solid var(--negative)",
+          borderRadius: "0.5rem", padding: "0.6rem 1rem", marginBottom: "1rem",
+          display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem",
+        }}>
+          <span>🔴</span>
+          <span style={{ color: "var(--negative)", fontWeight: 600 }}>Backend холболт алдаатай.</span>
+          <span style={{ color: "var(--text-muted)" }}>
+            Colab дээрх сервер ажиллаж байгаа эсэхийг шалгаад, Ngrok URL зөв эсэхийг .env.local файлд шинэчилнэ үү.
+          </span>
+        </div>
+      )}
+      {backendOk === null && (
+        <div style={{
+          background: "rgba(100,100,200,0.1)", border: "1px solid rgba(100,100,255,0.3)",
+          borderRadius: "0.5rem", padding: "0.4rem 1rem", marginBottom: "0.75rem",
+          fontSize: "0.8rem", color: "var(--text-muted)",
+        }}>
+          ⏳ Backend холболт шалгаж байна...
+        </div>
+      )}
+
       {/* Annotation editor modal */}
       {editingDoc && (
         <AnnotationEditor
@@ -287,6 +355,7 @@ export default function Dashboard() {
 
       {/* Upload Section */}
       {!data && !loading && (
+
         <section style={{ marginBottom: "2rem" }}>
           <div
             className={`upload-area ${dragging ? "dragging" : ""}`}
@@ -299,9 +368,10 @@ export default function Dashboard() {
             <p className="upload-text">
               <strong>CSV файл чирж оруулах</strong> эсвэл дарж сонгох
             </p>
-            <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
-              &apos;text&apos; эсвэл &apos;Text&apos; баганатай CSV файл шаардлагатай
-            </p>
+            <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.5rem" }}>
+              <p>⚠️ <strong>Санамж:</strong> Шинжлэх өгөгдөл тань заавал <code>text</code> эсвэл <code>Text</code> гэсэн нэртэй баганад байх ёстой.</p>
+              <p>Хэрэв таны багана <code>Текст</code>, <code>Мессеж</code> гэх мэт Монгол нэртэй бол файлаа оруулахаас өмнө нэрийг нь <code>text</code> болгож өөрчилнө үү.</p>
+            </div>
             <input
               ref={fileInputRef}
               type="file"

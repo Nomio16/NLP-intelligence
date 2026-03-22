@@ -16,6 +16,7 @@ import csv
 import io
 import json
 import logging
+import time
 import uuid
 from typing import List
 
@@ -321,12 +322,15 @@ def _run_analysis(
     run_sentiment: bool,
     run_topics: bool,
 ) -> AnalysisResponse:
+    t0 = time.time()
     preprocessor = services.preprocessor
     kb = services.kb
 
     raw_texts = [row.get(text_col, "") for row in rows]
     ids       = [row.get("ID", str(i)) for i, row in enumerate(rows)]
     sources   = [row.get("Source", "") for row in rows]
+
+    logger.info(f"[Pipeline] Starting analysis: {len(raw_texts)} rows, NER={run_ner}, Sentiment={run_sentiment}, Topics={run_topics}")
 
     # Dual preprocessing — one pass, two outputs
     nlp_texts: List[str] = []
@@ -335,11 +339,15 @@ def _run_analysis(
         nlp, tm = preprocessor.preprocess_dual(raw)
         nlp_texts.append(nlp)
         tm_texts.append(tm)
+    logger.info(f"[Pipeline] Preprocessing done in {(time.time()-t0)*1000:.0f}ms")
 
     # NER
     ner_results = []
     if run_ner:
+        t1 = time.time()
         ner_results = services.ner.recognize_batch(nlp_texts)
+        total_ents = sum(len(r) for r in ner_results)
+        logger.info(f"[Pipeline] NER done in {(time.time()-t1)*1000:.0f}ms — found {total_ents} entities total")
 
     # Entity relabeling from admin custom labels
     custom_labels = kb.get_labels(label_type="entity") if run_ner else {}
@@ -347,18 +355,30 @@ def _run_analysis(
     # Sentiment
     sentiment_results = []
     if run_sentiment:
+        t1 = time.time()
         sentiment_results = services.sentiment.analyze_batch(nlp_texts)
+        pos = sum(1 for s in sentiment_results if s.label == "positive")
+        neg = sum(1 for s in sentiment_results if s.label == "negative")
+        neu = sum(1 for s in sentiment_results if s.label == "neutral")
+        logger.info(f"[Pipeline] Sentiment done in {(time.time()-t1)*1000:.0f}ms — pos={pos} neu={neu} neg={neg}")
 
     # Topic modeling — now works from 3 documents via KMeans fallback
     topic_results = []
     topic_summary = []
     if run_topics:
+        non_empty_tm = [t for t in tm_texts if t.strip()]
+        logger.info(f"[Pipeline] Topic modeling: {len(non_empty_tm)} non-empty TM texts (need >={MIN_TOPICS_DOCS})")
         if len(tm_texts) >= MIN_TOPICS_DOCS:
             try:
+                t1 = time.time()
                 topic_results, topic_summary = services.topic.fit_transform(tm_texts)
+                real_topics = [t for t in topic_summary if isinstance(t, dict) and t.get("topic_id", -1) >= 0]
+                logger.info(f"[Pipeline] Topics done in {(time.time()-t1)*1000:.0f}ms — {len(real_topics)} real topics, summary={topic_summary}")
             except Exception as exc:
+                logger.error(f"[Pipeline] Topic modeling FAILED: {exc}", exc_info=True)
                 topic_summary = [{"error": f"Topic modeling failed: {exc}"}]
         else:
+            logger.info(f"[Pipeline] Skipping topics — only {len(tm_texts)} docs (need {MIN_TOPICS_DOCS}+)")
             topic_summary = [{
                 "info": (
                     f"Topic modeling needs at least {MIN_TOPICS_DOCS} documents. "

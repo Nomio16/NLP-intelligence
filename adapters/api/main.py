@@ -1,10 +1,6 @@
-"""
-FastAPI adapter — REST API entry point.
-This is the outer adapter that wraps the NLP core domain layer.
-"""
-
 import logging
 import traceback
+import torch
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -56,6 +52,7 @@ async def root():
         "name": "NLP Intelligence API",
         "version": "1.0.0",
         "endpoints": {
+            "health": "GET /api/health",
             "upload": "POST /api/upload",
             "analyze": "POST /api/analyze",
             "network": "POST /api/network",
@@ -63,5 +60,26 @@ async def root():
             "admin_entries": "GET/POST /api/admin/knowledge",
             "admin_labels": "GET/POST /api/admin/labels",
             "admin_stopwords": "GET/POST /api/admin/stopwords",
+        },
+    }
+
+
+@app.get("/api/health")
+async def health():
+    """
+    Quick health check used by the frontend on page load.
+    Returns GPU availability and which NLP models are loaded.
+    """
+    from adapters.api import services
+    gpu = torch.cuda.is_available()
+    gpu_name = torch.cuda.get_device_name(0) if gpu else None
+    return {
+        "status": "ok",
+        "gpu": gpu,
+        "gpu_name": gpu_name,
+        "models": {
+            "ner": services.ner._pipeline is not None,
+            "sentiment": services.sentiment._pipeline is not None,
+            "topic": services.topic._model is not None,
         },
     }

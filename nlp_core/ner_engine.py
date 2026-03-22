@@ -17,12 +17,18 @@ class NEREngine:
     def _load_pipeline(self):
         """Lazy-load the NER pipeline (heavy model, load only when needed)."""
         if self._pipeline is None:
+            import torch
             from transformers import pipeline
+            device = 0 if torch.cuda.is_available() else -1
             self._pipeline = pipeline(
                 "ner",
                 model=self.model_name,
                 aggregation_strategy="simple",
+                truncation=True,
+                max_length=512,
+                device=device,
             )
+            print(f"[NEREngine] Loaded on {'GPU' if device == 0 else 'CPU'}")
         return self._pipeline
 
     def _clean_entities(self, raw_entities: List[dict]) -> List[dict]:
