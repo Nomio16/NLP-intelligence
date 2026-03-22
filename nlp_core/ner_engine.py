@@ -24,8 +24,6 @@ class NEREngine:
                 "ner",
                 model=self.model_name,
                 aggregation_strategy="simple",
-                truncation=True,
-                max_length=512,
                 device=device,
             )
             print(f"[NEREngine] Loaded on {'GPU' if device == 0 else 'CPU'}")
