@@ -25,6 +25,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY nlp_core/ ./nlp_core/
 COPY adapters/ ./adapters/
 
+# Pre-download NER model weights from HuggingFace Hub at build time
+# so the first request is fast (no 677MB download on startup)
+RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('Nomio4640/ner-mongolian')"
+
 COPY --from=frontend-builder /app/frontend/.next ./frontend/.next
 COPY --from=frontend-builder /app/frontend/public ./frontend/public
 COPY --from=frontend-builder /app/frontend/package*.json ./frontend/
