@@ -3,15 +3,26 @@ NER Engine — Named Entity Recognition using HuggingFace Transformers.
 Wraps the Davlan/bert-base-multilingual-cased-ner-hrl model.
 """
 
-from typing import List, Optional
+from typing import List
 from .models import EntityResult
+
+
+HF_MODEL_ID = "Nomio4640/ner-mongolian"
 
 
 class NEREngine:
     """Named Entity Recognition service using HuggingFace pipeline."""
 
-    def __init__(self, model_name: str = "adapters/ner_mongolian"):
-        self.model_name = model_name
+    def __init__(self, model_name: str = None):
+        import os
+        # Use local model if it exists, otherwise fall back to HuggingFace Hub
+        local_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "adapters", "ner_mongolian")
+        if model_name:
+            self.model_name = model_name
+        elif os.path.exists(os.path.join(local_path, "model.safetensors")):
+            self.model_name = local_path
+        else:
+            self.model_name = HF_MODEL_ID
         self._pipeline = None
 
     def _load_pipeline(self):
