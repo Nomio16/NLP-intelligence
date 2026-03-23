@@ -20,8 +20,50 @@ Solution:
 Below MIN_TINY_DOCS (3): return empty — can't cluster 1-2 texts meaningfully.
 """
 
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple
 from .models import TopicResult
+
+# ---------------------------------------------------------------------------
+# Mongolian suffix stripping for c-TF-IDF keyword extraction
+# ---------------------------------------------------------------------------
+# BERTopic uses CountVectorizer + c-TF-IDF to label each topic cluster.
+# Without this, agglutinated forms fragment a single concept into many
+# low-frequency tokens:  монголын / монголд / монголаас → 3 keywords
+# With this tokenizer they all reduce to монгол → 1 keyword, higher weight.
+#
+# Rules are ordered longest-first so a longer suffix is tried before a
+# shorter one that is a suffix of it (e.g. "аас" before "ас").
+# Root must be ≥ 3 characters after stripping to avoid destroying short words.
+
+_MN_SUFFIXES = [
+    # Ablative (longest first to avoid partial matches)
+    "аас", "ээс", "оос", "өөс",
+    # Genitive
+    "ийн", "ын", "ний",
+    # Comitative
+    "тай", "тэй", "той",
+    # Directive
+    "руу", "рүү",
+    # Plural
+    "ууд", "үүд",
+    # Accusative
+    "ийг", "ыг",
+    # Dative (single char — checked last so longer suffixes win)
+    "д", "т",
+]
+_MIN_ROOT = 3  # don't strip if remaining root would be shorter than this
+
+
+def _mn_stem(word: str) -> str:
+    for sfx in _MN_SUFFIXES:
+        if word.endswith(sfx) and len(word) - len(sfx) >= _MIN_ROOT:
+            return word[: -len(sfx)]
+    return word
+
+
+def _mongolian_tokenizer(text: str) -> List[str]:
+    """Tokenize and stem Mongolian text for BERTopic's c-TF-IDF step."""
+    return [_mn_stem(w) for w in text.split() if w]
 
 # Thresholds
 MIN_TINY_DOCS = 3       # minimum to attempt topic modeling at all
@@ -57,6 +99,9 @@ class TopicModeler:
           document gets a real topic assignment instead of -1.
         """
         from bertopic import BERTopic
+        from sklearn.feature_extraction.text import CountVectorizer
+
+        vectorizer = CountVectorizer(tokenizer=_mongolian_tokenizer, min_df=1)
 
         if n_docs >= MIN_BERTOPIC_DOCS:
             # Standard BERTopic — HDBSCAN with min_cluster_size tuned to
@@ -71,6 +116,7 @@ class TopicModeler:
                 language=self.language,
                 embedding_model=self._load_embedding_model(),
                 hdbscan_model=cluster_model,
+                vectorizer_model=vectorizer,
                 min_topic_size=2,
             )
         else:
@@ -83,6 +129,7 @@ class TopicModeler:
                 language=self.language,
                 embedding_model=self._load_embedding_model(),
                 hdbscan_model=cluster_model,
+                vectorizer_model=vectorizer,
                 min_topic_size=1,       # allow single-doc topics on tiny sets
                 nr_topics="auto",
             )

@@ -10,7 +10,7 @@ from .models import EntityResult
 class NEREngine:
     """Named Entity Recognition service using HuggingFace pipeline."""
 
-    def __init__(self, model_name: str = "Davlan/bert-base-multilingual-cased-ner-hrl"):
+    def __init__(self, model_name: str = "adapters/ner_mongolian"):
         self.model_name = model_name
         self._pipeline = None
 

@@ -403,9 +403,9 @@ Mapper O O I-ORG
 юм. O O O
 
 Гонгор O O B-PER
-Шашныг O O B-MISC
-хамгаалагч O O I-MISC
-бурхадын O O I-MISC
+Шашныг O O O
+хамгаалагч O O O
+бурхадын O O O
 нэг O O O
 бөгөөд O O O
 саад O O O
@@ -422,7 +422,7 @@ Mapper O O I-ORG
 бол O O O
 цэвэр O O O
 манай O O O
-Ерөнхийлөгчийн O O B-MISC
+Ерөнхийлөгчийн O O O
 бодлоготой O O O
 холбоотой. O O O
 
@@ -444,7 +444,7 @@ Mapper O O I-ORG
 47 O O O
 дугаар O O O
 тогтоолоор O O O
-"Ноолуур" O O B-MISC
+"Ноолуур" O O O
 хөтөлбөрийг O O O
 баталсан. O O O
 
@@ -459,8 +459,8 @@ Mapper O O I-ORG
 Мөн O O O
 бүх O O O
 шатны O O O
-Засаг O O B-MISC
-дарга O O I-MISC
+Засаг O O O
+дарга O O O
 нар O O O
 харьяа O O O
 нутаг O O O
@@ -478,10 +478,10 @@ Mapper O O I-ORG
 аймгийн O O O
 Мөнххаан O O B-LOC
 суманд O O O
-Эх O O B-MISC
-баригч O O I-MISC
-бага O O I-MISC
-эмчээр O O I-MISC
+Эх O O O
+баригч O O O
+бага O O O
+эмчээр O O O
 очсон. O O O
 
 Тиймээс O O O
@@ -525,8 +525,8 @@ Mapper O O I-ORG
 
 Түүнийг O O O
 аймгийн O O O
-Засаг O O B-MISC
-дарга O O I-MISC
+Засаг O O O
+дарга O O O
 Д.Галсандондог O O B-PER
 хүлээн O O O
 авч O O O
@@ -670,8 +670,8 @@ Mapper O O I-ORG
 1940 O O O
 оноос O O O
 хойш O O O
-Цагаан O O B-MISC
-сараа O O I-MISC
+Цагаан O O O
+сараа O O O
 тэмдэглэж O O O
 эхэлсэн O O O
 шүү O O O
@@ -755,8 +755,8 @@ Mapper O O I-ORG
 аа. O O O
 
 Харин O O O
-Сангийн O O B-MISC
-сайд O O I-MISC
+Сангийн O O O
+сайд O O O
 Ч.Хүрэлбаатарын O O B-PER
 хувьд O O O
 дээрх O O O
@@ -889,7 +889,7 @@ OUTOTEC O O O
 бөгөөд O O O
 тус O O O
 фирмийн O O O
-ОК-100 O O B-MISC
+ОК-100 O O O
 баяжуулах O O O
 машинаар O O O
 шинэчлэн O O O
@@ -950,8 +950,8 @@ OUTOTEC O O O
 урилгыг O O O
 Монгол O O O
 Улсын O O O
-Үндэсний O O B-MISC
-аудитор O O I-MISC
+Үндэсний O O O
+аудитор O O O
 Хүрэлбаатар O O B-PER
 хүлээн O O O
 авсан O O O
@@ -964,8 +964,8 @@ OUTOTEC O O O
 уран O O O
 бүтээлийн O O O
 нэгдсэн O O O
-"Монголын O O B-MISC
-хүүхдүүд" O O I-MISC
+"Монголын O O O
+хүүхдүүд" O O O
 хүндэтгэлийн O O O
 тоглолтыг O O O
 энэ O O O
@@ -1007,7 +1007,7 @@ OUTOTEC O O O
 Швейцарийн O O B-LOC
 шигшээ O O O
 баг O O O
-ДАШТ-д O O B-MISC
+ДАШТ-д O O O
 3 O O O
 удаа O O O
 дунд O O O
@@ -1078,7 +1078,7 @@ OUTOTEC O O O
 билээ. O O O
 
 Өнөөдөр O O O
-Хятадууд O O B-MISC
+Хятадууд O O O
 нэг O O O
 тэрбум O O O
 400-аад O O O
@@ -1151,7 +1151,7 @@ OUTOTEC O O O
 эхний O O O
 үед O O O
 Европийн O O B-LOC
-Бразилчууд O O B-MISC
+Бразилчууд O O O
 илүүрхэх O O O
 хувьтай O O O
 байжээ. O O O
@@ -1172,10 +1172,10 @@ OUTOTEC O O O
 түмний O O O
 уламжлалт O O O
 баяр O O O
-Үндэсний O O B-MISC
-их O O I-MISC
-баяр O O I-MISC
-наадмын O O I-MISC
+Үндэсний O O O
+их O O O
+баяр O O O
+наадмын O O O
 өглөө O O O
 ийнхүү O O O
 эхэллээ. O O O
@@ -1321,8 +1321,8 @@ OUTOTEC O O O
 нэг O O O
 ч O O O
 ялагдалгүйгээр O O O
-"Алтан O O B-MISC
-цом"-ын O O I-MISC
+"Алтан O O O
+цом"-ын O O O
 эзэн O O O
 боллоо. O O O
 
@@ -1332,7 +1332,7 @@ OUTOTEC O O O
 орноороо O O O
 хөндлөн O O O
 аялахаар O O O
-"Жийп" O O B-MISC
+"Жийп" O O O
 хөлслөн O O O
 Улаанбаатараас O O O
 хэд O O O
@@ -1399,7 +1399,7 @@ OUTOTEC O O O
 
 Булчин O O O
 сулрах O O O
-Цианокобаламин O O B-MISC
+Цианокобаламин O O O
 дутагдсанаар O O O
 мэдрэлийн O O O
 системийг O O O
@@ -1437,8 +1437,8 @@ OUTOTEC O O O
 гаргаж O O O
 байгаа O O O
 буюу O O O
-"Үүлний O O B-MISC
-машин" O O I-MISC
+"Үүлний O O O
+машин" O O O
 гэх O O O
 төхөөрөмжөөр O O O
 уур O O O
@@ -1580,9 +1580,9 @@ OUTOTEC O O O
 зөвлөгөөний O O O
 нээлтийн O O O
 үеэр O O O
-Нийслэлийн O O B-MISC
-Засаг O O I-MISC
-дарга O O I-MISC
+Нийслэлийн O O O
+Засаг O O O
+дарга O O O
 онцолсон O O O
 байна. O O O
 
@@ -1768,7 +1768,7 @@ OUTOTEC O O O
 
 Тэд O O O
 мөн O O O
-Ням O O B-MISC
+Ням O O O
 гарагт O O O
 болох O O O
 Япон-Сенегалын O O B-LOC
@@ -1823,10 +1823,10 @@ OUTOTEC O O O
 болоод O O O
 байгаа. O O O
 
-Есөн O O B-MISC
-хөлт O O I-MISC
-цагаан O O I-MISC
-тугийг O O I-MISC
+Есөн O O O
+хөлт O O O
+цагаан O O O
+тугийг O O O
 Монгол O O B-LOC
 орны O O O
 өнцөг O O O
@@ -1863,7 +1863,7 @@ OUTOTEC O O O
 энэ O O O
 айлчлал O O O
 АНУ-ын O O O
-Ерөнхийлөгч O O B-MISC
+Ерөнхийлөгч O O O
 Трампын O O B-PER
 Иерусалим O O O
 хотыг O O O
@@ -2019,7 +2019,7 @@ OUTOTEC O O O
 үйлчилгээний O O O
 зарим O O O
 байгууллагууд O O O
-НӨАТ-ын O O B-MISC
+НӨАТ-ын O O O
 урамшууллын O O O
 системд O O O
 өнөөг O O O
@@ -2142,8 +2142,8 @@ OUTOTEC O O O
 татвараа O O O
 төлөөгүй O O O
 тохиолдолд O O O
-Зөрчлийн O O B-MISC
-хуулийн O O I-MISC
+Зөрчлийн O O O
+хуулийн O O O
 19 O O O
 дүгээр O O O
 зүйлийн O O O
@@ -2269,10 +2269,10 @@ OUTOTEC O O O
 үргэлжилнэ. O O O
 
 Кловисийг O O B-PER
-"Дэлхийн O O B-MISC
-хамгийн O O I-MISC
-гунигтай O O I-MISC
-хүн" O O I-MISC
+"Дэлхийн O O O
+хамгийн O O O
+гунигтай O O O
+хүн" O O O
 гэж O O O
 сэтгүүлчид O O O
 цолложээ. O O O
@@ -2292,11 +2292,11 @@ OUTOTEC O O O
 байна O O O
 гэж O O O
 сумын O O O
-Засаг O O B-MISC
-даргын O O I-MISC
-Тамгын O O B-MISC
-газрын O O I-MISC
-дарга O O I-MISC
+Засаг O O O
+даргын O O O
+Тамгын O O O
+газрын O O O
+дарга O O O
 А.Эрдэнэдалай O O O
 ярилаа. O O O
 
@@ -2304,7 +2304,7 @@ OUTOTEC O O O
 тухай O O O
 ярьсан O O O
 түүхтэй O O O
-DVD O O B-MISC
+DVD O O O
 ч O O O
 гаргая O O O
 гэж O O O
@@ -2319,9 +2319,9 @@ DVD O O B-MISC
 байсан O O O
 сайхан O O O
 бүсгүй O O O
-Сайхан O O B-MISC
-бүсгүйчүүдийн O O I-MISC
-тэмцээнд O O I-MISC
+Сайхан O O O
+бүсгүйчүүдийн O O O
+тэмцээнд O O O
 шүүгчийн O O O
 бүрэлдхүүнд O O O
 багтан O O O
@@ -2356,8 +2356,8 @@ DVD O O B-MISC
 хязгаарлахаар O O O
 хэлэлцэж O O O
 тохиролцон O O O
-Шинэ O O B-MISC
-эхлэл O O I-MISC
+Шинэ O O O
+эхлэл O O O
 гэх O O O
 гэрээг O O O
 байгуулсан O O O
@@ -2381,7 +2381,7 @@ DVD O O B-MISC
 хувааж O O O
 байна. O O O
 
-Бонд O O B-MISC
+Бонд O O O
 босгоход O O O
 МАН O O B-ORG
 хүчтэй O O O
@@ -2393,11 +2393,11 @@ DVD O O B-MISC
 байсан. O O O
 
 Мөн O O O
-Замын O O B-MISC
-хөдөлгөөний O O I-MISC
-аюулгүй O O I-MISC
-байдлын O O I-MISC
-хуулийг O O I-MISC
+Замын O O O
+хөдөлгөөний O O O
+аюулгүй O O O
+байдлын O O O
+хуулийг O O O
 2015 O O O
 оны O O O
 наймдугаар O O O
@@ -2472,8 +2472,8 @@ DVD O O B-MISC
 саналыг O O O
 яамнаас O O O
 нийслэлийн O O O
-Засаг O O B-MISC
-даргад O O I-MISC
+Засаг O O O
+даргад O O O
 уламжилсан. O O O
 
 Харин O O O
@@ -2626,9 +2626,9 @@ DVD O O B-MISC
 хувьд O O O
 олон O O O
 нийтээс O O O
-Олон O O B-MISC
-улсын O O I-MISC
-мисс O O I-MISC
+Олон O O O
+улсын O O O
+мисс O O O
 гэх O O O
 нэр O O O
 цолыг O O O
@@ -2666,7 +2666,7 @@ DVD O O B-MISC
 
 БНАСАУ-ыг O O B-LOC
 зорьсон O O O
-монголчууд O O B-MISC
+монголчууд O O O
 болон O O O
 төрийн O O O
 өндөрлөгүүд O O O
@@ -2698,7 +2698,7 @@ DVD O O B-MISC
 Ийм O O O
 цаг O O O
 мөчид O O O
-Триатлоны O O B-MISC
+Триатлоны O O O
 тэмцээнд O O O
 оролцсон O O O
 Н.Энхбаярт O O B-PER
@@ -2727,8 +2727,8 @@ DVD O O B-MISC
 цомгоо O O O
 2005 O O O
 онд O O O
-"Хайрын O O B-MISC
-хүч" O O I-MISC
+"Хайрын O O O
+хүч" O O O
 нэртэй O O O
 гаргасан O O O
 тус O O O
@@ -2795,7 +2795,7 @@ NBA-гийн O O O
 Тавантолгой" O O I-ORG
 компанийн O O O
 тайланг O O O
-ЖОРК O O B-MISC
+ЖОРК O O O
 стандартын O O O
 дагуу O O O
 гаргах O O O
@@ -2820,9 +2820,9 @@ NBA-гийн O O O
 ажиллаж O O O
 байгаа. O O O
 
-Хүчит O O B-MISC
-бөхийн O O I-MISC
-барилдааны O O I-MISC
+Хүчит O O O
+бөхийн O O O
+барилдааны O O O
 бүртгэл O O O
 хоёр O O O
 хоногийн O O O
@@ -3199,7 +3199,7 @@ Facebook-ийн O O B-ORG
 жагсаалын O O O
 үеэр O O O
 Венесуэлийн O O B-LOC
-Ерөнхийлөгч O O B-MISC
+Ерөнхийлөгч O O O
 үг O O O
 хэлснийг O O O
 шууд O O O
@@ -3285,10 +3285,10 @@ Facebook-ийн O O B-ORG
 улс O O O
 үндэстний O O O
 хүүхдүүд O O O
-"Хөлбөмбөг O O B-MISC
-ба O O I-MISC
-нөхөрлөлийн O O I-MISC
-төлөө" O O I-MISC
+"Хөлбөмбөг O O O
+ба O O O
+нөхөрлөлийн O O O
+төлөө" O O O
 олон O O O
 улсын O O O
 фестивальд O O O
@@ -3311,7 +3311,7 @@ Facebook-ийн O O B-ORG
 Хууль O O O
 зүйн O O O
 яамны O O O
-ТНБД O O B-MISC
+ТНБД O O O
 Баясгалан O O B-PER
 "Би O O O
 наадмаа O O O
@@ -3442,7 +3442,7 @@ I O O O
 ханцуйтай O O O
 цамц O O O
 өмсөөд O O O
-"Макдоналдс" O O B-MISC
+"Макдоналдс" O O O
 зооглох O O O
 ажээ. O O O
 
@@ -3460,7 +3460,7 @@ I O O O
 есдүгээр O O O
 сарын O O O
 нэгэн O O O
-Бямба O O B-MISC
+Бямба O O O
 гарагт O O O
 тохиож O O O
 байгаа O O O
@@ -3476,8 +3476,8 @@ I O O O
 шийдчихлээ. O O O
 
 Харин O O O
-В O O B-MISC
-сорьцын O O I-MISC
+В O O O
+сорьцын O O O
 шинжилгээний O O O
 зардлыг O O O
 тухайн O O O
@@ -3576,12 +3576,12 @@ I O O O
 зарласан. O O O
 
 Бид O O O
-"Иргэдийн O O B-MISC
-оролцоо O O I-MISC
-цэвэр O O I-MISC
-орчин O O I-MISC
-цэмцгэр O O I-MISC
-айл" O O I-MISC
+"Иргэдийн O O O
+оролцоо O O O
+цэвэр O O O
+орчин O O O
+цэмцгэр O O O
+айл" O O O
 гэсэн O O O
 гарын O O O
 авлага O O O
@@ -3603,9 +3603,9 @@ I O O O
 
 Энэ O O O
 зурагт O O O
-Британи O O B-MISC
+Британи O O O
 залуу O O O
-СС-ийн O O B-MISC
+СС-ийн O O O
 рейхсфюрер O O O
 Хайнрих O O O
 Гиммлерийн O O O
@@ -3757,18 +3757,18 @@ I O O O
 хувьсгалын O O O
 нэр O O O
 нь O O O
-"Зүв O O B-MISC
-бицгийн O O I-MISC
-дөрөм" O O I-MISC
+"Зүв O O O
+бицгийн O O O
+дөрөм" O O O
 болохыг O O O
 та O O O
 бүхэн O O O
 анзаарсан O O O
 байх. O O O
 
-Захиргааны O O B-MISC
-ерөнхий O O I-MISC
-хуульд O O I-MISC
+Захиргааны O O O
+ерөнхий O O O
+хуульд O O O
 засгийн O O O
 газраас O O O
 нэмэлт O O O
@@ -4044,8 +4044,8 @@ I O O O
 Засгийн O O B-ORG
 газраас"Эрүүл O O I-ORG
 шүд-Эрүүл O O O
-шүд-Эрүүл O O B-MISC
-хүүхэд" O O I-MISC
+шүд-Эрүүл O O O
+хүүхэд" O O O
 үндэсний O O O
 баталсан. O O O
 
@@ -4062,11 +4062,11 @@ I O O O
 
 Тус O O O
 хамтлагийн O O O
-"A O O B-MISC
-Head O O I-MISC
-Full O O I-MISC
-Of O O I-MISC
-Dreams" O O I-MISC
+"A O O O
+Head O O O
+Full O O O
+Of O O O
+Dreams" O O O
 аялан O O O
 тоглолт O O O
 хамтлагтаа O O O
@@ -4177,8 +4177,8 @@ Dreams" O O I-MISC
 
 Тус O O O
 агентлаг O O O
-"Эрх O O B-MISC
-баригчид O O I-MISC
+"Эрх O O O
+баригчид O O O
 Японы O O B-LOC
 жуулчныг O O O
 суллах O O O
@@ -4279,11 +4279,11 @@ Cafe"-ийн O O I-ORG
 юм. O O O
 
 Таныг O O O
-Гавьяат O O B-MISC
+Гавьяат O O O
 болоход O O O
-"Нүдээ O O B-MISC
-олсон O O I-MISC
-шагнал" O O I-MISC
+"Нүдээ O O O
+олсон O O O
+шагнал" O O O
 гээд O O O
 бөхийн O O O
 хорхойтнууд O O O
@@ -4306,9 +4306,9 @@ Cafe"-ийн O O I-ORG
 болно. O O O
 
 Тэрбээр O O O
-"Гэгээн O O B-MISC
-Иаковын O O I-MISC
-замаар" O O I-MISC
+"Гэгээн O O O
+Иаковын O O O
+замаар" O O O
 4000 O O O
 км O O O
 аяласан O O O
@@ -4366,7 +4366,7 @@ Cafe"-ийн O O I-ORG
 сард O O O
 хөөргөсөн O O O
 Америкийн O O B-LOC
-"Жемини-7" O O B-MISC
+"Жемини-7" O O O
 хөлгийнхөн O O O
 сарыг O O O
 зорин O O O
@@ -4524,7 +4524,7 @@ Cafe"-ийн O O I-ORG
 Холбоотой O O O
 статистик O O O
 Аргентин O O B-LOC
-ДАШТ-ий O O B-MISC
+ДАШТ-ий O O O
 хэсгийн O O O
 шатанд O O O
 хийсэн O O O
@@ -4706,9 +4706,9 @@ Cafe"-ийн O O I-ORG
 ирцгээдэг O O O
 аж. O O O
 
-Дэгийн O O B-MISC
-тухай O O I-MISC
-хуулийг O O I-MISC
+Дэгийн O O O
+тухай O O O
+хуулийг O O O
 УИХ-ын O O B-ORG
 хаврын O O O
 чуулганаар O O O
@@ -4860,7 +4860,7 @@ Cafe"-ийн O O I-ORG
 2002 O O O
 онд O O O
 болсон O O O
-ДАШТ-ий O O B-MISC
+ДАШТ-ий O O O
 тухай O O O
 "Мөрөөдөл O O O
 биелдэг O O O
@@ -4918,8 +4918,8 @@ Cafe"-ийн O O I-ORG
 хэлэлцэж O O O
 эхэлбэл O O O
 шинэ O O O
-Үндсэн O O B-MISC
-хуулиа O O I-MISC
+Үндсэн O O O
+хуулиа O O O
 хэдхэн O O O
 сарын O O O
 дараа O O O
@@ -5017,10 +5017,10 @@ Cafe"-ийн O O I-ORG
 байна O O O
 вэ O O O
 гэхээр O O O
-Төрийн O O B-MISC
-албаны O O I-MISC
-тухай O O I-MISC
-хууль O O I-MISC
+Төрийн O O O
+албаны O O O
+тухай O O O
+хууль O O O
 төрийн O O O
 албаны O O O
 дүрэм O O O
@@ -5079,7 +5079,7 @@ Cafe"-ийн O O I-ORG
 шигшээ O O O
 багийн O O O
 хувьд O O O
-"ОХУ-2018" O O B-MISC
+"ОХУ-2018" O O O
 ДАШТ-ийг O O O
 орхих O O O
 тав O O O
@@ -5090,8 +5090,8 @@ Cafe"-ийн O O I-ORG
 Мөхөс O O O
 миний O O O
 бие O O O
-Улсын O O B-MISC
-Ерөнхийлөгч O O I-MISC
+Улсын O O O
+Ерөнхийлөгч O O O
 нарт O O O
 удаа O O O
 дараа O O O
@@ -5140,8 +5140,8 @@ Cafe"-ийн O O I-ORG
 
 Учир O O O
 нь O O O
-Аваргуудын O O B-MISC
-лигэд O O I-MISC
+Аваргуудын O O O
+лигэд O O O
 түрүүлнэ O O O
 гэдэг O O O
 амар O O O
@@ -5170,10 +5170,10 @@ Cafe"-ийн O O I-ORG
 
 Тус O O O
 компанийн O O O
-"A O O B-MISC
-Wrinkle O O I-MISC
-in O O I-MISC
-Time" O O I-MISC
+"A O O O
+Wrinkle O O O
+in O O O
+Time" O O O
 киног O O O
 гаргахаас O O O
 Хятадын O O O
@@ -5181,11 +5181,11 @@ Time" O O I-MISC
 татгалзаж O O O
 байсан O O O
 бол O O O
-"Ant O O B-MISC
-Man O O I-MISC
-and O O I-MISC
-the O O I-MISC
-Wasp" O O I-MISC
+"Ant O O O
+Man O O O
+and O O O
+the O O O
+Wasp" O O O
 бүтээл O O O
 энэ O O O
 сард O O O
@@ -5242,9 +5242,9 @@ America-гийн O O I-ORG
 тогтчихгүй. O O O
 
 Тиймээс O O O
-Бэлчээрийн O O B-MISC
-тухай O O I-MISC
-хуулийг O O I-MISC
+Бэлчээрийн O O O
+тухай O O O
+хуулийг O O O
 яаралтай O O O
 батлах O O O
 асуудалд O O O
@@ -5298,7 +5298,7 @@ America-гийн O O I-ORG
 
 Энэ O O O
 удаагийн O O O
-ДАШТ-д O O B-MISC
+ДАШТ-д O O O
 болж O O O
 өнгөрсөн O O O
 онцлох O O O
@@ -5332,8 +5332,8 @@ America-гийн O O I-ORG
 бидний O O O
 биед O O O
 шаардлагатай O O O
-Д O O B-MISC
-аминдэмийн O O I-MISC
+Д O O O
+аминдэмийн O O O
 хэрэгцээг O O O
 бүрэн O O O
 хангаж O O O
@@ -5346,9 +5346,9 @@ America-гийн O O I-ORG
 хөдөлгүүрийг O O O
 асахаас O O O
 өмнө O O O
-Агаарын O O B-MISC
-даралтын O O I-MISC
-мэдрэгчээс O O I-MISC
+Агаарын O O O
+даралтын O O O
+мэдрэгчээс O O O
 агаарын O O O
 даралтын O O O
 хэмжилтийн O O O
@@ -5368,7 +5368,7 @@ America-гийн O O I-ORG
 Үнэ O O O
 цэнээ O O O
 мэддэг O O O
-Та O O B-MISC
+Та O O O
 өөрийгөө O O O
 хөгжүүлэхийн O O O
 тулд O O O
@@ -5379,8 +5379,8 @@ America-гийн O O I-ORG
 гарцаагүй. O O O
 
 Мөн O O O
-"Оддын O O B-MISC
-академи" O O I-MISC
+"Оддын O O O
+академи" O O O
 шоуны O O O
 оролцогч O O O
 Ө.Ангелина O O B-PER
@@ -5719,16 +5719,16 @@ Ci-тэй O O I-PER
 оролцоно O O O
 гэж O O O
 ОХУ-ын O O O
-Батлан O O B-MISC
-хамгаалахын O O I-MISC
-сайд O O I-MISC
+Батлан O O O
+хамгаалахын O O O
+сайд O O O
 Сергей O O O
 Шойгу O O O
 мэдэгдлээ. O O O
 
 Озил O O O
 Туркийн O O B-LOC
-Ерөнхийлөгч O O B-MISC
+Ерөнхийлөгч O O O
 Эрдоантай O O O
 хамт O O O
 зураг O O O
@@ -5809,7 +5809,7 @@ Ci-тэй O O I-PER
 барилдаж O O O
 Монгол O O B-LOC
 Улсын O O I-LOC
-Харцага O O B-MISC
+Харцага O O O
 цолыг O O O
 хүртсэндээ O O O
 маш O O O
@@ -5830,7 +5830,7 @@ Ci-тэй O O I-PER
 шагналт O O O
 түүхч O O O
 Д.Өлзийбаатарын O O B-PER
-"Монголчууд" O O B-MISC
+"Монголчууд" O O O
 сонсдог O O O
 номыг O O O
 анх O O O
@@ -6085,11 +6085,11 @@ Romance" O O I-ORG
 ордонд O O O
 нээлтээ O O O
 хийсэн O O O
-"HeForShe" O O B-MISC
+"HeForShe" O O O
 буюу O O O
-"Тэр O O B-MISC
-эмэгтэйн O O I-MISC
-төлөө" O O I-MISC
+"Тэр O O O
+эмэгтэйн O O O
+төлөө" O O O
 кампанит O O O
 ажил O O O
 юм. O O O
@@ -6172,9 +6172,9 @@ Romance" O O I-ORG
 
 Энэ O O O
 хөтөлбөрт O O O
-"Хамгийн O O B-MISC
-хөөрхөн O O I-MISC
-охин" O O I-MISC
+"Хамгийн O O O
+хөөрхөн O O O
+охин" O O O
 киноны O O O
 гол O O O
 дүр O O O
@@ -6189,14 +6189,14 @@ Romance" O O I-ORG
 тооллын O O O
 XVII O O O
 жарны O O O
-"Тийн O O B-MISC
-унжлагат" O O I-MISC
+"Тийн O O O
+унжлагат" O O O
 хэмээх O O O
 шороон O O O
 нохой O O O
 жилийн O O O
-Зуны O O B-MISC
-адаг O O I-MISC
+Зуны O O O
+адаг O O O
 шарагчин O O O
 хонь O O O
 сарын O O O
@@ -6243,8 +6243,8 @@ XVII O O O
 өөрчлөлт O O O
 оруулсан O O O
 Хятадын O O O
-Үндсэн O O B-MISC
-хууль O O I-MISC
+Үндсэн O O O
+хууль O O O
 тус O O O
 Хяналтын O O B-ORG
 хороонд O O I-ORG
@@ -6290,8 +6290,8 @@ post" O O I-ORG
 онцлоод O O O
 авсан O O O
 нь O O O
-"60 O O B-MISC
-тэрбум" O O I-MISC
+"60 O O O
+тэрбум" O O O
 ажиллагаа O O O
 хаанаас O O O
 шидсэн O O O
@@ -6444,8 +6444,8 @@ II O O O
 зоог O O O
 барих O O O
 үеэрээ O O O
-"Пуужинтай O O B-MISC
-залуу" O O I-MISC
+"Пуужинтай O O O
+залуу" O O O
 дискийн O O O
 талаар O O O
 ярилцжээ. O O O
@@ -6484,7 +6484,7 @@ II O O O
 комиссын O O O
 гишүүнээр O O O
 МҮОХ-ны O O O
-Зөвлөх O O B-MISC
+Зөвлөх O O O
 Ж.Отгонцагаан O O O
 ажиллаж O O O
 байсан. O O O
@@ -6563,8 +6563,8 @@ II O O O
 хэлтсийн O O O
 даргаас O O O
 хэлээд O O O
-Ерөнхий O O B-MISC
-сайдын O O I-MISC
+Ерөнхий O O O
+сайдын O O O
 арын O O O
 өрөөнд O O O
 орсон O O O
@@ -6591,10 +6591,10 @@ II O O O
 нь O O O
 тухайн O O O
 хүн O O O
-ХДХВ-ийг O O B-MISC
+ХДХВ-ийг O O O
 тээгч O O O
 буюу O O O
-ХДХВ-ийн O O B-MISC
+ХДХВ-ийн O O O
 халдвар O O O
 авсан O O O
 гэсэн O O O
@@ -6668,8 +6668,8 @@ II O O O
 асуудлыг O O O
 нарийвчлах O O O
 хүрээнд O O O
-Үндсэн O O B-MISC
-хуулийн O O I-MISC
+Үндсэн O O O
+хуулийн O O O
 журмын O O O
 тухай O O O
 хуульд O O O
@@ -6681,8 +6681,8 @@ II O O O
 болзошгүй O O O
 гэж O O O
 үзээд O O O
-Дэгийн O O B-MISC
-хуульд O O I-MISC
+Дэгийн O O O
+хуульд O O O
 өөрчлөлт O O O
 оруулах O O O
 хуулийн O O O
@@ -6732,7 +6732,7 @@ II O O O
 30 O O O
 хувь O O O
 дээр O O O
-IPO O O B-MISC
+IPO O O O
 хийхэд O O O
 хөрөнгө O O O
 оруулагчид O O O
@@ -6788,10 +6788,10 @@ IPO O O B-MISC
 гишүүний O O O
 өргөн O O O
 мэдүүлсэн O O O
-Нийгмийн O O B-MISC
-даатгалын O O I-MISC
-тухай O O I-MISC
-хуульд O O I-MISC
+Нийгмийн O O O
+даатгалын O O O
+тухай O O O
+хуульд O O O
 өөрчлөлт O O O
 оруулах O O O
 тухай O O O
@@ -6959,7 +6959,7 @@ VAR-ын O O B-ORG
 Ингэснээр O O O
 тус O O O
 компани O O O
-Фэйсбүүкийг O O B-MISC
+Фэйсбүүкийг O O O
 хориглосон O O O
 тус O O O
 улсын O O O
@@ -7048,7 +7048,7 @@ VAR-ын O O B-ORG
 онд O O O
 зохиолч O O O
 С.Буяннэмэхийн O O O
-"Үнэн" O O B-MISC
+"Үнэн" O O O
 жүжгээр O O O
 нээлтээ O O O
 хийхэд O O O
@@ -7087,8 +7087,8 @@ VAR-ын O O B-ORG
 
 Нийслэлийн O O B-ORG
 ИТХ-ын O O I-ORG
-Тэргүүлэгчдийн O O B-MISC
-дарга O O I-MISC
+Тэргүүлэгчдийн O O O
+дарга O O O
 С.Амарсайхан O O O
 наадмын O O O
 дараах O O O
@@ -7114,7 +7114,7 @@ VAR-ын O O B-ORG
 үсгийг O O O
 хасч O O O
 хаяснаар O O O
-МАНАН O O B-MISC
+МАНАН O O O
 гэх O O O
 тохиромжит O O O
 нэршил O O O
@@ -7206,9 +7206,9 @@ VAR-ын O O B-ORG
 Түүнчлэн O O O
 хепатит O O O
 В O O O
-ба O O B-MISC
-С O O B-MISC
-вирусын O O I-MISC
+ба O O O
+С O O O
+вирусын O O O
 шалтгаант O O O
 элэгний O O O
 архаг O O O
@@ -7255,8 +7255,8 @@ VAR-ын O O B-ORG
 байхаар O O O
 хуульчилсан O O O
 нь O O O
-Үндсэн O O B-MISC
-хуулиар O O I-MISC
+Үндсэн O O O
+хуулиар O O O
 тусгайлан O O O
 тогтоосон O O O
 Засгийн O O B-ORG
@@ -7345,8 +7345,8 @@ VAR-ын O O B-ORG
 талаар O O O
 АНУ-д O O O
 суугаа O O O
-Элчин O O B-MISC
-сайд O O I-MISC
+Элчин O O O
+сайд O O O
 Ё.Отгонбаяр O O O
 мэдээлсэн O O O
 билээ. O O O
@@ -7354,8 +7354,8 @@ VAR-ын O O B-ORG
 ОУВС-ийн O O B-ORG
 шаардлага O O O
 нэрээр O O O
-Засгийн O O B-MISC
-газар O O I-MISC
+Засгийн O O O
+газар O O O
 олон O O O
 төрлийн O O O
 татвар O O O
@@ -7744,7 +7744,7 @@ VAR-ын O O B-ORG
 эрдэмтэд O O O
 гарган O O O
 авсан O O O
-ДОХ-ын O O B-MISC
+ДОХ-ын O O O
 эсрэг O O O
 эмээ O O O
 клиник O O O
@@ -7755,9 +7755,9 @@ VAR-ын O O B-ORG
 юм. O O O
 
 Мөн O O O
-"Тогтвортой O O B-MISC
-хөгжлийн O O I-MISC
-зорилт-2030" O O I-MISC
+"Тогтвортой O O O
+хөгжлийн O O O
+зорилт-2030" O O O
 баримт O O O
 бичигт O O O
 тусгагдсан O O O
@@ -7836,13 +7836,13 @@ VAR-ын O O B-ORG
 уламжлав. O O O
 
 Аймгийн O O O
-Засаг O O B-MISC
-даргын O O I-MISC
+Засаг O O O
+даргын O O O
 хувьд O O O
 хоёр O O O
 чиглэлээр O O O
-Албан O O B-MISC
-даалгавар O O I-MISC
+Албан O O O
+даалгавар O O O
 гаргасан O O O
 байгаа. O O O
 
@@ -7895,7 +7895,7 @@ VAR-ын O O B-ORG
 харагддаг. O O O
 
 Тэрбээр O O O
-Ерөнхийлөгчийн O O B-MISC
+Ерөнхийлөгчийн O O O
 зарлигаар O O O
 өнөөдөр O O O
 энэхүү O O O
@@ -7903,7 +7903,7 @@ VAR-ын O O B-ORG
 гардан O O O
 авав. O O O
 
-Америкчууд O O B-MISC
+Америкчууд O O O
 2011 O O O
 онд O O O
 хамгийн O O O
@@ -7971,8 +7971,8 @@ Daily O O B-ORG
 Mirror O O I-ORG
 сонин O O O
 Трампыг O O O
-"Путины O O B-MISC
-хав" O O I-MISC
+"Путины O O O
+хав" O O O
 хэмээн O O O
 нэрлэсэн O O O
 гарчигтай O O O
@@ -8025,8 +8025,8 @@ Mirror O O I-ORG
 юм. O O O
 
 Түүнийг O O O
-Эрүүгийн O O B-MISC
-хуулийн O O I-MISC
+Эрүүгийн O O O
+хуулийн O O O
 11.6.1-д O O O
 заасан O O O
 "Хүний O O O
@@ -8075,9 +8075,9 @@ Mirror O O I-ORG
 юу. O O O
 
 ОХУ-ын O O O
-Гадаад O O B-MISC
-хэргийн O O I-MISC
-сайд O O I-MISC
+Гадаад O O O
+хэргийн O O O
+сайд O O O
 Сергей O O O
 Лавров O O O
 хэлэхдээ O O O
@@ -8222,7 +8222,7 @@ Mirror O O I-ORG
 Шон O O O
 энэ O O O
 зурагтаа O O O
-"Peekaboo" O O B-MISC
+"Peekaboo" O O O
 гэх O O O
 нэрийг O O O
 өгсөн O O O
@@ -8392,8 +8392,8 @@ Mirror O O I-ORG
 завхрал O O O
 даамжирч O O O
 улмаар O O O
-Үндсэн O O B-MISC
-хуулиараа O O I-MISC
+Үндсэн O O O
+хуулиараа O O O
 тоглодог O O O
 болов. O O O
 
@@ -8424,7 +8424,7 @@ Mirror O O I-ORG
 найман O O O
 жил O O O
 өнгөрөхөд O O O
-Монголчуудын O O B-MISC
+Монголчуудын O O O
 амьдрал O O O
 ийнхүү O O O
 өөчрлөгдлөө. O O O
@@ -8496,8 +8496,8 @@ Mirror O O I-ORG
 болгон O O O
 наадмын O O O
 дараа O O O
-"Шагайн O O B-MISC
-өдөрлөг" O O I-MISC
+"Шагайн O O O
+өдөрлөг" O O O
 зохиодог. O O O
 
 Эхлээд O O O
@@ -8511,14 +8511,14 @@ Mirror O O I-ORG
 байсан. O O O
 
 Харин O O O
-UVA O O B-MISC
+UVA O O O
 төрлийн O O O
 хортой O O O
 туяанаас O O O
 хамгаалдаггүй O O O
 байна. O O O
 
-QFR O O B-MISC
+QFR O O O
 аргаар O O O
 клиник O O O
 туршилт O O O
@@ -8603,7 +8603,7 @@ QFR O O B-MISC
 Марадонагийн O O O
 1986 O O O
 оны O O O
-ДАШТ-ий O O B-MISC
+ДАШТ-ий O O O
 шөвгийн O O O
 наймын O O O
 тоглолтод O O O
@@ -8627,8 +8627,8 @@ QFR O O B-MISC
 би O O O
 улирлын O O O
 сүүлийн O O O
-"Хунт O O B-MISC
-нуур"-аа O O I-MISC
+"Хунт O O O
+нуур"-аа O O O
 бүжиглэсэн. O O O
 
 Уг O O O
@@ -8779,8 +8779,8 @@ QFR O O B-MISC
 ч O O O
 учраас O O O
 бид O O O
-ТОП O O B-MISC
-100 O O I-MISC
+ТОП O O O
+100 O O O
 аж O O O
 ахуйн O O O
 нэгж O O O
@@ -8958,9 +8958,9 @@ FETO O O B-ORG
 хууль O O O
 бол O O O
 УИХ-ын O O B-ORG
-Дэгийн O O B-MISC
-тухай O O I-MISC
-хууль. O O I-MISC
+Дэгийн O O O
+тухай O O O
+хууль. O O O
 
 Эзэнгүй O O O
 нутгаасаа O O O
@@ -9069,7 +9069,7 @@ FETO O O B-ORG
 Хэн O O O
 ялсан O O O
 нь O O O
-Cruiserweight O O B-MISC
+Cruiserweight O O O
 жингийн O O O
 аваргын O O O
 4 O O O
@@ -9104,8 +9104,8 @@ Cruiserweight O O B-MISC
 уг O O O
 уурхайн O O O
 лиценз O O O
-Сангийн O O B-MISC
-сайд O O I-MISC
+Сангийн O O O
+сайд O O O
 Ч.Хүрэлбаатартай O O B-PER
 холбоотой O O O
 гэх O O O
@@ -9195,8 +9195,8 @@ Cruiserweight O O B-MISC
 болох O O O
 бөгөөд O O O
 төлбөрөө O O O
-"Ubike O O B-MISC
-Ulaanbaatar" O O I-MISC
+"Ubike O O O
+Ulaanbaatar" O O O
 аппликейшныг O O O
 ашиглан O O O
 хийнэ. O O O
@@ -9209,10 +9209,10 @@ Ulaanbaatar" O O I-MISC
 заалт O O O
 2012 O O O
 оны O O O
-"Байгаль O O B-MISC
-орчныг O O I-MISC
-хамгаалах O O I-MISC
-тухай" O O I-MISC
+"Байгаль O O O
+орчныг O O O
+хамгаалах O O O
+тухай" O O O
 хуульд O O O
 тусгагдаж O O O
 орж O O O
@@ -9513,8 +9513,8 @@ Park" O O I-ORG
 Ж.Эрдэнэбатын O O O
 Засгийн O O B-ORG
 газарт O O I-ORG
-Шадар O O B-MISC
-сайдаар O O I-MISC
+Шадар O O O
+сайдаар O O O
 ажиллаж O O O
 байв. O O O
 
@@ -9539,10 +9539,10 @@ Park" O O I-ORG
 болов. O O O
 
 Өнөөдөр O O O
-Төрийн O O B-MISC
-өндөр O O I-MISC
-дээд O O I-MISC
-албанд O O I-MISC
+Төрийн O O O
+өндөр O O O
+дээд O O O
+албанд O O O
 байгаа O O O
 ч O O O
 газар O O O
@@ -9595,8 +9595,8 @@ Park" O O I-ORG
 байна. O O O
 
 Манай O O O
-Эрүүгийн O O B-MISC
-хуульд O O I-MISC
+Эрүүгийн O O O
+хуульд O O O
 өмнө O O O
 нь O O O
 шууд O O O
@@ -9779,8 +9779,8 @@ Park" O O I-ORG
 хэмжээний O O O
 тухай O O O
 Нийслэлийн O O B-LOC
-Засаг O O B-MISC
-даргын O O I-MISC
+Засаг O O O
+даргын O O O
 албан O O O
 даалгаврын O O O
 хүрээнд O O O
@@ -9834,10 +9834,10 @@ Park" O O I-ORG
 эхэлж O O O
 найруулагчаар O O O
 нь O O O
-"Цус O O B-MISC
-сорогчийн O O I-MISC
-өдрийн O O I-MISC
-тэмдэглэл" O O I-MISC
+"Цус O O O
+сорогчийн O O O
+өдрийн O O O
+тэмдэглэл" O O O
 киноны O O O
 продюсер O O O
 Каролин O O B-PER
@@ -9923,8 +9923,8 @@ Park" O O I-ORG
 анхааруулж O O O
 байна. O O O
 
-Ерөнхий O O B-MISC
-сайд O O I-MISC
+Ерөнхий O O O
+сайд O O O
 асан O O O
 С.Баяр O O B-PER
 гэгч O O O
@@ -10135,8 +10135,8 @@ Park" O O I-ORG
 мэдээлэл O O O
 ирсэн O O O
 ч O O O
-Цагдаагийн O O B-MISC
-ажилтнууд O O I-MISC
+Цагдаагийн O O O
+ажилтнууд O O O
 бүгдийг O O O
 нь O O O
 олж O O O
@@ -10153,7 +10153,7 @@ Park" O O I-ORG
 тутмын O O O
 нэг O O O
 нь O O O
-XTI O O B-MISC
+XTI O O O
 брендийн O O O
 гутлын O O O
 өмсдөг O O O
@@ -10166,8 +10166,8 @@ XTI O O B-MISC
 Дорноговь O O B-LOC
 уг O O O
 нь O O O
-"Сайншанд O O B-MISC
-сум" O O I-MISC
+"Сайншанд O O O
+сум" O O O
 гэж O O O
 аймгийнхаа O O O
 төвөөр O O O
@@ -10209,8 +10209,8 @@ XTI O O B-MISC
 зарлалаа. O O O
 
 Тэгвэл O O O
-Улсын O O B-MISC
-гарьд O O I-MISC
+Улсын O O O
+гарьд O O O
 Ө.Бат-Орших O O B-PER
 өнөө O O O
 жилийн O O O
@@ -10245,8 +10245,8 @@ XTI O O B-MISC
 сарын O O O
 12-17-ы O O O
 өдрүүдэд O O O
-"ШИНЭ O O B-MISC
-ДАВАЛГАА" O O I-MISC
+"ШИНЭ O O O
+ДАВАЛГАА" O O O
 монголын O O O
 залуу O O O
 уран O O O
@@ -10265,10 +10265,10 @@ XTI O O B-MISC
 асуудлын O O O
 талаарх O O O
 Оросын O O O
-Ерөнхийлөгчийн O O B-MISC
+Ерөнхийлөгчийн O O O
 байр O O O
 суурийг O O O
-Канцлер O O B-MISC
+Канцлер O O O
 тодруулсангүй. O O O
 
 Иймд O O O
@@ -10330,8 +10330,8 @@ XTI O O B-MISC
 сард O O O
 Татарстан O O B-LOC
 улсын O O O
-Гавьяат O O B-MISC
-жүжигчин O O I-MISC
+Гавьяат O O O
+жүжигчин O O O
 боллоо. O O O
 
 Цэцийн O O B-ORG
@@ -10430,8 +10430,8 @@ XTI O O B-MISC
 сайндаа O O O
 дээр O O O
 үед O O O
-"Оддын O O B-MISC
-дайн" O O I-MISC
+"Оддын O O O
+дайн" O O O
 кинонд O O O
 бүхэлд O O O
 нь O O O
@@ -10450,8 +10450,8 @@ XTI O O B-MISC
 хучуур O O O
 эд O O O
 дээр O O O
-E.Coli O O B-MISC
-бактери O O I-MISC
+E.Coli O O O
+бактери O O O
 холбогдох O O O
 үйл O O O
 явцыг O O O
@@ -10632,8 +10632,8 @@ E.Coli O O B-MISC
 
 Хамгийн O O O
 сүүлд O O O
-"Чингис O O B-MISC
-хаан" O O I-MISC
+"Чингис O O O
+хаан" O O O
 одонг O O O
 гардахаар O O O
 Монголд O O B-LOC
@@ -10728,7 +10728,7 @@ E.Coli O O B-MISC
 Хоёрдугаар O O O
 үеийн O O O
 туршид O O O
-Германчууд O O B-MISC
+Германчууд O O O
 олон O O O
 гоё O O O
 довтолгоонуудыг O O O
@@ -10813,7 +10813,7 @@ E.Coli O O B-MISC
 зоогийн O O O
 газар O O O
 болох O O O
-"Opus"-т O O B-MISC
+"Opus"-т O O O
 очицгоожээ. O O O
 
 Би O O O
@@ -10862,8 +10862,8 @@ E.Coli O O B-MISC
 дуудах O O O
 эсэх O O O
 талаар O O O
-Тээврийн O O B-MISC
-сайд O O I-MISC
+Тээврийн O O O
+сайд O O O
 нь O O O
 тодорхой O O O
 мэдээлэл O O O
@@ -10928,8 +10928,8 @@ E.Coli O O B-MISC
 сумын O O O
 1613 O O O
 багийн O O O
-Засаг O O B-MISC
-даргыг O O I-MISC
+Засаг O O O
+даргыг O O O
 оролцуулж O O O
 хийлээ. O O O
 
@@ -11076,7 +11076,7 @@ E.Coli O O B-MISC
 шигшээ O O O
 багийн O O O
 хувьд O O O
-ДАШТ O O B-MISC
+ДАШТ O O O
 энэ O O O
 хүрээд O O O
 өндөрлөж O O O
@@ -11086,8 +11086,8 @@ E.Coli O O B-MISC
 долоо O O O
 хоногоос O O O
 армийн O O O
-Super O O B-MISC
-Puma O O I-MISC
+Super O O O
+Puma O O O
 нисдэг O O O
 тэрэгнүүд O O O
 улаан O O O
@@ -11141,8 +11141,8 @@ Puma O O I-MISC
 
 Өнөөдрийн O O O
 тоглолтод O O O
-"Гурван O O B-MISC
-өнгөтнүүд"-ээс O O I-MISC
+"Гурван O O O
+өнгөтнүүд"-ээс O O O
 Антуан O O B-PER
 Грийзманн O O I-PER
 болон O O O
@@ -11198,7 +11198,7 @@ Puma O O I-MISC
 
 Тэрбээр O O O
 хөлбөмбөгийн O O O
-ДАШТ-ий O O B-MISC
+ДАШТ-ий O O O
 талбайд O O O
 гарсан O O O
 анхны O O O
@@ -11207,8 +11207,8 @@ Puma O O I-MISC
 болж O O O
 байна. O O O
 
-Дээрхийн O O B-MISC
-Гэгээнтэн O O I-MISC
+Дээрхийн O O O
+Гэгээнтэн O O O
 Далай O O O
 Лам O O O
 Шивацал O O B-LOC
@@ -11271,8 +11271,8 @@ Puma O O I-MISC
 Майнинг" O O I-ORG
 компани O O O
 нь O O O
-"Алт O O B-MISC
-2" O O I-MISC
+"Алт O O O
+2" O O O
 хөтөлбөрт O O O
 хамрагдсан O O O
 тийм O O O
@@ -11323,9 +11323,9 @@ Puma O O I-MISC
 байхгүй. O O O
 
 Гэвч O O O
-Үндэсний O O B-MISC
-баяр O O I-MISC
-наадмын O O I-MISC
+Үндэсний O O O
+баяр O O O
+наадмын O O O
 өдөр O O O
 буюу O O O
 долдугаар O O O
@@ -11348,7 +11348,7 @@ Puma O O I-MISC
 
 Хоёр O O O
 баг O O O
-ДАШТ-д O O B-MISC
+ДАШТ-д O O O
 нийт O O O
 4 O O O
 удаа O O O
@@ -11364,9 +11364,9 @@ Puma O O I-MISC
 хэвлэлийн O O O
 ажилтнаас O O O
 тодруулахад O O O
-"Дүүргийн O O B-MISC
-Тамгын O O I-MISC
-даргын O O I-MISC
+"Дүүргийн O O O
+Тамгын O O O
+даргын O O O
 биед O O O
 халдсан O O O
 явдал O O O
@@ -11492,7 +11492,7 @@ Puma O O I-MISC
 дүр O O O
 бүтээж O O O
 буй O O O
-"Малифесент" O O B-MISC
+"Малифесент" O O O
 киноны O O O
 хоёрдугаар O O O
 ангийн O O O
@@ -11761,9 +11761,9 @@ Building" O O I-ORG
 
 Дархлаажуулалтанд O O O
 хамрагдах O O O
-Хепатит O O B-MISC
-В O O I-MISC
-вирус O O I-MISC
+Хепатит O O O
+В O O O
+вирус O O O
 нь O O O
 элэгний O O O
 хорт O O O
@@ -11804,7 +11804,7 @@ Building" O O I-ORG
 
 Нөгөө O O O
 талаар O O O
-ДАШТ-ий O O B-MISC
+ДАШТ-ий O O O
 нэгдүгээр O O O
 шатыг O O O
 хэсгийн O O O
@@ -11852,8 +11852,8 @@ Building" O O I-ORG
 дотор O O O
 яригдаж O O O
 буйгаар O O O
-Сангийн O O B-MISC
-сайд O O I-MISC
+Сангийн O O O
+сайд O O O
 Ч.Хүрэлбаатар O O O
 тэргүүтэй O O O
 Увсын O O O
@@ -11917,9 +11917,9 @@ Building" O O I-ORG
 уулзсан. O O O
 
 Одоогийн O O O
-Газрын O O B-MISC
-тухай O O I-MISC
-хуулийн O O I-MISC
+Газрын O O O
+тухай O O O
+хуулийн O O O
 52.2-т O O O
 "Бэлчээрийг O O O
 нутгийн O O O
@@ -11950,7 +11950,7 @@ Building" O O I-ORG
 бүр O O O
 мөсөн O O O
 ялагдахад O O O
-Топоорын O O B-MISC
+Топоорын O O O
 баг O O O
 АН-д O O O
 элсэхээс O O O
@@ -11968,9 +11968,9 @@ Building" O O I-ORG
 горимын O O O
 саналыг O O O
 дэмжиж O O O
-Захиргааны O O B-MISC
-ерөнхий O O I-MISC
-хуульд O O I-MISC
+Захиргааны O O O
+ерөнхий O O O
+хуульд O O O
 өөрчлөлт O O O
 оруулах O O O
 хуулийн O O O
@@ -11989,7 +11989,7 @@ Building" O O I-ORG
 үздэг O O O
 ба O O O
 хүмүүст O O O
-Денисовчуудын O O B-MISC
+Денисовчуудын O O O
 гени O O O
 хадгалагдаж O O O
 байдаг O O O
@@ -12094,7 +12094,7 @@ Yvнийг O O O
 шиг O O O
 англичууд O O O
 анхны O O O
-ДАШТ-ээс O O B-MISC
+ДАШТ-ээс O O O
 эхлэн O O O
 оролцсон O O O
 бол O O O
@@ -12137,10 +12137,10 @@ Yvнийг O O O
 зохион O O O
 байгуулагчдын O O O
 зүгээс O O O
-"Олны O O B-MISC
-таашаалд O O I-MISC
-нийцсэн O O I-MISC
-кино" O O I-MISC
+"Олны O O O
+таашаалд O O O
+нийцсэн O O O
+кино" O O O
 хэмээх O O O
 шинэ O O O
 номинаци O O O
@@ -12159,7 +12159,7 @@ Yvнийг O O O
 дүнг O O O
 тааж O O O
 байсан O O O
-Паул O O B-MISC
+Паул O O O
 наймаалж O O O
 ихээхэн O O O
 алдартай O O O
@@ -12205,7 +12205,7 @@ Yvнийг O O O
 шинэ O O O
 төрлийн O O O
 гиббонд O O O
-Junzi O O B-MISC
+Junzi O O O
 гэсэн O O O
 түүхэн O O O
 цаг O O O
@@ -12238,8 +12238,8 @@ Junzi O O B-MISC
 хэргийн O O O
 шүүх O O O
 дээр O O O
-Үндсэн O O B-MISC
-хуулийн O O I-MISC
+Үндсэн O O O
+хуулийн O O O
 дагуу O O O
 гарсан O O O
 УИХ-ын O O B-ORG
@@ -12548,9 +12548,9 @@ Express O O I-ORG
 
 Түүний O O O
 хэлснээр O O O
-Сансрын O O B-MISC
-зэвсэгт O O I-MISC
-хүчин O O I-MISC
+Сансрын O O O
+зэвсэгт O O O
+хүчин O O O
 нь O O O
 үндсэн O O O
 дөрвөн O O O
@@ -12585,9 +12585,9 @@ Express O O I-ORG
 талаар O O O
 хоёр O O O
 улсын O O O
-Гадаад O O B-MISC
-хэргийн O O I-MISC
-сайд O O I-MISC
+Гадаад O O O
+хэргийн O O O
+сайд O O O
 санал O O O
 нэгдсэнээ O O O
 мэдэгдсэн O O O
@@ -12663,14 +12663,14 @@ Express O O I-ORG
 эхэлсэн O O O
 юм. O O O
 
-The O O B-MISC
-Voice O O I-MISC
+The O O O
+Voice O O O
 хамгийн O O O
 эхний O O O
 шат O O O
 буюу O O O
-Blind O O B-MISC
-Audation O O I-MISC
+Blind O O O
+Audation O O O
 дээр O O O
 дөрвөн O O O
 шүүгчийг O O O
@@ -12736,9 +12736,9 @@ Audation O O I-MISC
 
 Трамп O O B-PER
 сэтгүүлчдийг O O O
-"Ард O O B-MISC
-түмний O O I-MISC
-дайснууд" O O I-MISC
+"Ард O O O
+түмний O O O
+дайснууд" O O O
 хэмээсэн O O O
 байна. O O O
 
@@ -12781,8 +12781,8 @@ Audation O O I-MISC
 олджээ. O O O
 
 Тэрбээр O O O
-60 O O B-MISC
-тэрбумтай O O I-MISC
+60 O O O
+тэрбумтай O O O
 холбоотой O O O
 асуудлаар O O O
 прокурорын O O O
@@ -12877,7 +12877,7 @@ Audation O O I-MISC
 БНХАУ-аас O O B-LOC
 орж O O O
 ирсэн O O O
-Гинжин O O B-MISC
+Гинжин O O O
 тоглоомууд O O O
 байгаа. O O O
 
@@ -12941,8 +12941,8 @@ Audation O O I-MISC
 нас O O O
 гоо O O O
 үзэсгэлэнгээ O O O
-"Ромео O O B-MISC
-Жульетта" O O I-MISC
+"Ромео O O O
+Жульетта" O O O
 жүжгээр O O O
 мөнхлөх O O O
 сөн O O O
@@ -12993,7 +12993,7 @@ Audation O O I-MISC
 ирлээ. O O O
 
 Мөн O O O
-"AeroDenim" O O B-MISC
+"AeroDenim" O O O
 нэртэй O O O
 хоёр O O O
 төрлийн O O O
@@ -13066,7 +13066,7 @@ VMware O O B-ORG
 үргэлжилсэн O O O
 онц O O O
 байдлыг O O O
-Ерөнхийлөгч O O B-MISC
+Ерөнхийлөгч O O O
 албан O O O
 ёсоор O O O
 цуцалсан O O O
@@ -13190,9 +13190,9 @@ VMware O O B-ORG
 
 Энэ O O O
 жил O O O
-"Мэргэн O O B-MISC
-буудагчийн O O I-MISC
-зааг" O O I-MISC
+"Мэргэн O O O
+буудагчийн O O O
+зааг" O O O
 тэмцээнийг O O O
 Беларусийн O O B-LOC
 Брест O O O
@@ -13220,8 +13220,8 @@ VMware O O B-ORG
 бус O O O
 Монгол O O O
 Улсад O O O
-"Шөнийн O O B-MISC
-музей" O O I-MISC
+"Шөнийн O O O
+музей" O O O
 зохион O O O
 байгуулагддаг O O O
 гэж O O O
@@ -13275,8 +13275,8 @@ VMware O O B-ORG
 нэр O O O
 дэвшилгүй O O O
 аймгийн O O O
-Засаг O O B-MISC
-дарга O O I-MISC
+Засаг O O O
+дарга O O O
 Н.Ганбямбыг O O B-PER
 явуулах O O O
 гэж O O O
@@ -13293,7 +13293,7 @@ VMware O O B-ORG
 болов. O O O
 
 Өнгөрсөн O O O
-Лхагва O O B-MISC
+Лхагва O O O
 гарагт O O O
 АНУ-ын O O O
 шүүх O O O
@@ -13334,7 +13334,7 @@ VMware O O B-ORG
 УИХ-ын O O B-ORG
 зарим O O O
 гишүүдээс O O O
-Ерөнхийлөгчийн O O B-MISC
+Ерөнхийлөгчийн O O O
 хоригийг O O O
 хүлээж O O O
 авах O O O
@@ -13350,10 +13350,10 @@ VMware O O B-ORG
 талаар O O O
 тус O O O
 намын O O O
-Ерөнхий O O B-MISC
-нарийн O O I-MISC
-бичгийн O O I-MISC
-дарга O O I-MISC
+Ерөнхий O O O
+нарийн O O O
+бичгийн O O O
+дарга O O O
 Д.Амарбаясгалан O O O
 удахгүй O O O
 мэдээлэл O O O
@@ -13422,8 +13422,8 @@ VMware O O B-ORG
 шалгарав. O O O
 
 Мөн O O O
-Эрүү O O B-MISC
-шүүлтийн O O I-MISC
+Эрүү O O O
+шүүлтийн O O O
 хохирогчдын O O O
 эрхийг O O O
 хамгаалах O O O
@@ -13463,9 +13463,9 @@ VMware O O B-ORG
 
 Хамгийн O O O
 анх O O O
-"Sea O O B-MISC
-Otter O O I-MISC
-Europe" O O I-MISC
+"Sea O O O
+Otter O O O
+Europe" O O O
 гэх O O O
 үзэсгэлэнгийн O O O
 үеэр O O O
@@ -13477,9 +13477,9 @@ Europe" O O I-MISC
 
 Тогтоолд O O O
 заахдаа O O O
-Авлигын O O B-MISC
-эсрэг O O I-MISC
-хуулийн O O I-MISC
+Авлигын O O O
+эсрэг O O O
+хуулийн O O O
 21 O O O
 дүгээр O O O
 зүйлийн O O O
@@ -13702,9 +13702,9 @@ Europe" O O I-MISC
 долдугаар O O O
 сарын O O O
 11-ний O O O
-"Монголын O O B-MISC
-сайхан O O I-MISC
-орон" O O I-MISC
+"Монголын O O O
+сайхан O O O
+орон" O O O
 баярын O O O
 концертыг O O O
 байнга O O O
@@ -13849,9 +13849,9 @@ Europe" O O I-MISC
 шүүхээр O O O
 хянуулахгүй O O O
 гэж O O O
-Захиргааны O O B-MISC
-eрөнхий O O I-MISC
-хуульд O O I-MISC
+Захиргааны O O O
+eрөнхий O O O
+хуульд O O O
 өөрчлөлт O O O
 оруулах O O O
 төсөл O O O
@@ -13888,8 +13888,8 @@ eрөнхий O O I-MISC
 хамгийн O O O
 удаан O O O
 ажилласан O O O
-Ерөнхий O O B-MISC
-сайд O O I-MISC
+Ерөнхий O O O
+сайд O O O
 болох O O O
 юм. O O O
 
@@ -13934,7 +13934,7 @@ eрөнхий O O I-MISC
 гурван O O O
 ч O O O
 удаа O O O
-ДАШТ-д O O B-MISC
+ДАШТ-д O O O
 оролцсон O O O
 ч O O O
 хэсгээсээ O O O
@@ -13957,9 +13957,9 @@ eрөнхий O O I-MISC
 хүчирхийлэлтэй O O O
 тэмцэх O O O
 чиглэлээр O O O
-"Хар O O B-MISC
-цагаан O O I-MISC
-жагсаалт" O O I-MISC
+"Хар O O O
+цагаан O O O
+жагсаалт" O O O
 төслийг O O O
 хэрэгжүүлэхээр O O O
 хэд O O O
@@ -13982,7 +13982,7 @@ eрөнхий O O I-MISC
 хүн O O O
 амын O O O
 тооллогодоо O O O
-ЛГБТ O O B-MISC
+ЛГБТ O O O
 хүмүүсийг O O O
 тусад O O O
 нь O O O
@@ -14127,7 +14127,7 @@ eрөнхий O O I-MISC
 ширүүссэн O O O
 байна. O O O
 
-SD O O B-MISC
+SD O O O
 нь O O O
 шалгуулагчдад O O O
 шинэ O O O
@@ -14161,7 +14161,7 @@ SD O O B-MISC
 цаашлаад O O O
 2021 O O O
 оны O O O
-Ерөнхийлөгчийн O O B-MISC
+Ерөнхийлөгчийн O O O
 сонгуульд O O O
 ч O O O
 өөрийгөө O O O
@@ -14187,7 +14187,7 @@ SD O O B-MISC
 улсын O O O
 зах O O O
 зээлд O O O
-IPO O O B-MISC
+IPO O O O
 гаргаж O O O
 зургаан O O O
 тэрбум O O O
@@ -14367,9 +14367,9 @@ Show" O O O
 байна. O O O
 
 Тэрбээр O O O
-Үндэсний O O B-MISC
-хоккейн O O I-MISC
-лигт O O I-MISC
+Үндэсний O O O
+хоккейн O O O
+лигт O O O
 20 O O O
 жил O O O
 тоглохдоо O O O
@@ -14385,7 +14385,7 @@ Show" O O O
 тогтнож O O O
 байна. O O O
 
-ДНБ-ний O O B-MISC
+ДНБ-ний O O O
 нийт O O O
 болон O O O
 нэг O O O
@@ -14424,11 +14424,11 @@ Time O O B-ORG
 байгуулсан O O O
 санал O O O
 асуулгаар O O O
-"Хоёр O O B-MISC
-дахь O O I-MISC
-мянганы O O I-MISC
-суут O O I-MISC
-хүн" O O I-MISC
+"Хоёр O O O
+дахь O O O
+мянганы O O O
+суут O O O
+хүн" O O O
 хэмээн O O O
 өргөмжлөн O O O
 зарлажээ. O O O
@@ -14439,8 +14439,8 @@ Time O O B-ORG
 сонорыг O O O
 мялааж O O O
 байдаг O O O
-"Дэлтэй O O B-MISC
-цэнхэр" O O I-MISC
+"Дэлтэй O O O
+цэнхэр" O O O
 дууг O O O
 Боржигон O O B-ORG
 чуулгын O O O
@@ -14449,10 +14449,10 @@ Time O O B-ORG
 дууллаа. O O O
 
 Гэвч O O O
-Улсын O O B-MISC
-их O O I-MISC
-баяр O O I-MISC
-наадмын O O I-MISC
+Улсын O O O
+их O O O
+баяр O O O
+наадмын O O O
 дараа O O O
 шатахууны O O O
 үнэ O O O
@@ -14559,8 +14559,8 @@ Time O O B-ORG
 
 Өнөөдөр O O O
 аймгийн O O O
-Засаг O O B-MISC
-даргын O O I-MISC
+Засаг O O O
+даргын O O O
 орлогч O O O
 Ч.Ганбатаар O O B-PER
 ахлуулсан O O O
@@ -14588,7 +14588,7 @@ Time O O B-ORG
 дараа O O O
 ялагч O O O
 орны O O O
-Ерөнхийлөгч O O B-MISC
+Ерөнхийлөгч O O O
 Путин O O B-PER
 шигшээ O O O
 багийнхандаа O O O
@@ -14603,9 +14603,9 @@ Time O O B-ORG
 хийсэн O O O
 далий O O O
 мэдэгдлүүд O O O
-"Бөх O O B-MISC
-бол O O I-MISC
-соёл" O O I-MISC
+"Бөх O O O
+бол O O O
+соёл" O O O
 байсан O O O
 уламжлалт O O O
 ухамсрыг O O O
@@ -14823,7 +14823,7 @@ Time O O B-ORG
 тухайн O O O
 худалдан O O O
 авалтын O O O
-RedPoint O O B-MISC
+RedPoint O O O
 оноогоо O O O
 100 O O O
 дахин O O O
@@ -14897,7 +14897,7 @@ RedPoint O O B-MISC
 хэмээн O O O
 мэдэгдсэн O O O
 талаар O O O
-"Ройтерс" O O B-MISC
+"Ройтерс" O O O
 агентлаг O O O
 мэдээллээ. O O O
 
@@ -14971,8 +14971,8 @@ RedPoint O O B-MISC
 дүгнэжээ. O O O
 
 Гэхдээ O O O
-Ерөнхий O O B-MISC
-сайд O O I-MISC
+Ерөнхий O O O
+сайд O O O
 нь O O O
 УИХ-д O O B-ORG
 олонхийг O O O
@@ -15009,8 +15009,8 @@ RedPoint O O B-MISC
 гэхэд O O O
 "Маск" O O B-ORG
 продакшныхан O O O
-"Баярлалаа O O B-MISC
-ээжээ" O O I-MISC
+"Баярлалаа O O O
+ээжээ" O O O
 баярын O O O
 хөтөлбөрөө O O O
 хулгайд O O O
@@ -15053,8 +15053,8 @@ RedPoint O O B-MISC
 Магадгүй O O O
 тэрбээр O O O
 алдарт O O O
-"Төмөр O O B-MISC
-замын" O O I-MISC
+"Төмөр O O O
+замын" O O O
 хэргээ O O O
 нуун O O O
 дарагдуулах O O O
@@ -15101,8 +15101,8 @@ RedPoint O O B-MISC
 академиас O O O
 байгуулдаг O O O
 байгуулдаг O O O
-"Академи O O B-MISC
-авардс"-ын O O I-MISC
+"Академи O O O
+авардс"-ын O O O
 найруулагчмйн O O O
 найруулагчмйн O O O
 хүртэж. O O O
@@ -15223,8 +15223,8 @@ RedPoint O O B-MISC
 жимсийг O O O
 эмнэлгийн O O O
 практикт O O O
-С O O B-MISC
-аминдэмийн O O I-MISC
+С O O O
+аминдэмийн O O O
 дутмагшлын O O O
 үед O O O
 хэрэглэдэг. O O O
@@ -15232,8 +15232,8 @@ RedPoint O O B-MISC
 Тэд O O O
 энэ O O O
 онд O O O
-"Love O O B-MISC
-story" O O I-MISC
+"Love O O O
+story" O O O
 богино O O O
 хэмжээний O O O
 кинонд O O O

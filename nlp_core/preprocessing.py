@@ -43,11 +43,44 @@ MONGOLIAN_PATTERN = re.compile(r"[А-Яа-яӨөҮүЁё]")
 URL_PATTERN = re.compile(r"https?://\S+|www\.\S+")
 HASHTAG_MENTION = re.compile(r"[@#]\S+")
 
-# BMP emoji/symbol blocks missed by the original \U00010000-\U0010ffff range
+# BMP symbol/emoji blocks to remove.
+# Intentionally EXCLUDES:
+#   U+2000-U+206F  General Punctuation (—  –  …  "  "  '  •)
+#   U+20A0-U+20CF  Currency Symbols    (₮)
+# because the original range \u2000-\u27FF was removing these.
 BMP_EMOJI = re.compile(
-    r"[\u2000-\u27FF\u2900-\u2BFF\uFE00-\uFEFF\uFF00-\uFFEF]"
+    r"[\u20D0-\u20FF"   # Combining Diacritical Marks for Symbols (⃣ base)
+    r"\u2100-\u27FF"    # Symbol blocks: letterlike → dingbats
+    r"\u2900-\u2BFF"    # Supplemental Arrows, Misc Math Symbols
+    r"\uFE00-\uFEFF"    # Variation Selectors, specials
+    r"\uFF00-\uFFEF]"   # Halfwidth/Fullwidth Forms
 )
 SUPPLEMENTARY_EMOJI = re.compile(r"[\U00010000-\U0010FFFF]")
+
+# Sentiment-bearing emoji → neutral text markers (NLP mode only).
+# [LAUGH] is intentionally ambiguous: 😂/🤣 are frequently sarcastic in
+# Mongolian social media. Replacing with a literal sentiment word would be
+# wrong half the time. Instead we pass [LAUGH] to BERT and let it infer
+# polarity from the surrounding tokens.
+EMOJI_SENTIMENT: dict = {
+    # Ambiguous laughing
+    "😂": "[LAUGH]", "🤣": "[LAUGH]", "😅": "[LAUGH]",
+    # Positive — love / warmth
+    "❤": "[LOVE]", "🥰": "[LOVE]", "😍": "[LOVE]",
+    "💕": "[LOVE]", "💗": "[LOVE]", "💖": "[LOVE]", "💝": "[LOVE]",
+    # Positive — excitement / energy  (🔥✨🤩 dominate your dataset)
+    "🔥": "[EXCITED]", "✨": "[EXCITED]", "🤩": "[EXCITED]",
+    "🎉": "[EXCITED]", "👏": "[EXCITED]",
+    # Positive — approval / gratitude
+    "👍": "[POSITIVE]",
+    "🙏": "[GRATEFUL]",
+    # Negative — anger
+    "😡": "[ANGRY]", "🤬": "[ANGRY]", "😤": "[ANGRY]",
+    # Negative — sadness
+    "😢": "[SAD]", "😭": "[SAD]", "💔": "[SAD]",
+    # Negative — disapproval
+    "👎": "[NEGATIVE]",
+}
 
 # Uppercase Mongolian initial: А.Бат-Эрдэнэ, Б.Сувдаа
 MN_NAME_UPPER = re.compile(
@@ -114,8 +147,18 @@ def _normalize_unicode(text: str) -> str:
     return unicodedata.normalize("NFC", text)
 
 
-def _remove_emoji(text: str) -> str:
-    """Remove BMP symbol blocks and supplementary-plane emoji."""
+def _remove_emoji(text: str, convert_sentiment: bool = False) -> str:
+    """
+    Remove BMP symbol blocks and supplementary-plane emoji.
+
+    If convert_sentiment=True (NLP mode): replace known sentiment emoji with
+    text markers BEFORE stripping so the signal survives into BERT.
+    Conversion must happen first because the regex replacements below would
+    otherwise erase the emoji before we can read them.
+    """
+    if convert_sentiment:
+        for emoji, marker in EMOJI_SENTIMENT.items():
+            text = text.replace(emoji, f" {marker} ")
     text = BMP_EMOJI.sub(" ", text)
     text = SUPPLEMENTARY_EMOJI.sub(" ", text)
     return text
@@ -246,7 +289,8 @@ class Preprocessor:
     # clean_basic
     # ------------------------------------------------------------------
 
-    def clean_basic(self, text: str, replace_url: bool = True) -> str:
+    def clean_basic(self, text: str, replace_url: bool = True,
+                    convert_emoji: bool = False) -> str:
         """
         Light surface cleaning.
 
@@ -262,11 +306,16 @@ class Preprocessor:
                (from #монгол) with artificially inflated frequency.
             4. BMP emoji removal added via _remove_emoji(). Original only
                removed supplementary-plane emoji and only inside clean_deep().
+            5. convert_emoji added: when True (NLP mode) known sentiment emoji
+               are converted to text markers before stripping so the signal
+               reaches BERT. When False (TM mode) emoji are stripped directly.
 
         Args:
-            replace_url: True = replace with [URL] token (NLP mode needs the
-                         signal that a URL was present for sentiment context).
-                         False = remove entirely (TM mode — URL adds no topic).
+            replace_url:    True  = replace with [URL] token (NLP needs the
+                                    signal that a URL was present).
+                            False = remove entirely (TM — URL adds no topic).
+            convert_emoji:  True  = sentiment emoji → [LAUGH]/[LOVE]/etc.
+                            False = strip all emoji (TM mode default).
         """
         if not isinstance(text, str):
             return ""
@@ -280,7 +329,7 @@ class Preprocessor:
             text = URL_PATTERN.sub("", text)
 
         text = HASHTAG_MENTION.sub("", text)
-        text = _remove_emoji(text)
+        text = _remove_emoji(text, convert_sentiment=convert_emoji)
         text = re.sub(r"\s+", " ", text).strip()
         return text
 
@@ -371,7 +420,7 @@ class Preprocessor:
         """
         if not isinstance(text, str):
             return ""
-        text = self.clean_basic(text, replace_url=True)
+        text = self.clean_basic(text, replace_url=True, convert_emoji=True)
         text = _capitalize_for_ner(text)
         text = _restore_names(text)
         return text

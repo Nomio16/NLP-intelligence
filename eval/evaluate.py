@@ -89,11 +89,17 @@ def evaluate_ner(test_file_path, limit=None):
         predicted_results = ner.recognize(clean_text)
         
         # Format predictions into (type, string) lowercased for fair comparison
-        pred_ents = [(res.entity_group, res.word.replace(" ", "").lower()) for res in predicted_results]
-        
-        # Format true entities similarly (strip spaces, lowercase)
-        # Note: The model output uses different spacing sometimes due to subwords.
-        true_ents_formatted = [(t, w.replace(" ", "").lower()) for t, w in true_ents]
+        # Strip dots so Д.Гантулга and Д. Гантулга both normalize to дгантулга
+        pred_ents = [(res.entity_group, res.word.replace(" ", "").replace(".", "").lower())
+                     for res in predicted_results]
+
+        # Format true entities similarly — skip MISC since the fine-tuned model
+        # does not produce MISC labels (removed from training set)
+        true_ents_formatted = [
+            (t, w.replace(" ", "").replace(".", "").lower())
+            for t, w in true_ents
+            if t != "MISC"
+        ]
         
         # Calculate overlaps
         for true_e in true_ents_formatted:
