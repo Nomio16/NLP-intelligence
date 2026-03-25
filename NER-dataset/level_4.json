@@ -1,0 +1,714 @@
+[
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 12-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 28-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 31-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 7-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хануул дүүрэг 1-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 18-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 16-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хануул дүүрэг 2-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 19-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 4-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 13-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 12-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 13-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 38-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 14-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 5-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 8-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Налайх дүүрэг 6-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Налайх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 24-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 10-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 16-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 41-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 36-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 6-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 1-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 9-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 34-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 1-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 12-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 21-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 2-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 6-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 24-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 9-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 27-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 29-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 32-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 9-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 4-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 11-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 24-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 11-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 15-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 11-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 30-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 7-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 20-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 33-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 22-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 14-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 6-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 10-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 1-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 15-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 13-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 26-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 1-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 39-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 43-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 9-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 26-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 34-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 17-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 22-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 19-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 3-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 18-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 37-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 20-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 5-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 33-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 2-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 20-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 3-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 23-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 3-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 15-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 16-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 2-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 4-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 3-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Чингэлтэй дүүрэг 9-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 19-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянгол дүүрэг 5-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Баянзүрх дүүрэг 8-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 19-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сонгинохайрхан дүүрэг 32-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг 6-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг",
+      "level": 3
+    }
+  },
+  {
+    "canonical": "Сүхбаатар дүүрэг 15-р хороо",
+    "level": 4,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    }
+  }
+]
