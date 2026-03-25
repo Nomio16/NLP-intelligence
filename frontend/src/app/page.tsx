@@ -62,34 +62,133 @@ interface GlobalAnalysis {
 }
 
 function NetworkGraph({ network }: { network: { nodes: any[]; edges: any[] } }) {
-  const colorMap: Record<string, string> = { PER: "#ff6b6b", ORG: "#4ecdc4", LOC: "#ffd93d", MISC: "#a78bfa" };
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const W = 780, H = 500;
+  const cx = W / 2, cy = H / 2;
+  const colorMap: Record<string, string> = {
+    PER: "#ff6b6b", ORG: "#4ecdc4", LOC: "#ffd93d", MISC: "#a78bfa",
+  };
+
+  // Pick top nodes sorted by frequency
+  const topNodes = [...network.nodes]
+    .sort((a, b) => b.frequency - a.frequency)
+    .slice(0, 40);
+
+  // Arrange nodes in concentric rings by entity type so same-type nodes
+  // cluster together, making co-occurrence edges easier to read.
+  const typeOrder = ["PER", "ORG", "LOC", "MISC"];
+  const ringRadii = [105, 168, 225, 278];
+  const grouped: Record<string, typeof topNodes> = {};
+  for (const node of topNodes) {
+    const t = node.entity_type || "MISC";
+    if (!grouped[t]) grouped[t] = [];
+    grouped[t].push(node);
+  }
+
+  const posMap = new Map<string, { x: number; y: number }>();
+  typeOrder.forEach((type, ti) => {
+    const group = grouped[type] || [];
+    const r = ringRadii[Math.min(ti, ringRadii.length - 1)];
+    group.forEach((node, i) => {
+      // Offset each ring's start angle slightly so labels don't collide
+      const offset = (ti * Math.PI) / 4;
+      const angle = offset + (2 * Math.PI * i) / Math.max(group.length, 1);
+      posMap.set(node.id, { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) });
+    });
+  });
+
+  // Show top edges by weight (only between visible nodes)
+  const topEdges = [...network.edges]
+    .filter(e => posMap.has(e.source) && posMap.has(e.target) && e.source !== e.target)
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 80);
+
+  const maxWeight = topEdges.length > 0 ? topEdges[0].weight : 1;
+
   return (
-    <div className="network-container" style={{ padding: "2rem", display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center", alignItems: "center" }}>
-      {network.nodes
-        .sort((a, b) => b.frequency - a.frequency)
-        .slice(0, 30)
-        .map((node) => {
-          const size = Math.max(40, Math.min(120, node.frequency * 5));
-          const c = colorMap[node.entity_type] || "#6c63ff";
-          return (
-            <div
-              key={node.id}
-              style={{
-                width: size, height: size, borderRadius: "50%",
-                background: `${c}20`, border: `2px solid ${c}`,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: Math.max(9, Math.min(14, node.frequency)),
-                color: c, fontWeight: 600, textAlign: "center", padding: "4px",
-                cursor: "pointer", transition: "transform 0.2s",
-              }}
-              title={`${node.label} (${node.entity_type}) — ${node.frequency}x`}
-              onMouseOver={(e) => (e.currentTarget.style.transform = "scale(1.15)")}
-              onMouseOut={(e) => (e.currentTarget.style.transform = "scale(1)")}
-            >
-              {node.label.length > 12 ? node.label.slice(0, 10) + "…" : node.label}
-            </div>
-          );
-        })}
+    <div>
+      <div style={{ overflowX: "auto" }}>
+        <svg
+          width="100%"
+          viewBox={`0 0 ${W} ${H}`}
+          style={{ display: "block", margin: "0 auto", minWidth: 340 }}
+        >
+          {/* Edges */}
+          {topEdges.map((edge, i) => {
+            const s = posMap.get(edge.source)!;
+            const t = posMap.get(edge.target)!;
+            const isHighlighted = hoveredId === edge.source || hoveredId === edge.target;
+            const opacity = isHighlighted ? 0.7 : 0.12 + (edge.weight / maxWeight) * 0.18;
+            const strokeW = isHighlighted
+              ? Math.max(2, (edge.weight / maxWeight) * 4)
+              : Math.max(0.5, (edge.weight / maxWeight) * 1.5);
+            return (
+              <line
+                key={i}
+                x1={s.x} y1={s.y} x2={t.x} y2={t.y}
+                stroke={isHighlighted ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.25)"}
+                strokeWidth={strokeW}
+                strokeOpacity={opacity}
+              />
+            );
+          })}
+
+          {/* Nodes */}
+          {topNodes.map(node => {
+            const pos = posMap.get(node.id);
+            if (!pos) return null;
+            const r = Math.max(14, Math.min(32, 10 + node.frequency * 1.2));
+            const color = colorMap[node.entity_type] || "#6c63ff";
+            const isHovered = hoveredId === node.id;
+            const label = node.label.length > 11 ? node.label.slice(0, 9) + "…" : node.label;
+            return (
+              <g
+                key={node.id}
+                style={{ cursor: "pointer" }}
+                onMouseEnter={() => setHoveredId(node.id)}
+                onMouseLeave={() => setHoveredId(null)}
+              >
+                <circle
+                  cx={pos.x} cy={pos.y}
+                  r={isHovered ? r + 5 : r}
+                  fill={`${color}22`}
+                  stroke={color}
+                  strokeWidth={isHovered ? 3 : 1.8}
+                  style={{ transition: "r 0.15s, stroke-width 0.15s" }}
+                />
+                <text
+                  x={pos.x} y={pos.y}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill={isHovered ? "#fff" : color}
+                  fontSize={Math.max(8, Math.min(11, r * 0.62))}
+                  fontWeight={600}
+                >
+                  {label}
+                </text>
+                <title>{`${node.label} (${node.entity_type}) — ${node.frequency}×`}</title>
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+
+      {/* Legend */}
+      <div style={{
+        display: "flex", gap: "1.25rem", justifyContent: "center",
+        marginTop: "0.75rem", flexWrap: "wrap",
+      }}>
+        {Object.entries(colorMap).map(([type, color]) => (
+          <div key={type} style={{ display: "flex", alignItems: "center", gap: "0.35rem", fontSize: "0.72rem" }}>
+            <div style={{ width: 10, height: 10, borderRadius: "50%", background: color, opacity: 0.8 }} />
+            <span style={{ color: "var(--text-muted)" }}>{type}</span>
+          </div>
+        ))}
+        <span style={{ color: "var(--text-muted)", fontSize: "0.7rem" }}>
+          — {network.nodes.length} зангилаа · {network.edges.length} холбоос (шилдэг 40/80 харуулав)
+        </span>
+      </div>
     </div>
   );
 }
@@ -545,6 +644,20 @@ export default function Dashboard() {
       {/* Results */}
       {data && !loading && (
         <>
+          {/* Toolbar: new analysis + active file info */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem", flexWrap: "wrap", gap: "0.5rem" }}>
+            <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
+              📄 {data.total_documents} нийтлэл шинжлэгдлээ
+            </span>
+            <button
+              className="btn btn-secondary"
+              style={{ fontSize: "0.8rem" }}
+              onClick={() => { setData(null); setInsights([]); setError(""); setActiveTab("overview"); }}
+            >
+              ＋ Шинэ шинжилгээ
+            </button>
+          </div>
+
           {/* Stats */}
           <div className="stats-grid">
             <div className="stat-card">
