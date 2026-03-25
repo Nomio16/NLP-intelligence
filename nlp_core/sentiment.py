@@ -7,15 +7,22 @@ from typing import List, Optional
 from .models import SentimentResult
 
 
-# Map model labels to human-readable labels
+# Map model labels to human-readable labels.
+# Keys include both original-case and .lower() forms because we call
+# result["label"].lower() before the lookup — the uppercase forms would
+# never match after lowercasing.
 LABEL_MAP = {
     "positive": "positive",
     "neutral": "neutral",
     "negative": "negative",
-    # Some models output LABEL_0, LABEL_1, LABEL_2
+    # Original-case (kept for safety if .lower() is ever removed)
     "LABEL_0": "negative",
     "LABEL_1": "neutral",
     "LABEL_2": "positive",
+    # Lowercased forms — these are what actually get looked up
+    "label_0": "negative",
+    "label_1": "neutral",
+    "label_2": "positive",
 }
 
 
