@@ -11,3 +11,7 @@ adapters/ner_mongolian/optimizer.pt
 adapters/ner_mongolian/rng_state.pth
 adapters/ner_mongolian/scaler.pt
 adapters/ner_mongolian/scheduler.pt
+
+# Large dataset files (too large for GitHub)
+NER-dataset/ner_mongolian.zip
+NER-dataset/eduge.csv.gz
