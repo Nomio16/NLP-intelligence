@@ -1,0 +1,240 @@
+[{
+    "canonical": "Архангай аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 47.8971,
+    "lon": 100.7240,
+    "location_type": "aimag"
+  },{
+    "canonical": "Баян-Өлгий аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 48.3983,
+    "lon": 89.6626,
+    "location_type": "aimag"
+  },{
+    "canonical": "Баянхонгор аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 45.1527,
+    "lon": 100.1074,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Булган аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 48.9691,
+    "lon": 102.8832,
+    "location_type": "aimag"
+  },{
+    "canonical": "Говь-Алтай аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 45.4511,
+    "lon": 95.8506,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Дархан-Уул аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 49.4489,
+    "lon": 106.2325,
+    "location_type": "aimag"
+  },{
+    "canonical": "Дорноговь аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 43.9654,
+    "lon": 109.1773,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Дорнод аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 48.2228,
+    "lon": 115.0390,
+    "location_type": "aimag"
+  }, {
+    "canonical": "Дундговь аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 45.5823,
+    "lon": 106.7644,
+    "location_type": "aimag"
+  },
+   {
+    "canonical": "Завхан аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 48.2388,
+    "lon": 96.0703,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Улаанбаатар",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 47.9221,
+    "lon": 106.9155,
+    "location_type": "city"
+  },
+  {
+    "canonical": "Сүхбаатар аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 46.5653,
+    "lon": 113.5381,
+    "location_type": "city"
+  },
+  {
+    "canonical": "Сэлэнгэ аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 49.0184,
+    "lon": 106.3334,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Өвөрхангай аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 45.8489,
+    "lon": 102.3245,
+    "location_type": "city"
+  },
+  {
+    "canonical": "Өмнөговь аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 43.5000,
+    "lon": 104.2861,
+    "location_type": "city"
+  },
+  {
+    "canonical": "Төв аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 47.7528,
+    "lon": 106.5536,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Хөвсгөл аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 50.2204,
+    "lon": 100.3214,
+    "location_type": "city"
+  },
+  
+  {
+    "canonical": "Ховд аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 48.1303,
+    "lon": 91.5966,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Хэнтий аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 47.7258,
+    "lon": 110.5398,
+    "location_type": "aimag"
+  },
+  
+  {
+    "canonical": "Увс аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 49.6450,
+    "lon": 93.2737,
+    "location_type": "city"
+  },
+  {
+    "canonical": "Говьсүмбэр аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 46.4763,
+    "lon": 108.5571,
+    "location_type": "city"
+  },
+  {
+    "canonical": "Орхон аймаг",
+    "level": 2,
+    "parent": {
+      "canonical": "Монгол Улс",
+      "level": 1
+    },
+    "lat": 49.0366,
+    "lon": 104.3750,
+    "location_type": "city"
+  }
+]

@@ -1,0 +1,287 @@
+[
+   {
+    "canonical": "Алтанбулаг сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Сэлэнгэ аймаг",
+      "level": 2
+    },
+    "lat": 50.311170, 
+    "lon": 106.499208,
+    "location_type": "sum"
+  },{
+    "canonical": "Арвайхээр сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Өвөрхангай аймаг",
+      "level": 2
+    },
+    "lat": 46.276211,
+    "lon": 102.772429,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Багануур дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.826954,
+    "lon": 108.353456,
+    "location_type": "district"
+  },
+  {
+    "canonical": "Багахангай дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.371693,
+    "lon": 107.450512,
+    "location_type": "district"
+  },{
+    "canonical": "Баруун-Урт сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Сүхбаатар аймаг",
+      "level": 2
+    },
+    "lat": 46.682183,
+    "lon": 113.279737,
+    "location_type": "sum"
+  },
+   {
+    "canonical": "Баянзүрх дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.916424,
+    "lon": 106.964918,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Даланзадгад сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Өмнөговь аймаг",
+      "level": 2
+    },
+    "lat": 43.554689,
+    "lon": 104.488744,
+    "location_type": "sum"
+  },{
+    "canonical": "Дархан",
+    "level": 3,
+    "parent": {
+      "canonical": "Дархан-Уул аймаг",
+      "level": 2
+    },
+    "lat": 48.050593,
+    "lon": 107.628867,
+    "location_type": "sum"
+  },
+  
+  {
+    "canonical": "Замын-Үүд",
+    "level": 3,
+    "parent": {
+      "canonical": "Дорноговь аймаг",
+      "level": 2
+    },
+    "lat": 43.815781,
+    "lon": 111.810252,
+    "location_type": "sum"
+  },
+   {
+    "canonical": "Сонгинохайрхан дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.924334,
+    "lon": 106.816221,
+    "location_type": "district"
+  },
+  {
+    "canonical": "Баянгол дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": null,
+    "lon": null,
+    "location_type": "district"
+  }
+  ,{
+    "canonical": "Сүхбаатар дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.874674,
+    "lon": 110.229251,
+    "location_type": "district"
+  },
+  {
+    "canonical": "Тосонцэнгэл сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Завхан аймаг",
+      "level": 2
+    },
+    "lat": 48.982874,
+    "lon": 99.591231,
+    "location_type": "sum"
+  },
+  
+  {
+    "canonical": "Улаангом",
+    "level": 3,
+    "parent": {
+      "canonical": "Увс аймаг",
+      "level": 2
+    },
+    "lat": 50.076756,
+    "lon": 91.873222,
+    "location_type": "sum"
+  },{
+    "canonical": "Чингэлтэй дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.921862,
+    "lon": 106.907114,
+    "location_type": "district"
+  },
+  {
+    "canonical": "Налайх дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.823306,
+    "lon": 107.419468,
+    "location_type": "district"
+  },
+  {
+    "canonical": "Мандал сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Сэлэнгэ аймаг",
+      "level": 2
+    },
+    "lat": 48.8459,
+    "lon": 106.4516,
+    "location_type": "district"
+  },  {
+    "canonical": "Мөрөн сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Хөвсгөл аймаг",
+      "level": 2
+    },
+    "lat": 48.484782,
+    "lon": 105.190682,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Сайншанд",
+    "level": 3,
+    "parent": {
+      "canonical": "Дорноговь аймаг",
+      "level": 2
+    },
+    "lat": 44.680182,
+    "lon": 109.851927,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Хан-Уул дүүрэг",
+    "level": 3,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+        },
+    "lat": 47.807046,
+    "lon": 106.731896,
+    "location_type": "district"
+  },
+  
+  {
+    "canonical": "Хархорин",
+    "level": 3,
+    "parent": {
+      "canonical": "Өвөрхангай аймаг",
+      "level": 2
+    },
+    "lat": 47.911723,
+    "lon": 106.837524,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Хяргас сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Увс аймаг",
+      "level": 2
+    },
+    "lat": 49.6678,
+    "lon": 93.7823,
+    "location_type": "district"
+  },
+  {
+    "canonical": "Сайхан сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Сэлэнгэ аймаг",
+      "level": 2
+    },
+    "lat": 48.6656,
+    "lon": 102.6278,
+    "location_type": "district"
+  },
+  
+  {
+    "canonical": "Цогтцэций сум",
+    "level": 3,
+    "parent": {
+      "canonical": "Өмнөговь аймаг",
+      "level": 2
+    },
+    "lat": 43.843597,
+    "lon": 105.923286,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Чойр",
+    "level": 3,
+    "parent": {
+      "canonical": "Говьсүмбэр аймаг",
+      "level": 2
+    },
+    "lat": 46.357797,
+    "lon": 108.357069,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Эрдэнэт",
+    "level": 3,
+    "parent": {
+      "canonical": "Орхон аймаг",
+      "level": 2
+    },
+    "lat": 49.059039,
+    "lon": 104.162682,
+    "location_type": "railway_station"
+  }
+]

@@ -1,0 +1,1569 @@
+[
+  {
+    "canonical": "1-р хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 12-р хороо",
+      "level": 4
+    },
+    "lat": 47.917308,
+    "lon": 106.842942,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "10-р хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 28-р хороо",
+      "level": 4
+    },
+    "lat": 47.913757,
+    "lon": 106.867454,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "100 айл",
+    "level": 5,
+    "parent": {
+      "canonical": "10-р хороо",
+      "level": 3
+    },
+    "lat": 47.931294,
+    "lon": 106.927964,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "1000 Оюутны байр",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 31-р хороо",
+      "level": 4
+    },
+    "lat": 47.923812,
+    "lon": 106.963585,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "11-р хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 7-р хороо",
+      "level": 4
+    },
+    "lat": 47.925828,
+    "lon": 106.929117,
+    "location_type": "area"
+  },
+  {
+    "canonical": "120 мянгат",
+    "level": 5,
+    "parent": {
+      "canonical": "Хануул дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.901368,
+    "lon": 106.909944,
+    "location_type": "common"
+  },
+  {
+    "canonical": "13-р хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 18-р хороо",
+      "level": 4
+    },
+    "lat": 47.914097,
+    "lon": 106.944424,
+    "location_type": "common"
+  },
+  {
+    "canonical": "16-р хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 16-р хороо",
+      "level": 4
+    },
+    "lat": 47.923596,
+    "lon": 106.981385,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "19-н үйлчилгээний төв",
+    "level": 5,
+    "parent": {
+      "canonical": "Хануул дүүрэг 2-р хороо",
+      "level": 4
+    },
+    "lat": 47.911487,
+    "lon": 106.838208,
+    "location_type": "common"
+  },
+  {
+    "canonical": "21-р хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 19-р хороо",
+      "level": 4
+    },
+    "lat": 47.920834,
+    "lon": 106.817043,
+    "location_type": "common"
+  },
+  {
+    "canonical": "25-р эмийн сан",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 4-р хороо",
+      "level": 4
+    },
+    "lat": 47.91462,
+    "lon": 106.879134,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "3 4-р Хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 13-р хороо",
+      "level": 4
+    },
+    "lat": 47.922608,
+    "lon": 106.867234,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "3-р Эмнэлэг",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 28-р хороо",
+      "level": 4
+    },
+    "lat": 47.913186,
+    "lon": 106.859849,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "32-ын тойрог",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 12-р хороо",
+      "level": 4
+    },
+    "lat": 47.944623,
+    "lon": 106.914498,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "5 буудал",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 13-р хороо",
+      "level": 4
+    },
+    "lat": 47.954904,
+    "lon": 106.915287,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "5 Шар",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 38-р хороо",
+      "level": 4
+    },
+    "lat": 47.909852,
+    "lon": 106.815062,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "6 буудал",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 14-р хороо",
+      "level": 4
+    },
+    "lat": 47.965763,
+    "lon": 106.917555,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "6-Р ХОРООЛОЛ",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 5-р хороо",
+      "level": 4
+    },
+    "lat": 47.927287,
+    "lon": 106.904278,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "64-р дэлгүүр",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 8-р хороо",
+      "level": 4
+    },
+    "lat": 47.922706,
+    "lon": 106.927056,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "7 буудал",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    },
+    "lat": 47.968951,
+    "lon": 106.917417,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "9 р дэлгүүр",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 14-р хороо",
+      "level": 4
+    },
+    "lat": 47.937721,
+    "lon": 106.921113,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "тэрэлж",
+    "level": 5,
+    "parent": {
+      "canonical": "Налайх дүүрэг 6-р хороо",
+      "level": 4
+    },
+    "lat": 47.994412,
+    "lon": 107.548432,
+    "location_type": "tourism"
+  },
+  {
+    "canonical": "Түнхэл",
+    "level": 5,
+    "parent": {
+      "canonical": "Мандал сум",
+      "level": 3
+    },
+    "lat": 49.774245,
+    "lon": 100.718615,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Алтай хотхон",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 24-р хороо",
+      "level": 4
+    },
+    "lat": 47.903832,
+    "lon": 106.892875,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Амгалан",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 10-р хороо",
+      "level": 4
+    },
+    "lat": 47.905473,
+    "lon": 107.014467,
+    "location_type": "common"
+  },
+  {
+    "canonical": "Бага тойруу",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 8-р хороо",
+      "level": 4
+    },
+    "lat": 47.925803,
+    "lon": 106.919593,
+    "location_type": "area"
+  },
+  
+  {
+    "canonical": "Баруун 4 зам",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 16-р хороо",
+      "level": 4
+    },
+    "lat": 47.915253,
+    "lon": 106.895225,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Баруун Салаа",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 41-р хороо",
+      "level": 4
+    },
+    "lat": 47.959474,
+    "lon": 106.821403,
+    "location_type": "bus_stop"
+  },
+  
+  {
+    "canonical": "Баянмонгол хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 36-р хороо",
+      "level": 4
+    },
+    "lat": 47.904489,
+    "lon": 106.931171,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Баян Бүрд",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 6-р хороо",
+      "level": 4
+    },
+    "lat": 47.928282,
+    "lon": 106.907951,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Баянгол зочид буудал",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.913382,
+    "lon": 106.915015,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Баянхошуу",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.987865,
+    "lon": 106.801948,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Бичил хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 34-р хороо",
+      "level": 4
+    },
+    "lat": 47.925786,
+    "lon": 106.880026,
+    "location_type": "common"
+  },
+  {
+    "canonical": "Блю скай товер",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 8-р хороо",
+      "level": 4
+    },
+    "lat": 47.916349,
+    "lon": 106.918597,
+    "location_type": "tourism"
+  },
+  {
+    "canonical": "Богд ар хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.911629,
+    "lon": 106.884009,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Ботаник",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 12-р хороо",
+      "level": 4
+    },
+    "lat": 47.912464,
+    "lon": 107.001207,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Буянт ухаа",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 21-р хороо",
+      "level": 4
+    },
+    "lat": 47.856076,
+    "lon": 106.764815,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Бөмбөгөр худалдааны төв",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 2-р хороо",
+      "level": 4
+    },
+    "lat": 47.923485,
+    "lon": 106.905646,
+    "location_type": "market"
+  },
+  {
+    "canonical": "Бөхийн өргөө",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 6-р хороо",
+      "level": 4
+    },
+    "lat": 47.918374,
+    "lon": 106.933624,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Вива сити",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 24-р хороо",
+      "level": 4
+    },
+    "lat": 47.880666,
+    "lon": 106.857332,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Вокзал",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.909614,
+    "lon": 106.884713,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Гандан",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 16-р хороо",
+      "level": 4
+    },
+    "lat": 47.924747,
+    "lon": 106.894139,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Гэмтэлийн эмнэлэг",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    },
+    "lat": 47.921435,
+    "lon": 106.859135,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Гранд плаза",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 16-р хороо",
+      "level": 4
+    },
+    "lat": 47.914436,
+    "lon": 106.890576,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Да хүрээ",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.925643,
+    "lon": 106.985633,
+    "location_type": "market"
+  },
+  {
+    "canonical": "Дарь эх",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 27-р хороо",
+      "level": 4
+    },
+    "lat": 47.943035,
+    "lon": 106.939728,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Драгон төв",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 29-р хороо",
+      "level": 4
+    },
+    "lat": 47.911325,
+    "lon": 106.821729,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Дүүхээ дэлгүүр",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 32-р хороо",
+      "level": 4
+    },
+    "lat": 47.922282,
+    "lon": 106.868369,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Дөлгөөн нуур",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.929045,
+    "lon": 106.913562,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Жуков",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 4-р хороо",
+      "level": 4
+    },
+    "lat": 47.917741,
+    "lon": 106.950143,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Зайсан",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 11-р хороо",
+      "level": 4
+    },
+    "lat": 47.884698,
+    "lon": 106.912774,
+    "location_type": "bus_stop"
+  },
+
+  {
+    "canonical": "Замын цагдаа",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.974339,
+    "lon": 106.918127,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Зунжин",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 24-р хороо",
+      "level": 4
+    },
+    "lat": 48.005036,
+    "lon": 106.923907,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Зурагт",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 11-р хороо",
+      "level": 4
+    },
+    "lat": 47.933456,
+    "lon": 106.886959,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Зүүн 4 зам",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 15-р хороо",
+      "level": 4
+    },
+    "lat": 47.918926,
+    "lon": 106.941388,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Зүүн Салаа",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.987991,
+    "lon": 106.827617,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Зүүнхараа",
+    "level": 5,
+    "parent": {
+      "canonical": "Мандал сум",
+      "level": 3
+    },
+    "lat": 48.856828,
+    "lon": 106.454464,
+    "location_type": "railway_station"
+  },
+  {
+    "canonical": "Иргэний бүртгэл мэдээллийн төв",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 11-р хороо",
+      "level": 4
+    },
+    "lat": 47.933206,
+    "lon": 106.927626,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "их монгол хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 36-р хороо",
+      "level": 4
+    },
+    "lat": 47.906311,
+    "lon": 106.943218,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Их Засаг Их Сургууль",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 30-р хороо",
+      "level": 4
+    },
+    "lat": 47.916051,
+    "lon": 106.887534,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "КТМС",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 7-р хороо",
+      "level": 4
+    },
+    "lat": 47.926574,
+    "lon": 106.942977,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Макс Малл",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 16-р хороо",
+      "level": 4
+    },
+    "lat": 47.915786,
+    "lon": 106.891341,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Миний Дэлгүүр",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг",
+      "level": 3
+    },
+    "lat": 47.908269,
+    "lon": 106.935828,
+    "location_type": "common"
+  },
+  {
+    "canonical": "Мишээл Экспо",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 20-р хороо",
+      "level": 4
+    },
+    "lat": 47.893991,
+    "lon": 106.883785,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Модны 2",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 33-р хороо",
+      "level": 4
+    },
+    "lat": 47.919024,
+    "lon": 106.890621,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Могул таун",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 22-р хороо",
+      "level": 4
+    },
+    "lat": 47.875513,
+    "lon": 106.907697,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Монгол кино үйлдвэр",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 14-р хороо",
+      "level": 4
+    },
+    "lat": 47.916862,
+    "lon": 106.960182,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Монгол улсын их сургууль",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 6-р хороо",
+      "level": 4
+    },
+    "lat": 47.922496,
+    "lon": 106.920663,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Монел",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 31-р хороо",
+      "level": 4
+    },
+    "lat": 47.943461,
+    "lon": 106.969764,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Морингийн даваа",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 10-р хороо",
+      "level": 4
+    },
+    "lat": 47.844577,
+    "lon": 106.729528,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Москва хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 29-р хороо",
+      "level": 4
+    },
+    "lat": 47.913829,
+    "lon": 106.826997,
+    "location_type": "residential_area"
+  },
+  {
+    "canonical": "МУБИС",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 8-р хороо",
+      "level": 4
+    },
+    "lat": 47.918724,
+    "lon": 106.924202,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Мөнгөн завъяа",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.916589,
+    "lon": 106.909526,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Наадам Центр",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 15-р хороо",
+      "level": 4
+    },
+    "lat": 47.903149,
+    "lon": 106.912602,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Найман шарга төв",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 2-р хороо",
+      "level": 4
+    },
+    "lat": 47.920685,
+    "lon": 106.901007,
+    "location_type": "building"
+  },
+
+  {
+    "canonical": "Нарны зам",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 13-р хороо",
+      "level": 4
+    },
+    "lat": 47.908835,
+    "lon": 106.899891,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Нарны хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 26-р хороо",
+      "level": 4
+    },
+    "lat": 47.906015,
+    "lon": 106.901082,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Нарангийн Гол",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.931449,
+    "lon": 106.765469,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Нарантуул",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 39-р хороо",
+      "level": 4
+    },
+    "lat": 47.915749,
+    "lon": 106.896049,
+    "location_type": "tourism"
+  },
+  {
+    "canonical": "Натур",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 43-р хороо",
+      "level": 4
+    },
+    "lat": 47.912783,
+    "lon": 106.936539,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Нисэх",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.865361,
+    "lon": 106.763284,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Нисдэг машин",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 5-р хороо",
+      "level": 4
+    },
+    "lat": 47.925488,
+    "lon": 106.901339,
+    "location_type": "shop"
+  },
+  {
+    "canonical": "Ногоон нуур",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 11-р хороо",
+      "level": 4
+    },
+    "lat": 47.935001,
+    "lon": 106.915964,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Олимп хотхон",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 26-р хороо",
+      "level": 4
+    },
+    "lat": 47.898656,
+    "lon": 106.860604,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Орбит",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 34-р хороо",
+      "level": 4
+    },
+    "lat": 47.910243,
+    "lon": 106.772588,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Оргил рашаан сувилал",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 17-р хороо",
+      "level": 4
+    },
+    "lat": 47.895387,
+    "lon": 106.908684,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Офицеруудын ордон",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 22-р хороо",
+      "level": 4
+    },
+    "lat": 47.915972,
+    "lon": 106.970194,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Парадокс",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 19-р хороо",
+      "level": 4
+    },
+    "lat": 47.922623,
+    "lon": 106.878366,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Сансар",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 3-р хороо",
+      "level": 4
+    },
+    "lat": 47.924197,
+    "lon": 106.941241,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Саппоро",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 12-р хороо",
+      "level": 4
+    },
+    "lat": 47.912715,
+    "lon": 106.852292,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Саруул хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 36-р хороо",
+      "level": 4
+    },
+    "lat": 47.907746,
+    "lon": 106.932822,
+    "location_type": "residential_area"
+  },
+  {
+    "canonical": "Сентоза",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 18-р хороо",
+      "level": 4
+    },
+    "lat": 47.922868,
+    "lon": 106.886911,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Содон хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 37-р хороо",
+      "level": 4
+    },
+    "lat": 47.920836,
+    "lon": 106.819028,
+    "location_type": "residential_area"
+  },
+  {
+    "canonical": "Сэлх",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 20-р хороо",
+      "level": 4
+    },
+    "lat": 48.017625,
+    "lon": 106.967552,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Сүлжмэл",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 29-р хороо",
+      "level": 4
+    },
+    "lat": 47.911689,
+    "lon": 106.824593,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Сүхбаатарын талбай",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 6-р хороо",
+      "level": 4
+    },
+    "lat": 47.916726,
+    "lon": 106.917945,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Сөүлийн гудамж",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 5-р хороо",
+      "level": 4
+    },
+    "lat": 47.914465,
+    "lon": 106.908972,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Сити тауэр",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 8-р хороо",
+      "level": 4
+    },
+    "lat": 47.919246,
+    "lon": 106.918991,
+    "location_type": "building"
+  },
+  {
+    "canonical": "Тахилт",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 33-р хороо",
+      "level": 4
+    },
+    "lat": 47.921174,
+    "lon": 106.696131,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Та Чи",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 29-р хороо",
+      "level": 4
+    },
+    "lat": 47.910779,
+    "lon": 106.823844,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "ТБД андууд",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 2-р хороо",
+      "level": 4
+    },
+    "lat": 47.914811,
+    "lon": 106.886857,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Толгойт",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 20-р хороо",
+      "level": 4
+    },
+    "lat": 47.908567,
+    "lon": 106.778574,
+    "location_type": "railway_station"
+  },
+  {
+    "canonical": "Тосонцэнгэл",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг",
+      "level": 3
+    },
+    "lat": 48.982874,
+    "lon": 99.591231,
+    "location_type": "sum"
+  },
+  {
+    "canonical": "Тэнгис кино театр",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 5-р хороо",
+      "level": 4
+    },
+    "lat": 47.922116,
+    "lon": 106.904787,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "ТЭЦ III",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 3-р хороо",
+      "level": 4
+    },
+    "lat": 47.899566,
+    "lon": 106.867466,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Төв номын сан",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.914351,
+    "lon": 106.915624,
+    "location_type": "common"
+  },
+  {
+    "canonical": "Төв аймаг",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг",
+      "level": 3
+    },
+    "lat": 47.752882,
+    "lon": 106.553676,
+    "location_type": "aimag"
+  },
+  {
+    "canonical": "Төмөр зам",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 2-р хороо",
+      "level": 4
+    },
+    "lat": 47.916142,
+    "lon": 106.884592,
+    "location_type": "railway_station"
+  },
+  {
+    "canonical": "Улаанхуаран",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 10-р хороо",
+      "level": 4
+    },
+    "lat": 47.918441,
+    "lon": 106.983576,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Улиастай",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 23-р хороо",
+      "level": 4
+    },
+    "lat": 47.9164,
+    "lon": 107.03773,
+    "location_type": "region"
+  },
+  {
+    "canonical": "Улсын их дэлгүүр",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 3-р хороо",
+      "level": 4
+    },
+    "lat": 47.915865,
+    "lon": 106.903608,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хайлааст",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 15-р хороо",
+      "level": 4
+    },
+    "lat": 47.969854,
+    "lon": 106.920556,
+    "location_type": "area"
+  },
+  {
+    "canonical": "Халдварт",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 14-р хороо",
+      "level": 4
+    },
+    "lat": 47.913617,
+    "lon": 106.944053,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хангай хотхон",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.936166,
+    "lon": 106.917951,
+    "location_type": "residential_area"
+  },
+  {
+    "canonical": "Ханбогд хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 24-р хороо",
+      "level": 4
+    },
+    "lat": 47.881247,
+    "lon": 106.855366,
+    "location_type": "residential_area"
+  },
+  {
+    "canonical": "Хом плаза",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 2-р хороо",
+      "level": 4
+    },
+    "lat": 47.90448,
+    "lon": 106.927601,
+    "location_type": "shop"
+  },
+  {
+    "canonical": "Хотын төв",
+    "level": 5,
+    "parent": {
+      "canonical": "Улаанбаатар",
+      "level": 2
+    },
+    "lat": 47.918873,
+    "lon": 106.917587,
+    "location_type": "common"
+  },
+  {
+    "canonical": "Хурд хороолол",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 15-р хороо",
+      "level": 4
+    },
+    "lat": 47.899562,
+    "lon": 106.917084,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хэцүү хад",
+    "level": 5,
+    "parent": {
+      "canonical": "Хяргас сум",
+      "level": 3
+    },
+    "lat": 49.033222,
+    "lon": 93.479113,
+    "location_type": "tourism"
+  },
+  {
+    "canonical": "Хүнсний 20",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 4-р хороо",
+      "level": 4
+    },
+    "lat": 47.916185,
+    "lon": 106.908154,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хүүхдийн парк",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.913241,
+    "lon": 106.922387,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хүүхдийн 100",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 3-р хороо",
+      "level": 4
+    },
+    "lat": 47.915004,
+    "lon": 106.911579,
+    "location_type": "area"
+  },
+  {
+    "canonical": "Хөгжим бүжгийн коллеж",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 7-р хороо",
+      "level": 4
+    },
+    "lat": 47.923092,
+    "lon": 106.926473,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хөдөө аж ахуйн их сургууль",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 22-р хороо",
+      "level": 4
+    },
+    "lat": 47.886212,
+    "lon": 106.910881,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Хөтөл",
+    "level": 5,
+    "parent": {
+      "canonical": "Сайхан сум",
+      "level": 3
+    },
+    "lat": 49.098527,
+    "lon": 105.544601,
+    "location_type": "common"
+  },
+  {
+    "canonical": "Цагаан байр",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.933312,
+    "lon": 106.906414,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Цайз",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 19-р хороо",
+      "level": 4
+    },
+    "lat": 47.924125,
+    "lon": 106.974051,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Цамбагарав",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 5-р хороо",
+      "level": 4
+    },
+    "lat": 47.912267,
+    "lon": 106.846334,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Чингис зочид буудал",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 3-р хороо",
+      "level": 4
+    },
+    "lat": 47.922658,
+    "lon": 106.934942,
+    "location_type": "tourism"
+  },
+  {
+    "canonical": "Үндэсний цэцэрлэгт хүрээлэн",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 26-р хороо",
+      "level": 4
+    },
+    "lat": 47.901596,
+    "lon": 106.945823,
+    "location_type": "park"
+  },
+
+  {
+    "canonical": "Чулуун овоо",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 8-р хороо",
+      "level": 4
+    },
+    "lat": 47.912293,
+    "lon": 106.982128,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Шангри-Ла",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 1-р хороо",
+      "level": 4
+    },
+    "lat": 47.913009,
+    "lon": 106.920144,
+    "location_type": "tourism"
+  },
+  {
+    "canonical": "Шар хад",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 9-р хороо",
+      "level": 4
+    },
+    "lat": 47.934788,
+    "lon": 107.005617,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Шарга морьт",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 19-р хороо",
+      "level": 4
+    },
+    "lat": 48.067451,
+    "lon": 106.924877,
+    "location_type": "area"
+  },
+  {
+    "canonical": "Шөнийн зах",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянзүрх дүүрэг 14-р хороо",
+      "level": 4
+    },
+    "lat": 47.909953,
+    "lon": 106.94365,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Эмээлт",
+    "level": 5,
+    "parent": {
+      "canonical": "Сонгинохайрхан дүүрэг 32-р хороо",
+      "level": 4
+    },
+    "lat": 47.886956,
+    "lon": 106.599644,
+    "location_type": "railway_station"
+  },
+  {
+    "canonical": "Эх нялхас",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 11-р хороо",
+      "level": 4
+    },
+    "lat": 47.926696,
+    "lon": 106.893711,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Яармаг",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 6-р хороо",
+      "level": 4
+    },
+    "lat": 47.861812,
+    "lon": 106.787998,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Яргайт",
+    "level": 5,
+    "parent": {
+      "canonical": "Чингэлтэй дүүрэг 24-р хороо",
+      "level": 4
+    },
+    "lat": 48.039796,
+    "lon": 106.904897,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Өвөр согоот",
+    "level": 5,
+    "parent": {
+      "canonical": "Сүхбаатар дүүрэг 15-р хороо",
+      "level": 4
+    },
+    "lat": 48.017419,
+    "lon": 106.925046,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "Өргөө кино театр",
+    "level": 5,
+    "parent": {
+      "canonical": "Баянгол дүүрэг 13-р хороо",
+      "level": 4
+    },
+    "lat": 47.922835,
+    "lon": 106.874834,
+    "location_type": "bus_stop"
+  },
+  {
+    "canonical": "кинг тауэр",
+    "level": 5,
+    "parent": {
+      "canonical": "Хан-Уул дүүрэг 11-р хороо",
+      "level": 4
+    },
+    "lat": 47.893946,
+    "lon": 106.929502,
+    "location_type": "bus_stop"
+  }
+]
