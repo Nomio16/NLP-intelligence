@@ -53,6 +53,49 @@ _MN_SUFFIXES = [
 ]
 _MIN_ROOT = 3  # don't strip if remaining root would be shorter than this
 
+# ---------------------------------------------------------------------------
+# Mongolian stopwords for topic modeling c-TF-IDF
+# ---------------------------------------------------------------------------
+# These words appear in nearly every document and add no topic-discriminating
+# value. Filtering them lets BERTopic surface meaningful content keywords.
+_MN_STOPWORDS = {
+    # Copulas / auxiliary verbs
+    "байна", "байгаа", "байсан", "байх", "байдаг", "болно", "болох", "болсон",
+    "болж", "бол", "бна", "бсан", "бгаа", "бхаа", "бн", "бдаг", "бхоо", "бх",
+    # Common verbs (too generic for topics)
+    "хийх", "хийж", "хийсэн", "авах", "авч", "авсан", "өгөх", "өгч", "өгсөн",
+    "ирэх", "ирж", "ирсэн", "очих", "очсон", "гарах", "гарч", "гарсан",
+    "орох", "орж", "орсон", "үзүүлж", "явагдаж", "ажиллаж", "эхэлж", "эхэллээ",
+    # Conjunctions / particles
+    "ба", "бас", "болон", "мөн", "эсвэл", "гэхдээ", "харин", "бөгөөд",
+    "гэж", "гэх", "гэсэн", "гэжээ", "гэв", "гэвч", "гээд", "гэнэ", "гээ",
+    # Pronouns / demonstratives
+    "энэ", "тэр", "эдгээр", "тэдгээр", "үүн", "түүн", "бид", "тэд",
+    "би", "чи", "та", "миний", "чиний", "таны", "өөр", "өөрийн",
+    # Postpositions / spatial
+    "дээр", "доор", "дотор", "гадна", "хойно", "өмнө", "дунд",
+    # Intensifiers / degree
+    "их", "бага", "маш", "тун", "нэлээд", "шиг", "хамгийн",
+    # Single-char particles and suffixes
+    "л", "ч", "нь", "аа", "ээ", "оо", "өө", "юм", "биш",
+    "уу", "үү", "юу", "вэ", "бэ",
+    # Question words
+    "яаж", "яагаад", "хаана", "хэзээ", "хэн", "ямар",
+    # Informal / social media
+    "шд", "шдэ", "шдээ", "шт", "штэ", "штээ", "дээ", "даа",
+    "бз", "биз", "хаха", "кк",
+    # Generic high-frequency nouns (appear in every news article)
+    "монгол", "улс", "улсын", "хот", "хотын", "аймаг", "аймагт",
+    "шинэ", "онд", "жил", "жилд", "хувь", "хувиар", "тэрбум",
+    "байна.", "нэг", "гаруй", "дахин", "хэд", "хэдэн",
+    # Numbers written as words
+    "нэг", "хоёр", "гурав", "дөрөв", "тав", "зургаа", "долоо", "найм",
+    # Other function words
+    "тийм", "ийм", "чинь", "минь", "билээ", "шүү",
+    "надад", "танд", "бусад", "зарим", "ийнхүү", "тухай",
+    "дамжуулан", "хүртэл", "ороос", "хооронд",
+}
+
 
 def _mn_stem(word: str) -> str:
     for sfx in _MN_SUFFIXES:
@@ -62,13 +105,23 @@ def _mn_stem(word: str) -> str:
 
 
 def _mongolian_tokenizer(text: str) -> List[str]:
-    """Tokenize and stem Mongolian text for BERTopic's c-TF-IDF step."""
-    return [_mn_stem(w) for w in text.split() if w]
+    """Tokenize, stem, and filter Mongolian text for BERTopic's c-TF-IDF."""
+    tokens = []
+    for w in text.split():
+        if not w or len(w) < 2:
+            continue
+        # Skip pure numbers (years, percentages, amounts)
+        if w.isdigit():
+            continue
+        stem = _mn_stem(w)
+        if stem.lower() not in _MN_STOPWORDS and len(stem) >= 2:
+            tokens.append(stem)
+    return tokens
 
 # Thresholds
 MIN_TINY_DOCS = 3       # minimum to attempt topic modeling at all
 MIN_BERTOPIC_DOCS = 10  # minimum to use BERTopic's default HDBSCAN
-MAX_TINY_TOPICS = 5     # cap for KMeans cluster count on small datasets
+MAX_TINY_TOPICS = 8     # cap for KMeans cluster count on small datasets
 
 
 class TopicModeler:
@@ -101,14 +154,20 @@ class TopicModeler:
         from bertopic import BERTopic
         from sklearn.feature_extraction.text import CountVectorizer
 
-        vectorizer = CountVectorizer(tokenizer=_mongolian_tokenizer, min_df=1)
+        vectorizer = CountVectorizer(
+            tokenizer=_mongolian_tokenizer,
+            min_df=1,
+            max_df=0.85,  # ignore terms appearing in >85% of docs
+        )
 
         if n_docs >= MIN_BERTOPIC_DOCS:
             # Standard BERTopic — HDBSCAN with min_cluster_size tuned to
-            # dataset size so it's not too greedy on medium datasets
+            # dataset size so it's not too greedy on medium datasets.
+            # Smaller min_cluster_size = more fine-grained topics.
             from hdbscan import HDBSCAN
+            mcs = max(2, n_docs // 8)  # 30 docs → 3, 80 docs → 10
             cluster_model = HDBSCAN(
-                min_cluster_size=max(2, n_docs // 5),
+                min_cluster_size=mcs,
                 min_samples=1,
                 prediction_data=True,
             )
