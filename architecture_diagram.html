@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<title>Системийн Архитектур</title>
+<style>
+  body { background: #fff; margin: 0; padding: 20px; display: flex; justify-content: center; }
+  svg { max-width: 1200px; width: 100%; }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" font-family="Arial, sans-serif">
+  <style>
+    .title { font-size: 22px; font-weight: bold; fill: #1a3a5c; }
+    .subtitle { font-size: 11px; fill: #555; font-style: italic; }
+    .group-label { font-size: 13px; font-weight: bold; fill: #1a3a5c; }
+    .box-text { font-size: 11px; fill: #1a3a5c; text-anchor: middle; }
+    .box-text-sm { font-size: 9.5px; fill: #444; text-anchor: middle; }
+    .arrow { stroke: #1a3a5c; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); }
+    .arrow-dash { stroke: #1a3a5c; stroke-width: 1.5; fill: none; stroke-dasharray: 6,3; marker-end: url(#arrowhead); }
+    .arrow-both { stroke: #1a3a5c; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); marker-start: url(#arrowhead-rev); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a3a5c"/>
+    </marker>
+    <marker id="arrowhead-rev" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#1a3a5c"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="35" text-anchor="middle" class="title">ДЕМО ВЕБ АППЛИКЕЙШНЫ СИСТЕМИЙН АРХИТЕКТУР</text>
+
+  <!-- ==================== GROUP 1: Google Colab ==================== -->
+  <rect x="250" y="60" width="600" height="430" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="270" y="82" class="group-label">Google Colab (GPU Runtime)</text>
+
+  <!-- FastAPI Server -->
+  <rect x="380" y="100" width="340" height="50" rx="6" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="550" y="121" class="box-text" style="font-weight:bold;">FastAPI Сервер</text>
+  <text x="550" y="139" class="box-text-sm">REST API  •  uvicorn  •  port 8000</text>
+
+  <!-- NLP Pipeline group -->
+  <rect x="280" y="175" width="540" height="155" rx="6" fill="none" stroke="#4a8ab5" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="300" y="195" class="group-label">NLP боловсруулалтын хоолой (Domain Core)</text>
+
+  <!-- NLP boxes row 1 -->
+  <rect x="300" y="205" width="120" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="360" y="224" class="box-text">Урьдчилсан</text>
+  <text x="360" y="240" class="box-text-sm">боловсруулалт</text>
+
+  <rect x="440" y="205" width="120" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="500" y="224" class="box-text">NER систем</text>
+  <text x="500" y="240" class="box-text-sm">(BERT модель)</text>
+
+  <rect x="580" y="205" width="120" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="640" y="224" class="box-text">Сэтгэгдлийн</text>
+  <text x="640" y="240" class="box-text-sm">шинжилгээ (XLM-R)</text>
+
+  <!-- NLP boxes row 2 -->
+  <rect x="350" y="270" width="130" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="415" y="289" class="box-text">Сэдвийн загвар</text>
+  <text x="415" y="305" class="box-text-sm">(BERTopic)</text>
+
+  <rect x="510" y="270" width="140" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="580" y="289" class="box-text">Сүлжээний анализ</text>
+  <text x="580" y="305" class="box-text-sm">(NetworkX)</text>
+
+  <!-- Arrow FastAPI -> NLP -->
+  <line x1="550" y1="150" x2="550" y2="175" class="arrow"/>
+
+  <!-- API Routers -->
+  <rect x="280" y="350" width="540" height="55" rx="6" fill="none" stroke="#4a8ab5" stroke-width="1.2" stroke-dasharray="6,3"/>
+  <text x="300" y="370" class="group-label">API чиглүүлэгчид (Routers)</text>
+
+  <rect x="295" y="378" width="105" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="347" y="393" class="box-text-sm">/api/upload</text>
+
+  <rect x="410" y="378" width="105" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="462" y="393" class="box-text-sm">/api/analyze</text>
+
+  <rect x="525" y="378" width="105" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="577" y="393" class="box-text-sm">/api/network</text>
+
+  <rect x="640" y="378" width="105" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="692" y="393" class="box-text-sm">/api/insights</text>
+
+  <line x1="550" y1="330" x2="550" y2="350" class="arrow"/>
+
+  <!-- HuggingFace models (cloud-like) -->
+  <rect x="295" y="425" width="175" height="48" rx="24" fill="#e8f4fd" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="382" y="446" class="box-text">HuggingFace загварууд</text>
+  <text x="382" y="462" class="box-text-sm">(Transformer Models)</text>
+
+  <!-- Knowledge Base -->
+  <rect x="530" y="425" width="155" height="48" rx="6" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="607" y="446" class="box-text">Мэдлэгийн сан</text>
+  <text x="607" y="462" class="box-text-sm">(SQLite knowledge.db)</text>
+
+  <line x1="415" y1="315" x2="382" y2="425" class="arrow-dash"/>
+  <line x1="580" y1="315" x2="607" y2="425" class="arrow-dash"/>
+
+  <!-- ==================== GROUP 2: Google Drive ==================== -->
+  <rect x="20" y="120" width="200" height="190" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="40" y="142" class="group-label">Google Drive хадгалалт</text>
+
+  <rect x="40" y="155" width="160" height="40" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="120" y="172" class="box-text">CSV өгөгдлийн сан</text>
+  <text x="120" y="186" class="box-text-sm">(mongolian_news_demo.csv)</text>
+
+  <rect x="40" y="210" width="160" height="40" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="120" y="227" class="box-text">Сургасан NER модель</text>
+  <text x="120" y="241" class="box-text-sm">(ner_mongolian/)</text>
+
+  <rect x="40" y="265" width="160" height="30" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="120" y="285" class="box-text">Тохиргооны файлууд</text>
+
+  <!-- Arrow Drive -> Colab -->
+  <line x1="220" y1="225" x2="278" y2="225" class="arrow"/>
+  <text x="240" y="218" class="box-text-sm">mount</text>
+
+  <!-- ==================== GROUP 3: ngrok ==================== -->
+  <rect x="350" y="510" width="400" height="55" rx="8" fill="#fdebd0" stroke="#c0792a" stroke-width="2"/>
+  <text x="550" y="532" class="box-text" style="font-weight:bold;">ngrok туннель</text>
+  <text x="550" y="548" class="box-text-sm">https://xxxx.ngrok-free.app  →  localhost:8000</text>
+
+  <!-- Arrow Colab -> ngrok -->
+  <line x1="550" y1="490" x2="550" y2="510" class="arrow"/>
+
+  <!-- ==================== GROUP 4: Frontend (Next.js) ==================== -->
+  <rect x="880" y="60" width="200" height="240" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="900" y="82" class="group-label">Фронтэнд (Next.js)</text>
+
+  <rect x="900" y="95" width="160" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="980" y="114" class="box-text">Хяналтын самбар</text>
+  <text x="980" y="131" class="box-text-sm">(Dashboard)</text>
+
+  <rect x="900" y="152" width="160" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="980" y="171" class="box-text">Админ хуудас</text>
+  <text x="980" y="188" class="box-text-sm">(Мэдлэгийн сан)</text>
+
+  <rect x="900" y="210" width="160" height="35" rx="5" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="980" y="232" class="box-text-sm">Recharts / D3.js дүрслэл</text>
+
+  <rect x="900" y="255" width="160" height="30" rx="5" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="980" y="274" class="box-text-sm">Tailwind CSS загвар</text>
+
+  <!-- Arrow Frontend <-> FastAPI -->
+  <line x1="900" y1="140" x2="720" y2="125" class="arrow-both"/>
+  <text x="815" y="118" class="box-text-sm">REST API</text>
+
+  <!-- ==================== GROUP 5: User ==================== -->
+  <rect x="880" y="370" width="200" height="80" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="900" y="392" class="group-label">Хэрэглэгч</text>
+
+  <rect x="900" y="403" width="160" height="35" rx="5" fill="#d5f5e3" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="980" y="420" class="box-text">Вэб хөтөч</text>
+  <text x="980" y="434" class="box-text-sm">(Chrome / Firefox)</text>
+
+  <!-- Arrow User <-> Frontend -->
+  <line x1="980" y1="370" x2="980" y2="300" class="arrow-both"/>
+  <text x="993" y="340" class="box-text-sm">HTTP</text>
+
+  <!-- Arrow User -> ngrok -->
+  <path d="M 900 425 L 755 540" class="arrow-dash"/>
+  <text x="845" y="478" class="box-text-sm">ngrok URL</text>
+
+  <!-- ==================== Internet ==================== -->
+  <ellipse cx="550" cy="630" rx="130" ry="35" fill="#e8f4fd" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="550" y="627" class="box-text" style="font-weight:bold;">Интернэт</text>
+  <text x="550" y="645" class="box-text-sm">(Нийтийн хандалт)</text>
+
+  <!-- Arrow ngrok <-> internet -->
+  <line x1="550" y1="565" x2="550" y2="595" class="arrow-both"/>
+
+  <!-- Arrow internet -> user -->
+  <path d="M 655 610 Q 810 590 900 440" class="arrow-dash"/>
+
+  <!-- Caption -->
+  <text x="550" y="690" text-anchor="middle" class="subtitle">Зураг: NLP Intelligence демо вэб аппликейшны ерөнхий архитектур</text>
+</svg>
+</body>
+</html>

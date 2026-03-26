@@ -140,9 +140,13 @@ class TopicModeler:
         self,
         embedding_model: str = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2",
         language: str = "multilingual",
+        min_topics: int = 5,
+        max_topics: int = 15,
     ):
         self.embedding_model_name = embedding_model
         self.language = language
+        self.min_topics = min_topics
+        self.max_topics = max_topics
         self._embedding_model = None
         self._model = None             # last fitted BERTopic model
 
@@ -174,13 +178,18 @@ class TopicModeler:
         mmr = MaximalMarginalRelevance(diversity=0.5)
 
         if n_docs >= MIN_BERTOPIC_DOCS:
-            # Large dataset: HDBSCAN density-based clustering
-            from hdbscan import HDBSCAN
-            mcs = max(3, n_docs // 10)
-            cluster_model = HDBSCAN(
-                min_cluster_size=mcs,
-                min_samples=1,
-                prediction_data=True,
+            # Large dataset: use KMeans to guarantee a controllable number
+            # of topics. HDBSCAN tends to produce too few topics (2-3) on
+            # medium datasets (100-1000 docs) because of aggressive merging.
+            from sklearn.cluster import KMeans
+            n_clusters = max(
+                self.min_topics,
+                min(n_docs // 10, self.max_topics), # Increased division base to allow more topics
+            )
+            # Ensure we don't request more clusters than documents
+            n_clusters = min(n_clusters, n_docs)
+            cluster_model = KMeans(
+                n_clusters=n_clusters, random_state=42, n_init="auto"
             )
             return BERTopic(
                 language=self.language,
@@ -194,7 +203,9 @@ class TopicModeler:
             # Small/medium dataset (<50 docs): KMeans guarantees every
             # document gets a topic (no outlier -1 assignments).
             from sklearn.cluster import KMeans
-            n_clusters = max(2, min(n_docs // 4, MAX_TINY_TOPICS))
+            n_clusters = max(min(2, n_docs), min(n_docs // 3, self.max_topics))
+            # If user wants min_topics=5, try to enforce it if dataset is large enough
+            n_clusters = min(max(n_clusters, self.min_topics), n_docs)
             cluster_model = KMeans(n_clusters=n_clusters, random_state=42, n_init="auto")
             return BERTopic(
                 language=self.language,

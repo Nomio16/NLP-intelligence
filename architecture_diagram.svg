@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 700" font-family="Arial, sans-serif">
+  <style>
+    .title { font-size: 22px; font-weight: bold; fill: #1a3a5c; }
+    .subtitle { font-size: 11px; fill: #555; font-style: italic; }
+    .group-label { font-size: 13px; font-weight: bold; fill: #1a3a5c; }
+    .box-text { font-size: 11px; fill: #1a3a5c; text-anchor: middle; }
+    .box-text-sm { font-size: 9.5px; fill: #444; text-anchor: middle; }
+    .arrow { stroke: #1a3a5c; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); }
+    .arrow-dash { stroke: #1a3a5c; stroke-width: 1.5; fill: none; stroke-dasharray: 6,3; marker-end: url(#arrowhead); }
+    .arrow-both { stroke: #1a3a5c; stroke-width: 1.8; fill: none; marker-end: url(#arrowhead); marker-start: url(#arrowhead-rev); }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1a3a5c"/>
+    </marker>
+    <marker id="arrowhead-rev" markerWidth="10" markerHeight="7" refX="1" refY="3.5" orient="auto">
+      <polygon points="10 0, 0 3.5, 10 7" fill="#1a3a5c"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="35" text-anchor="middle" class="title">ДЕМО ВЕБ АППЛИКЕЙШНЫ СИСТЕМИЙН АРХИТЕКТУР</text>
+
+  <!-- ==================== GROUP 1: Google Colab (large dashed box) ==================== -->
+  <rect x="250" y="60" width="600" height="510" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="270" y="82" class="group-label">Google Colab (GPU Runtime)</text>
+
+  <!-- FastAPI Server box -->
+  <rect x="380" y="100" width="340" height="50" rx="6" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="550" y="121" class="box-text">FastAPI Сервер</text>
+  <text x="550" y="139" class="box-text-sm">REST API (uvicorn, port 8000)</text>
+
+  <!-- NLP Pipeline group inside Colab -->
+  <rect x="280" y="175" width="540" height="155" rx="6" fill="none" stroke="#4a8ab5" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="300" y="195" class="group-label">NLP Боловсруулалтын хоолой (Domain Core)</text>
+
+  <!-- NLP boxes row 1 -->
+  <rect x="300" y="205" width="120" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="360" y="224" class="box-text">Урьдчилсан</text>
+  <text x="360" y="240" class="box-text-sm">боловсруулалт</text>
+
+  <rect x="440" y="205" width="120" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="500" y="224" class="box-text">NER систем</text>
+  <text x="500" y="240" class="box-text-sm">(BERT модель)</text>
+
+  <rect x="580" y="205" width="120" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="640" y="224" class="box-text">Сэтгэгдлийн</text>
+  <text x="640" y="240" class="box-text-sm">шинжилгээ (XLM-R)</text>
+
+  <!-- NLP boxes row 2 -->
+  <rect x="350" y="270" width="130" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="415" y="289" class="box-text">Сэдвийн загвар</text>
+  <text x="415" y="305" class="box-text-sm">(BERTopic)</text>
+
+  <rect x="510" y="270" width="140" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="580" y="289" class="box-text">Сүлжээний анализ</text>
+  <text x="580" y="305" class="box-text-sm">(NetworkX)</text>
+
+  <!-- Arrows from FastAPI to NLP -->
+  <line x1="550" y1="150" x2="550" y2="175" class="arrow"/>
+
+  <!-- API Routers inside FastAPI detail -->
+  <rect x="280" y="350" width="540" height="55" rx="6" fill="none" stroke="#4a8ab5" stroke-width="1.2" stroke-dasharray="6,3"/>
+  <text x="300" y="370" class="group-label">API чиглүүлэгчид (Routers)</text>
+
+  <rect x="295" y="378" width="110" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="350" y="393" class="box-text-sm">/api/upload</text>
+
+  <rect x="415" y="378" width="110" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="470" y="393" class="box-text-sm">/api/analyze</text>
+
+  <rect x="535" y="378" width="110" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="590" y="393" class="box-text-sm">/api/network</text>
+
+  <rect x="655" y="378" width="110" height="22" rx="4" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="710" y="393" class="box-text-sm">/api/insights</text>
+
+  <!-- Arrow from NLP to Routers -->
+  <line x1="550" y1="330" x2="550" y2="350" class="arrow"/>
+
+  <!-- HuggingFace Models (cloud shape - simplified as rounded rect) -->
+  <rect x="310" y="430" width="190" height="50" rx="25" fill="#e8f4fd" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="405" y="452" class="box-text">HuggingFace загварууд</text>
+  <text x="405" y="468" class="box-text-sm">(Transformer Models)</text>
+
+  <!-- Knowledge Base -->
+  <rect x="540" y="430" width="160" height="50" rx="6" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="620" y="452" class="box-text">Мэдлэгийн сан</text>
+  <text x="620" y="468" class="box-text-sm">(SQLite knowledge.db)</text>
+
+  <!-- Arrow from NLP row to HF models -->
+  <line x1="415" y1="315" x2="405" y2="430" class="arrow-dash"/>
+  <!-- Arrow from NLP to KB -->
+  <line x1="580" y1="315" x2="620" y2="430" class="arrow-dash"/>
+
+  <!-- ==================== GROUP 2: Google Drive (left side) ==================== -->
+  <rect x="20" y="120" width="200" height="180" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="40" y="142" class="group-label">Google Drive хадгалалт</text>
+
+  <rect x="40" y="155" width="160" height="40" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="120" y="172" class="box-text">CSV өгөгдлийн сан</text>
+  <text x="120" y="186" class="box-text-sm">(news_demo.csv)</text>
+
+  <rect x="40" y="210" width="160" height="40" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="120" y="227" class="box-text">Сургасан NER модель</text>
+  <text x="120" y="241" class="box-text-sm">(ner_mongolian/)</text>
+
+  <rect x="40" y="260" width="160" height="30" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="120" y="280" class="box-text">Тохиргооны файлууд</text>
+
+  <!-- Arrow from Drive to Colab -->
+  <line x1="220" y1="210" x2="280" y2="210" class="arrow"/>
+  <text x="235" y="203" class="box-text-sm">mount</text>
+
+  <!-- ==================== GROUP 3: ngrok Tunnel ==================== -->
+  <rect x="380" y="500" width="340" height="55" rx="8" fill="#fdebd0" stroke="#c0792a" stroke-width="2"/>
+  <text x="550" y="522" class="box-text" style="font-weight:bold;">ngrok туннель</text>
+  <text x="550" y="540" class="box-text-sm">https://xxxx.ngrok-free.app → localhost:8000</text>
+
+  <!-- Arrow from FastAPI to ngrok -->
+  <line x1="550" y1="480" x2="550" y2="500" class="arrow"/>
+
+  <!-- ==================== GROUP 4: Frontend (Next.js) ==================== -->
+  <rect x="880" y="60" width="200" height="230" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="900" y="82" class="group-label">Фронтэнд (Next.js)</text>
+
+  <rect x="900" y="95" width="160" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="980" y="114" class="box-text">Хяналтын самбар</text>
+  <text x="980" y="131" class="box-text-sm">(Dashboard)</text>
+
+  <rect x="900" y="152" width="160" height="45" rx="5" fill="#b8d4e8" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="980" y="171" class="box-text">Админ хуудас</text>
+  <text x="980" y="188" class="box-text-sm">(Knowledge Base)</text>
+
+  <rect x="900" y="210" width="160" height="35" rx="5" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="980" y="228" class="box-text-sm">Recharts / D3.js</text>
+  <text x="980" y="240" class="box-text-sm">дүрслэл</text>
+
+  <rect x="900" y="252" width="160" height="25" rx="5" fill="#d4e6f1" stroke="#1a3a5c" stroke-width="1"/>
+  <text x="980" y="269" class="box-text-sm">Tailwind CSS</text>
+
+  <!-- Arrow from Frontend to FastAPI (bidirectional) -->
+  <line x1="900" y1="145" x2="720" y2="125" class="arrow-both"/>
+  <text x="810" y="118" class="box-text-sm">REST API</text>
+
+  <!-- ==================== GROUP 5: User (browser) ==================== -->
+  <rect x="880" y="360" width="200" height="80" rx="8" fill="none" stroke="#1a3a5c" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="900" y="382" class="group-label">Хэрэглэгч</text>
+
+  <rect x="900" y="393" width="160" height="35" rx="5" fill="#d5f5e3" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="980" y="410" class="box-text">Вэб хөтөч</text>
+  <text x="980" y="424" class="box-text-sm">(Chrome / Firefox)</text>
+
+  <!-- Arrow from User to Frontend -->
+  <line x1="980" y1="360" x2="980" y2="290" class="arrow-both"/>
+  <text x="993" y="330" class="box-text-sm">HTTP</text>
+
+  <!-- Arrow from User to ngrok (direct API access) -->
+  <path d="M 900 415 L 730 530" class="arrow-dash"/>
+  <text x="830" y="470" class="box-text-sm">ngrok URL</text>
+
+  <!-- ==================== INTERNET CLOUD ==================== -->
+  <ellipse cx="550" cy="620" rx="120" ry="35" fill="#e8f4fd" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="550" y="617" class="box-text">Интернэт</text>
+  <text x="550" y="635" class="box-text-sm">(Public Access)</text>
+
+  <!-- Arrow from ngrok to internet -->
+  <line x1="550" y1="555" x2="550" y2="585" class="arrow-both"/>
+
+  <!-- Arrow from internet to user -->
+  <path d="M 640 600 Q 800 580 900 440" class="arrow-dash"/>
+
+  <!-- Caption -->
+  <text x="550" y="690" text-anchor="middle" class="subtitle">Зураг 1: NLP Intelligence демо вэб аппликейшны ерөнхий архитектур</text>
+</svg>
