@@ -87,9 +87,18 @@ _MN_STOPWORDS = {
     # Generic high-frequency nouns (appear in every news article)
     "монгол", "улс", "улсын", "хот", "хотын", "аймаг", "аймагт",
     "шинэ", "онд", "жил", "жилд", "хувь", "хувиар", "тэрбум",
-    "байна.", "нэг", "гаруй", "дахин", "хэд", "хэдэн",
+    "байна.", "нэг", "гаруй", "дахин", "хэд", "хэдэн", "өнгөрсөн",
     # Numbers written as words
     "нэг", "хоёр", "гурав", "дөрөв", "тав", "зургаа", "долоо", "найм",
+    # Common news/media filler words
+    "ноцтой", "ноц", "томоохон", "чухал", "асуудал", "асуудлыг",
+    "нөлөө", "нөлөөл", "байгааг", "байгаад", "салбар", "салбарт",
+    "ажиллагаа", "ашиглалта", "ашиглалтад", "нэмэгдсэн", "нэмэгд",
+    "бууруул", "буурсан", "сайжруул", "хангах", "хангаж", "хүрч",
+    "хүрсэн", "хүрэлцэх", "шийдвэрлэх", "шаардлагатай", "шаардаж",
+    "түвшин", "түвш", "хэрэгжүүлж", "хэмжээ", "нийтлэл",
+    "алхам", "ахиц", "үр", "дүн", "олон", "бүх", "иргэд", "иргэн",
+    "засгийн", "газар", "засаг", "өмнөх",
     # Other function words
     "тийм", "ийм", "чинь", "минь", "билээ", "шүү",
     "надад", "танд", "бусад", "зарим", "ийнхүү", "тухай",
@@ -120,8 +129,8 @@ def _mongolian_tokenizer(text: str) -> List[str]:
 
 # Thresholds
 MIN_TINY_DOCS = 3       # minimum to attempt topic modeling at all
-MIN_BERTOPIC_DOCS = 10  # minimum to use BERTopic's default HDBSCAN
-MAX_TINY_TOPICS = 8     # cap for KMeans cluster count on small datasets
+MIN_BERTOPIC_DOCS = 50  # use KMeans for <50 docs (HDBSCAN needs more)
+MAX_TINY_TOPICS = 10    # cap for KMeans cluster count on small datasets
 
 
 class TopicModeler:
@@ -152,20 +161,22 @@ class TopicModeler:
           document gets a real topic assignment instead of -1.
         """
         from bertopic import BERTopic
+        from bertopic.representation import MaximalMarginalRelevance
         from sklearn.feature_extraction.text import CountVectorizer
 
         vectorizer = CountVectorizer(
             tokenizer=_mongolian_tokenizer,
             min_df=1,
-            max_df=0.85,  # ignore terms appearing in >85% of docs
+            max_df=0.80,  # ignore terms appearing in >80% of docs
         )
 
+        # MMR picks diverse keywords instead of redundant near-synonyms
+        mmr = MaximalMarginalRelevance(diversity=0.5)
+
         if n_docs >= MIN_BERTOPIC_DOCS:
-            # Standard BERTopic — HDBSCAN with min_cluster_size tuned to
-            # dataset size so it's not too greedy on medium datasets.
-            # Smaller min_cluster_size = more fine-grained topics.
+            # Large dataset: HDBSCAN density-based clustering
             from hdbscan import HDBSCAN
-            mcs = max(2, n_docs // 8)  # 30 docs → 3, 80 docs → 10
+            mcs = max(3, n_docs // 10)
             cluster_model = HDBSCAN(
                 min_cluster_size=mcs,
                 min_samples=1,
@@ -176,20 +187,22 @@ class TopicModeler:
                 embedding_model=self._load_embedding_model(),
                 hdbscan_model=cluster_model,
                 vectorizer_model=vectorizer,
+                representation_model=mmr,
                 min_topic_size=2,
             )
         else:
-            # Small dataset: KMeans always assigns every point to a cluster.
-            # n_clusters chosen proportionally but capped at MAX_TINY_TOPICS.
+            # Small/medium dataset (<50 docs): KMeans guarantees every
+            # document gets a topic (no outlier -1 assignments).
             from sklearn.cluster import KMeans
-            n_clusters = max(2, min(n_docs // 2, MAX_TINY_TOPICS))
+            n_clusters = max(2, min(n_docs // 4, MAX_TINY_TOPICS))
             cluster_model = KMeans(n_clusters=n_clusters, random_state=42, n_init="auto")
             return BERTopic(
                 language=self.language,
                 embedding_model=self._load_embedding_model(),
                 hdbscan_model=cluster_model,
                 vectorizer_model=vectorizer,
-                min_topic_size=1,       # allow single-doc topics on tiny sets
+                representation_model=mmr,
+                min_topic_size=1,
                 nr_topics="auto",
             )
 
