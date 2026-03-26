@@ -257,9 +257,9 @@ class TopicModeler:
         # Map from valid_texts index back to original texts index
         result_map: Dict[int, TopicResult] = {}
         for pos, (orig_idx, topic_id) in enumerate(zip(indices, topics)):
-            prob = probs[pos] if hasattr(probs[pos], '__float__') else 0.0
+            prob = probs[pos] if probs is not None and hasattr(probs[pos], '__float__') else 0.0
             topic_words = model.get_topic(topic_id)
-            keywords = [w for w, _ in topic_words[:5]] if topic_words else []
+            keywords = [w for w, _ in (topic_words or [])[:5]]
 
             topic_row = topic_info[topic_info["Topic"] == topic_id]
             if not topic_row.empty and "Name" in topic_row.columns:
