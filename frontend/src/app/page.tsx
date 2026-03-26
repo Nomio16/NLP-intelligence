@@ -750,6 +750,16 @@ export default function Dashboard() {
               </div>
 
               {/* Topic summary */}
+              {data.topic_summary?.length > 0 && (data.topic_summary[0]?.error || data.topic_summary[0]?.info) && (
+                <div className="card">
+                  <div className="card-header">
+                    <h3 className="card-title">🗂 Сэдвүүд</h3>
+                  </div>
+                  <p style={{ color: "var(--warning)", fontSize: "0.85rem", padding: "0.5rem" }}>
+                    ⚠️ {data.topic_summary[0]?.error || data.topic_summary[0]?.info}
+                  </p>
+                </div>
+              )}
               {data.topic_summary?.length > 0 && !data.topic_summary[0]?.error && !data.topic_summary[0]?.info && (
                 <div className="card">
                   <div className="card-header">
