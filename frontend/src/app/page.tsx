@@ -4,7 +4,7 @@ import { useState, useRef, useCallback, useEffect } from "react";
 import AnnotationEditor, { DocForEditor } from "./components/AnnotationEditor";
 
 // Use the backend directly to avoid Next.js rewrite proxy timeout on long-running analysis
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 
 interface Entity {
   word: string;
