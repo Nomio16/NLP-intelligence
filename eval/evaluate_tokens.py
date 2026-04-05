@@ -95,7 +95,7 @@ def main(limit=None):
                                   precision_score, recall_score)
 
     base       = os.path.dirname(os.path.dirname(__file__))
-    test_path  = os.path.join(base, "data", "test.txt")
+    test_path  = os.path.join(base, "Data", "data", "test.txt")
     model_path = os.path.join(base, "adapters", "ner_mongolian")
 
     if not os.path.exists(model_path):

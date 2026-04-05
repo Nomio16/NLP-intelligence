@@ -1,0 +1,9 @@
+Data/
+eval/
+venv/
+.git/
+*.md
+architecture_diagram.*
+knowledge.db
+.gitignore
+.dockerignore

@@ -3,8 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import AnnotationEditor, { DocForEditor } from "./components/AnnotationEditor";
 
-const API_BASE = "";
-//const API_BASE = "";
+// Use the backend directly to avoid Next.js rewrite proxy timeout on long-running analysis
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface Entity {
   word: string;
@@ -35,6 +35,12 @@ interface AnalysisResult {
   topic_summary: any[];
   sentiment_summary: { [key: string]: number };
   entity_summary: { [key: string]: { word: string; count: number }[] };
+  performance_metrics?: {
+    processing_time_sec: number;
+    data_size_bytes: number;
+    ram_used_mb: number;
+    gpu_vram_used_mb: number;
+  };
   total_documents: number;
 }
 
@@ -201,6 +207,7 @@ export default function Dashboard() {
   const [insights, setInsights] = useState<InsightItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [progress, setProgress] = useState<{ step: string; message: string; pct: number } | null>(null);
   const [textInput, setTextInput] = useState("");
   const [dragging, setDragging] = useState(false);
   const [activeTab, setActiveTab] = useState<"overview" | "documents" | "insights" | "history">("overview");
@@ -218,6 +225,12 @@ export default function Dashboard() {
 
   // Annotation editor
   const [editingDoc, setEditingDoc] = useState<DocForEditor | null>(null);
+
+  // Feature filters & Performance
+  const [runNer, setRunNer] = useState(true);
+  const [runSentiment, setRunSentiment] = useState(true);
+  const [runTopics, setRunTopics] = useState(true);
+  const [fetchTimeMs, setFetchTimeMs] = useState<number | null>(null);
 
   // Backend health check
   const [backendOk, setBackendOk] = useState<boolean | null>(null); // null = checking
@@ -315,69 +328,124 @@ export default function Dashboard() {
     }
   };
 
+  // ------------------------------------------------------------------
+  // SSE stream reader — reads progress events from streaming endpoints
+  // ------------------------------------------------------------------
+  const readSSEStream = useCallback(async (
+    response: Response,
+    startMs: number,
+  ): Promise<AnalysisResult | null> => {
+    const reader = response.body?.getReader();
+    if (!reader) throw new Error("No response body");
+
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let result: AnalysisResult | null = null;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+
+      // Parse complete SSE events from buffer
+      const parts = buffer.split("\n\n");
+      buffer = parts.pop() || ""; // Keep incomplete event in buffer
+
+      for (const part of parts) {
+        if (!part.trim()) continue;
+        let eventType = "message";
+        let eventData = "";
+        for (const line of part.split("\n")) {
+          if (line.startsWith("event: ")) eventType = line.slice(7);
+          else if (line.startsWith("data: ")) eventData = line.slice(6);
+        }
+        if (!eventData) continue;
+
+        try {
+          const parsed = JSON.parse(eventData);
+          if (eventType === "progress") {
+            setProgress(parsed);
+            console.log(`[SSE] ${parsed.step}: ${parsed.message} (${parsed.pct}%)`);
+          } else if (eventType === "result") {
+            result = parsed as AnalysisResult;
+            setFetchTimeMs(performance.now() - startMs);
+            console.log(`[SSE] Result received: ${result.total_documents} documents`);
+          }
+        } catch {
+          // Skip malformed events
+        }
+      }
+    }
+    return result;
+  }, []);
+
   const uploadCSV = useCallback(async (file: File) => {
     setLoading(true);
     setError("");
+    setProgress(null);
     console.group(`[NLP] CSV Upload — ${file.name} (${(file.size/1024).toFixed(1)} KB)`);
     try {
       const formData = new FormData();
       formData.append("file", file);
-      // ⚠️ IMPORTANT: ngrok-skip-browser-warning header MUST be included here.
-      // Without it, Ngrok returns an HTML warning page instead of forwarding
-      // the request to FastAPI → FastAPI tries to parse HTML as CSV → 500 error.
-      const res = await fetch(`${API_BASE}/api/upload?run_ner=true&run_sentiment=true&run_topics=true`, {
+      const startMs = performance.now();
+      const res = await fetch(`${API_BASE}/api/upload/stream?run_ner=${runNer}&run_sentiment=${runSentiment}&run_topics=${runTopics}`, {
         method: "POST",
-        headers: NGROK_HEADERS,   // ← THE FIX
+        headers: NGROK_HEADERS,
         body: formData,
       });
-      console.log(`→ POST /api/upload  status=${res.status}`);
+      console.log(`→ POST /api/upload/stream  status=${res.status}`);
       if (!res.ok) {
         const err = await res.json().catch(() => ({ detail: `HTTP ${res.status}` }));
         throw new Error(err.detail || "Upload failed");
       }
-      const result: AnalysisResult = await res.json();
-      console.log(`← ${result.total_documents} documents, topics=${result.topic_summary?.length}`);
-      setData(result);
-      setActiveTab("overview");  // Auto-switch to results
 
-      // Immediately fetch insights after upload
-      const insightsRes = await fetch(`${API_BASE}/api/insights`, { headers: NGROK_HEADERS, method: "POST" });
-      console.log(`→ POST /api/insights  status=${insightsRes.status}`);
-      if (insightsRes.ok) setInsights(await insightsRes.json());
+      const result = await readSSEStream(res, startMs);
+      if (result) {
+        setData(result);
+        setActiveTab("overview");
+
+        // Fetch insights after analysis
+        const insightsRes = await fetch(`${API_BASE}/api/insights`, { headers: NGROK_HEADERS, method: "POST" });
+        if (insightsRes.ok) setInsights(await insightsRes.json());
+      }
     } catch (e: any) {
       console.error("Upload error:", e);
       setError(e.message || "Error uploading file");
     } finally {
       setLoading(false);
+      setProgress(null);
       console.groupEnd();
     }
-  }, []);
+  }, [runNer, runSentiment, runTopics, readSSEStream]);
 
   const analyzeText = useCallback(async () => {
     if (!textInput.trim()) return;
     setLoading(true);
     setError("");
+    setProgress(null);
     console.group(`[NLP] Analyze text (${textInput.length} chars)`);
     try {
-      const res = await fetch(`${API_BASE}/api/analyze`, {
+      const startMs = performance.now();
+      const res = await fetch(`${API_BASE}/api/analyze/stream`, {
         method: "POST",
         headers: { ...NGROK_HEADERS, "Content-Type": "application/json" },
-        body: JSON.stringify({ text: textInput }),
+        body: JSON.stringify({ text: textInput, run_ner: runNer, run_sentiment: runSentiment, run_topics: runTopics }),
       });
-      console.log(`→ POST /api/analyze  status=${res.status}`);
+      console.log(`→ POST /api/analyze/stream  status=${res.status}`);
       if (!res.ok) throw new Error("Analysis failed");
-      const result: AnalysisResult = await res.json();
-      console.log(`← entities:`, result.documents[0]?.entities?.length ?? 0,
-        `sentiment:`, result.documents[0]?.sentiment?.label);
-      setData(result);
+
+      const result = await readSSEStream(res, startMs);
+      if (result) setData(result);
     } catch (e: any) {
       console.error(e);
       setError(e.message);
     } finally {
       setLoading(false);
+      setProgress(null);
       console.groupEnd();
     }
-  }, [textInput]);
+  }, [textInput, runNer, runSentiment, runTopics, readSSEStream]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -456,6 +524,25 @@ export default function Dashboard() {
       {!data && !loading && (
 
         <section style={{ marginBottom: "2rem" }}>
+          <div style={{ padding: "1rem", background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: "8px", marginBottom: "1.5rem" }}>
+            <h4 style={{ margin: "0 0 0.75rem 0", fontSize: "0.9rem" }}>⚙️ Шинжилгээний тохиргоо (Features)</h4>
+            <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap", fontSize: "0.85rem" }}>
+              <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
+                <input type="checkbox" checked={runSentiment} onChange={e => setRunSentiment(e.target.checked)} />
+                Сэтгэгдэл (Sentiment)
+              </label>
+              <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
+                <input type="checkbox" checked={runNer} onChange={e => setRunNer(e.target.checked)} />
+                Нэрлэсэн объект (NER)
+              </label>
+              <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", cursor: "pointer" }}>
+                <input type="checkbox" checked={runTopics} onChange={e => setRunTopics(e.target.checked)} />
+                Сэдэв (Topic Modeling)
+              </label>
+            </div>
+            <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", margin: "0.5rem 0 0 0" }}>Тайлбар: Эхний удаа сервер унтрах (Timeout) эрсдэлтэй үед зөвхөн нэгийг нь сонгож ажиллуулна уу.</p>
+          </div>
+
           <div
             className={`upload-area ${dragging ? "dragging" : ""}`}
             onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -512,11 +599,66 @@ export default function Dashboard() {
         </section>
       )}
 
-      {/* Loading */}
+      {/* Loading — with progress bar when streaming */}
       {loading && (
-        <div className="loading">
-          <div className="spinner" />
-          Загвар ачааллаж, шинжилгээ хийж байна... (анх удаа удаан байж болно)
+        <div className="card" style={{ marginBottom: "1rem", padding: "1.5rem" }}>
+          {progress ? (
+            <div>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+                <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                  {progress.message}
+                </span>
+                <span style={{ color: "var(--accent)", fontWeight: 600 }}>
+                  {progress.pct}%
+                </span>
+              </div>
+              <div style={{
+                width: "100%", height: 8, borderRadius: 4,
+                background: "var(--bg-secondary)", overflow: "hidden",
+              }}>
+                <div style={{
+                  width: `${progress.pct}%`, height: "100%", borderRadius: 4,
+                  background: progress.step === "done"
+                    ? "var(--positive)"
+                    : "var(--accent)",
+                  transition: "width 0.4s ease, background 0.3s ease",
+                }} />
+              </div>
+              <div style={{
+                display: "flex", gap: "0.75rem", marginTop: "0.75rem",
+                flexWrap: "wrap",
+              }}>
+                {["preprocess", "ner", "sentiment", "topics", "saving"].map((s) => {
+                  const isCurrent = progress.step === s;
+                  const isDone = progress.pct >= 100 || (
+                    ["preprocess", "ner", "sentiment", "topics", "saving"].indexOf(s)
+                    < ["preprocess", "ner", "sentiment", "topics", "saving"].indexOf(progress.step)
+                  );
+                  const labels: Record<string, string> = {
+                    preprocess: "Цэвэрлэх", ner: "NER", sentiment: "Сэтгэгдэл",
+                    topics: "Сэдэв", saving: "Хадгалах",
+                  };
+                  return (
+                    <span key={s} style={{
+                      fontSize: "0.75rem", padding: "0.2rem 0.6rem",
+                      borderRadius: "var(--radius-sm)",
+                      background: isCurrent ? "var(--accent)" : isDone ? "rgba(34,197,94,0.15)" : "var(--bg-secondary)",
+                      color: isCurrent ? "#fff" : isDone ? "var(--positive)" : "var(--text-muted)",
+                      fontWeight: isCurrent ? 600 : 400,
+                      transition: "all 0.3s ease",
+                    }}>
+                      {isDone && !isCurrent ? "✓ " : isCurrent ? "⏳ " : ""}{labels[s] || s}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            <div className="loading">
+              <div className="spinner" />
+              Загвар ачааллаж, шинжилгээ хийж байна... (анх удаа удаан байж болно)
+            </div>
+          )}
         </div>
       )}
 
@@ -705,6 +847,39 @@ export default function Dashboard() {
           {/* Overview Tab */}
           {activeTab === "overview" && (
             <div className="chart-grid">
+              {/* Performance Metrics */}
+              {data.performance_metrics && (
+                <div className="card" style={{ gridColumn: "1 / -1", borderLeft: "4px solid var(--primary)" }}>
+                  <div className="card-header">
+                    <h3 className="card-title">🚀 Үзүүлэлт (Performance Metrics)</h3>
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem", marginTop: "0.5rem", fontSize: "0.85rem" }}>
+                    <div>
+                      <span style={{ color: "var(--text-muted)", display: "block" }}>💾 Өгөгдлийн хэмжээ</span>
+                      <strong>{(data.performance_metrics.data_size_bytes / 1024).toFixed(2)} KB</strong>
+                    </div>
+                    <div>
+                      <span style={{ color: "var(--text-muted)", display: "block" }}>⏱️ Сервер боловсруулсан</span>
+                      <strong>{data.performance_metrics.processing_time_sec.toFixed(2)} с</strong>
+                    </div>
+                    <div>
+                      <span style={{ color: "var(--text-muted)", display: "block" }}>⏳ Нийт хүлээсэн хугацаа</span>
+                      <strong>{fetchTimeMs ? (fetchTimeMs / 1000).toFixed(2) : "0"} с</strong>
+                    </div>
+                    <div>
+                      <span style={{ color: "var(--text-muted)", display: "block" }}>🧠 RAM хэрэглээ (нэмэлт)</span>
+                      <strong>{data.performance_metrics.ram_used_mb.toFixed(1)} MB</strong>
+                    </div>
+                    {data.performance_metrics.gpu_vram_used_mb > 0 && (
+                      <div>
+                        <span style={{ color: "var(--text-muted)", display: "block" }}>🎮 GPU VRAM хэрэглээ</span>
+                        <strong>{data.performance_metrics.gpu_vram_used_mb.toFixed(1)} MB</strong>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
               {/* Sentiment */}
               <div className="card">
                 <div className="card-header">

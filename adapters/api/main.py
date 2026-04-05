@@ -46,6 +46,34 @@ app.include_router(insights.router, prefix="/api", tags=["Insights"])
 app.include_router(admin.router, prefix="/api/admin", tags=["Admin"])
 
 
+@app.on_event("startup")
+async def warmup_models():
+    """
+    Pre-load heavy ML models at server startup so the first user request
+    doesn't trigger a 30-120s model download/load that causes ECONNRESET.
+    """
+    import asyncio
+    from adapters.api import services
+
+    async def _warmup():
+        logger.info("[Warmup] Pre-loading NLP models in background...")
+        loop = asyncio.get_event_loop()
+        try:
+            await loop.run_in_executor(None, services.ner.recognize, "warmup")
+            logger.info("[Warmup] NER model loaded ✓")
+        except Exception as e:
+            logger.warning(f"[Warmup] NER failed: {e}")
+        try:
+            await loop.run_in_executor(None, services.sentiment.analyze, "warmup")
+            logger.info("[Warmup] Sentiment model loaded ✓")
+        except Exception as e:
+            logger.warning(f"[Warmup] Sentiment failed: {e}")
+        logger.info("[Warmup] All models ready.")
+
+    # Run warmup in background so the server starts accepting requests immediately
+    asyncio.create_task(_warmup())
+
+
 @app.get("/")
 async def root():
     return {

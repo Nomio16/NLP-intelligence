@@ -130,7 +130,7 @@ def evaluate_ner(test_file_path, limit=None):
     print("="*40)
 
 if __name__ == "__main__":
-    test_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "test.txt")
+    test_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Data", "data", "test.txt")
     if not os.path.exists(test_path):
         print(f"Error: Could not find CoNLL test file at {test_path}")
     else:

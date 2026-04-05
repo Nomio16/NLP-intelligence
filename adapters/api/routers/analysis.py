@@ -12,17 +12,21 @@ Changes from previous version:
        GET  /db-stats         — show table row counts + DB file size
 """
 
+import asyncio
 import csv
 import io
 import json
 import logging
 import time
 import uuid
+import psutil
+import torch
 from typing import List
 
 logger = logging.getLogger(__name__)
 
 from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi.responses import StreamingResponse
 from adapters.api.schemas import (
     TextAnalysisRequest, BatchAnalysisRequest,
     AnalysisResponse, DocumentResponse, EntityResponse,
@@ -89,13 +93,311 @@ async def analyze_text(request: TextAnalysisRequest):
     """Analyze a single text string."""
     rows = [{"ID": str(uuid.uuid4())[:8], "Text": request.text, "Source": "direct"}]
     try:
-        result = _run_analysis(rows, "Text", run_ner=True, run_sentiment=True, run_topics=False)
+        result = _run_analysis(rows, "Text", run_ner=request.run_ner, run_sentiment=request.run_sentiment, run_topics=request.run_topics)
     except Exception as exc:
         logger.exception("Analysis pipeline failed for single text")
         raise HTTPException(status_code=500, detail=f"Analysis failed: {exc}")
     services.set_last_analysis(result)
     result = _save_and_attach_doc_ids(result, source_filename="single-text")
     return result
+
+
+# ---------------------------------------------------------------------------
+# SSE helpers
+# ---------------------------------------------------------------------------
+
+def _sse_event(event: str, data: dict) -> str:
+    """Format a Server-Sent Event string."""
+    return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
+
+
+async def _stream_analysis(
+    rows: List[dict],
+    text_col: str,
+    run_ner: bool,
+    run_sentiment: bool,
+    run_topics: bool,
+    source_filename: str = "",
+):
+    """
+    Async generator that runs the analysis pipeline step-by-step,
+    yielding SSE progress events between each heavy computation.
+    Final event is 'result' with the full AnalysisResponse JSON.
+    """
+    loop = asyncio.get_event_loop()
+    t0 = time.time()
+
+    try:
+        baseline_ram = psutil.virtual_memory().used
+        baseline_vram = torch.cuda.memory_allocated() if torch.cuda.is_available() else 0
+    except Exception:
+        baseline_ram = 0
+        baseline_vram = 0
+
+    preprocessor = services.preprocessor
+    kb = services.kb
+
+    raw_texts = [row.get(text_col, "") for row in rows]
+    ids       = [row.get("ID", str(i)) for i, row in enumerate(rows)]
+    sources   = [row.get("Source", "") for row in rows]
+    data_size_bytes = sum(len(r.encode('utf-8')) for r in raw_texts)
+    n = len(raw_texts)
+
+    # Count active steps for percentage calculation
+    steps = ["preprocess"]
+    if run_ner:       steps.append("ner")
+    if run_sentiment: steps.append("sentiment")
+    if run_topics:    steps.append("topics")
+    steps.append("saving")
+    step_pct = {s: int((i + 1) / len(steps) * 100) for i, s in enumerate(steps)}
+
+    logger.info(f"[Pipeline/SSE] Starting: {n} rows, NER={run_ner}, Sentiment={run_sentiment}, Topics={run_topics}")
+
+    # --- Step 1: Preprocessing ---
+    yield _sse_event("progress", {
+        "step": "preprocess",
+        "message": f"Текст цэвэрлэж байна... ({n} мөр)",
+        "pct": 0,
+    })
+
+    def _preprocess():
+        nlp_texts, tm_texts = [], []
+        for raw in raw_texts:
+            nlp, tm = preprocessor.preprocess_dual(raw)
+            nlp_texts.append(nlp)
+            tm_texts.append(tm)
+        return nlp_texts, tm_texts
+
+    nlp_texts, tm_texts = await loop.run_in_executor(None, _preprocess)
+    logger.info(f"[Pipeline/SSE] Preprocessing done in {(time.time()-t0)*1000:.0f}ms")
+
+    yield _sse_event("progress", {
+        "step": "preprocess",
+        "message": f"Текст цэвэрлэгдлээ ({(time.time()-t0)*1000:.0f}ms)",
+        "pct": step_pct["preprocess"],
+    })
+
+    # --- Step 2: NER ---
+    ner_results = []
+    if run_ner:
+        yield _sse_event("progress", {
+            "step": "ner",
+            "message": f"Нэрлэсэн объект таньж байна... ({n} текст)",
+            "pct": step_pct.get("preprocess", 0) + 1,
+        })
+        t1 = time.time()
+        ner_results = await loop.run_in_executor(None, services.ner.recognize_batch, nlp_texts)
+        total_ents = sum(len(r) for r in ner_results)
+        elapsed = (time.time() - t1) * 1000
+        logger.info(f"[Pipeline/SSE] NER done in {elapsed:.0f}ms — {total_ents} entities")
+        yield _sse_event("progress", {
+            "step": "ner",
+            "message": f"NER дууслаа — {total_ents} объект олдлоо ({elapsed:.0f}ms)",
+            "pct": step_pct["ner"],
+        })
+
+    custom_labels = kb.get_labels(label_type="entity") if run_ner else {}
+
+    # --- Step 3: Sentiment ---
+    sentiment_results = []
+    if run_sentiment:
+        yield _sse_event("progress", {
+            "step": "sentiment",
+            "message": f"Сэтгэгдэл шинжилж байна... ({n} текст)",
+            "pct": step_pct.get("ner", step_pct.get("preprocess", 0)) + 1,
+        })
+        t1 = time.time()
+        sentiment_results = await loop.run_in_executor(
+            None, services.sentiment.analyze_batch, nlp_texts
+        )
+        pos = sum(1 for s in sentiment_results if s.label == "positive")
+        neg = sum(1 for s in sentiment_results if s.label == "negative")
+        neu = sum(1 for s in sentiment_results if s.label == "neutral")
+        elapsed = (time.time() - t1) * 1000
+        logger.info(f"[Pipeline/SSE] Sentiment done in {elapsed:.0f}ms — pos={pos} neu={neu} neg={neg}")
+        yield _sse_event("progress", {
+            "step": "sentiment",
+            "message": f"Сэтгэгдэл дууслаа — эерэг={pos} дунд={neu} сөрөг={neg} ({elapsed:.0f}ms)",
+            "pct": step_pct["sentiment"],
+        })
+
+    # --- Step 4: Topic Modeling ---
+    topic_results = []
+    topic_summary = []
+    if run_topics:
+        non_empty_tm = [t for t in tm_texts if t.strip()]
+        if len(tm_texts) >= MIN_TOPICS_DOCS:
+            yield _sse_event("progress", {
+                "step": "topics",
+                "message": f"Сэдэв моделлож байна... ({len(non_empty_tm)} текст)",
+                "pct": step_pct.get("sentiment", step_pct.get("ner", step_pct.get("preprocess", 0))) + 1,
+            })
+            try:
+                t1 = time.time()
+                topic_results, topic_summary = await loop.run_in_executor(
+                    None, services.topic.fit_transform, tm_texts
+                )
+                real_topics = [t for t in topic_summary if isinstance(t, dict) and t.get("topic_id", -1) >= 0]
+                elapsed = (time.time() - t1) * 1000
+                logger.info(f"[Pipeline/SSE] Topics done in {elapsed:.0f}ms — {len(real_topics)} topics")
+                yield _sse_event("progress", {
+                    "step": "topics",
+                    "message": f"Сэдэв дууслаа — {len(real_topics)} сэдэв ({elapsed:.0f}ms)",
+                    "pct": step_pct["topics"],
+                })
+            except Exception as exc:
+                logger.error(f"[Pipeline/SSE] Topic modeling FAILED: {exc}", exc_info=True)
+                topic_summary = [{"error": f"Topic modeling failed: {exc}"}]
+                yield _sse_event("progress", {
+                    "step": "topics",
+                    "message": f"Сэдэв алдаа: {exc}",
+                    "pct": step_pct["topics"],
+                })
+        else:
+            topic_summary = [{"info": f"Topic modeling needs at least {MIN_TOPICS_DOCS} documents. Got {len(tm_texts)}."}]
+
+    # --- Assemble results ---
+    yield _sse_event("progress", {
+        "step": "saving",
+        "message": "Үр дүн нэгтгэж, хадгалж байна...",
+        "pct": step_pct["saving"] - 5,
+    })
+
+    # Build per-document results (same logic as _run_analysis)
+    sentiment_counts = {"positive": 0, "neutral": 0, "negative": 0}
+    documents: List[DocumentResponse] = []
+
+    for i in range(len(raw_texts)):
+        entities: List[EntityResponse] = []
+        if i < len(ner_results):
+            for e in ner_results[i]:
+                label = custom_labels.get(e.entity_group, e.entity_group)
+                entities.append(EntityResponse(
+                    word=e.word, entity_group=label, score=e.score,
+                    start=e.start, end=e.end,
+                ))
+
+        sentiment = None
+        if i < len(sentiment_results):
+            sr = sentiment_results[i]
+            sentiment = SentimentResponse(label=sr.label, score=sr.score)
+            sentiment_counts[sr.label] = sentiment_counts.get(sr.label, 0) + 1
+
+        topic = None
+        if i < len(topic_results):
+            tr = topic_results[i]
+            topic = TopicResponse(
+                topic_id=tr.topic_id, topic_label=tr.topic_label,
+                probability=tr.probability, keywords=tr.keywords,
+            )
+
+        documents.append(DocumentResponse(
+            id=str(ids[i]), text=raw_texts[i], clean_text=nlp_texts[i],
+            source=sources[i], entities=entities, topic=topic, sentiment=sentiment,
+        ))
+
+    # Network
+    network = None
+    entity_stats: dict = {}
+    if run_ner and ner_results:
+        nd = services.network.build_network(ner_results)
+        entity_stats = services.network.get_entity_stats(ner_results)
+        network = NetworkResponse(
+            nodes=[NetworkNodeResponse(id=n.id, label=n.label, entity_type=n.entity_type, frequency=n.frequency) for n in nd.nodes],
+            edges=[NetworkEdgeResponse(source=e.source, target=e.target, weight=e.weight) for e in nd.edges],
+        )
+
+    try:
+        final_ram = psutil.virtual_memory().used
+        final_vram = torch.cuda.memory_allocated() if torch.cuda.is_available() else 0
+        ram_used_mb = max(0, (final_ram - baseline_ram) / (1024 * 1024))
+        vram_used_mb = max(0, (final_vram - baseline_vram) / (1024 * 1024))
+    except Exception:
+        ram_used_mb = 0.0
+        vram_used_mb = 0.0
+
+    result = AnalysisResponse(
+        documents=documents, network=network,
+        topic_summary=topic_summary, sentiment_summary=sentiment_counts,
+        entity_summary=entity_stats,
+        performance_metrics={
+            "processing_time_sec": time.time() - t0,
+            "data_size_bytes": float(data_size_bytes),
+            "ram_used_mb": float(ram_used_mb),
+            "gpu_vram_used_mb": float(vram_used_mb),
+        },
+        total_documents=len(documents),
+    )
+
+    services.set_last_analysis(result)
+    result = _save_and_attach_doc_ids(result, source_filename=source_filename)
+
+    yield _sse_event("progress", {
+        "step": "done",
+        "message": f"Бүгд дууслаа! ({time.time()-t0:.1f}с)",
+        "pct": 100,
+    })
+
+    # Final event: the full result
+    yield _sse_event("result", result.model_dump())
+
+
+# ---------------------------------------------------------------------------
+# POST /upload/stream  — SSE streaming upload
+# ---------------------------------------------------------------------------
+
+@router.post("/upload/stream")
+async def upload_csv_stream(
+    file: UploadFile = File(...),
+    run_ner: bool = True,
+    run_sentiment: bool = True,
+    run_topics: bool = True,
+):
+    """Upload CSV and stream progress via Server-Sent Events."""
+    if not file.filename.lower().endswith(".csv"):
+        raise HTTPException(status_code=400, detail="Only CSV files are supported")
+
+    content = await file.read()
+    rows = list(csv.DictReader(io.StringIO(content.decode("utf-8-sig", errors="replace"))))
+
+    if not rows:
+        raise HTTPException(status_code=400, detail="CSV file is empty")
+
+    text_col = _find_text_column(rows[0])
+    if text_col is None:
+        raise HTTPException(
+            status_code=400,
+            detail=f"No text column found. Got columns: {list(rows[0].keys())}",
+        )
+
+    return StreamingResponse(
+        _stream_analysis(rows, text_col, run_ner, run_sentiment, run_topics, source_filename=file.filename),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",  # Disable nginx buffering if behind nginx
+        },
+    )
+
+
+# ---------------------------------------------------------------------------
+# POST /analyze/stream  — SSE streaming single text
+# ---------------------------------------------------------------------------
+
+@router.post("/analyze/stream")
+async def analyze_text_stream(request: TextAnalysisRequest):
+    """Analyze single text and stream progress via Server-Sent Events."""
+    rows = [{"ID": str(uuid.uuid4())[:8], "Text": request.text, "Source": "direct"}]
+    return StreamingResponse(
+        _stream_analysis(rows, "Text", request.run_ner, request.run_sentiment, request.run_topics, source_filename="single-text"),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -323,12 +625,21 @@ def _run_analysis(
     run_topics: bool,
 ) -> AnalysisResponse:
     t0 = time.time()
+    
+    try:
+        baseline_ram = psutil.virtual_memory().used
+        baseline_vram = torch.cuda.memory_allocated() if torch.cuda.is_available() else 0
+    except Exception:
+        baseline_ram = 0
+        baseline_vram = 0
+        
     preprocessor = services.preprocessor
     kb = services.kb
 
     raw_texts = [row.get(text_col, "") for row in rows]
     ids       = [row.get("ID", str(i)) for i, row in enumerate(rows)]
     sources   = [row.get("Source", "") for row in rows]
+    data_size_bytes = sum(len(r.encode('utf-8')) for r in raw_texts)
 
     logger.info(f"[Pipeline] Starting analysis: {len(raw_texts)} rows, NER={run_ner}, Sentiment={run_sentiment}, Topics={run_topics}")
 
@@ -446,12 +757,29 @@ def _run_analysis(
             ],
         )
 
+    try:
+        final_ram = psutil.virtual_memory().used
+        final_vram = torch.cuda.memory_allocated() if torch.cuda.is_available() else 0
+        ram_used_mb = max(0, (final_ram - baseline_ram) / (1024 * 1024))
+        vram_used_mb = max(0, (final_vram - baseline_vram) / (1024 * 1024))
+    except Exception:
+        ram_used_mb = 0.0
+        vram_used_mb = 0.0
+
+    performance_metrics = {
+        "processing_time_sec": time.time() - t0,
+        "data_size_bytes": float(data_size_bytes),
+        "ram_used_mb": float(ram_used_mb),
+        "gpu_vram_used_mb": float(vram_used_mb)
+    }
+
     return AnalysisResponse(
         documents=documents,
         network=network,
         topic_summary=topic_summary,
         sentiment_summary=sentiment_counts,
         entity_summary=entity_stats,
+        performance_metrics=performance_metrics,
         total_documents=len(documents),
     )
 

@@ -5,13 +5,34 @@ __pycache__/
 .idea
 .vscode
 
-# Model weights (too large for GitHub — store on Google Drive / HuggingFace Hub)
+# Runtime database (generated at runtime, user-specific)
+knowledge.db
+
+# Model weights (too large for GitHub — hosted on HuggingFace Hub)
 adapters/ner_mongolian/model.safetensors
 adapters/ner_mongolian/optimizer.pt
 adapters/ner_mongolian/rng_state.pth
 adapters/ner_mongolian/scaler.pt
 adapters/ner_mongolian/scheduler.pt
 
-# Large dataset files (too large for GitHub)
-NER-dataset/ner_mongolian.zip
-NER-dataset/eduge.csv.gz
+# Training artifacts (not needed for inference)
+adapters/ner_mongolian/trainer_state.json
+adapters/ner_mongolian/training_args.bin
+
+# Large reference data (keep locally, don't track)
+Data/NER-dataset/*.zip
+Data/NER-dataset/*.csv.gz
+Data/NER-dataset/eduge*
+
+# Intermediate/regenerable training files
+Data/data/train_merged.conll
+Data/data/silver_review.conll
+Data/datav2/per_*.jsonl
+Data/datav2/org_*.jsonl
+Data/datav2/loc_*.jsonl
+Data/datav2/ner_v1_base.jsonl
+Data/datav2/mixed_entities.jsonl
+
+# OS / IDE / misc
+.DS_Store
+ui/

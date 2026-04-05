@@ -13,52 +13,71 @@ pinned: false
 
 Hexagonal (Ports & Adapters) architecture for Mongolian social media content analysis.
 
-## Architecture
+## Repository Structure
 
 ```
-webapp/
-├── nlp_core/         # Domain Core (pure Python, no framework deps)
-├── adapters/api/     # FastAPI REST adapter
-├── adapters/sumbee/  # Future Sumbee.mn integration
-└── frontend/         # Next.js dashboard & admin
+NLP-intelligence/
+├── nlp_core/              # Domain Core — NER, sentiment, topic modeling, preprocessing (pure Python)
+├── adapters/
+│   ├── api/               # FastAPI REST adapter (routers, schemas, services)
+│   ├── ner_mongolian/     # Fine-tuned NER model config/tokenizer (weights on HF Hub)
+│   └── sumbee/            # Future Sumbee.mn integration
+├── frontend/              # Next.js dashboard & admin panel
+├── Data/                  # Training data & reference datasets (NOT used at runtime)
+│   ├── data/              # CoNLL-format training/validation/test files (v1 pipeline)
+│   ├── datav2/            # JSONL character-offset training data + scripts (v2 pipeline)
+│   └── NER-dataset/       # Reference data (locations.json, abbreviations, names)
+├── eval/                  # Model evaluation scripts
+├── Dockerfile             # Multi-stage production build
+├── nginx.conf             # Reverse proxy config (port 7860)
+├── start.sh               # Docker entrypoint
+└── requirements.txt
+```
+
+**Production code:** `nlp_core/`, `adapters/api/`, `frontend/` — included in Docker image.
+**ML development:** `Data/`, `eval/` — excluded from Docker. See [Data/README.md](Data/README.md) for details.
+
+## Model
+
+The NER model is hosted on HuggingFace Hub: `Nomio4640/ner-mongolian`. It is downloaded automatically during Docker build and at runtime (if not cached locally). Model weights are NOT stored in git.
+
+To version a new model after training:
+```bash
+git tag model-v1.0 -m "F1: 0.XX, trained on train_final.conll"
 ```
 
 ## Quick Start
 
-### 1. Backend (FastAPI)
+### Local Development
 
 ```bash
-cd webapp
-
-# Create virtual environment
+# Backend
 python3 -m venv venv
 source venv/bin/activate
-
-# Install dependencies
 pip install -r requirements.txt
-
-#venv activate 
-source /home/nomio/Documents/БСА/NLP-intelligence/venv/bin/activate 
-# Start the API
 cd adapters/api
 PYTHONPATH=../../ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 API docs: http://localhost:8000/docs
 
-### 2. Frontend (Next.js)
-
 ```bash
-cd webapp/frontend
-
-# Install dependencies
+# Frontend
+cd frontend
 npm install
-
-# Start dev server
 npm run dev
 ```
 
 Dashboard: http://localhost:3000
+
+### Docker
+
+```bash
+docker build -t nlp-intelligence .
+docker run -p 7860:7860 nlp-intelligence
+```
+
+App: http://localhost:7860
 
 ### Usage
 

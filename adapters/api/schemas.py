@@ -11,6 +11,9 @@ from typing import List, Dict, Optional
 
 class TextAnalysisRequest(BaseModel):
     text: str
+    run_ner: bool = True
+    run_sentiment: bool = True
+    run_topics: bool = False
 
 
 class BatchAnalysisRequest(BaseModel):
@@ -83,6 +86,7 @@ class AnalysisResponse(BaseModel):
     topic_summary: List[Dict] = []
     sentiment_summary: Dict[str, int] = {}
     entity_summary: Dict[str, List[Dict]] = {}
+    performance_metrics: Dict[str, float] = {}
     total_documents: int = 0
 
 
