@@ -36,3 +36,5 @@ Data/datav2/mixed_entities.jsonl
 # OS / IDE / misc
 .DS_Store
 ui/
+*.gz
+ui/*.png
